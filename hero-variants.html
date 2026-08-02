@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kredito — Hero Variants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #0C0907;
+  --burg:   #7A1F1F;
+  --burg2:  #5C1515;
+  --ember:  #FF6B35;
+  --ember2: #E04E1A;
+  --gold:   #C4962A;
+  --cream:  #EDE5DA;
+  --stone:  #B8A090;
+  --muted:  #6A5A4A;
+  --nav:    68px;
+  --font-d: 'Montserrat',sans-serif;
+  --font-b: 'Lato',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:var(--font-b);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--nav);display:flex;align-items:center;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.on{background:rgba(12,9,7,.92);backdrop-filter:blur(14px);border-color:rgba(184,160,144,.1)}
+.nav-in{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,5vw,4rem);width:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.6rem}
+.logo-mark{width:32px;height:32px}
+.logo-img{height:36px;width:auto;display:block}
+.logo-tx{display:flex;flex-direction:column;line-height:1.1}
+.logo-name{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+.logo-sub{font-size:.6rem;letter-spacing:.07em;color:var(--stone)}
+.btn-nav{background:var(--ember);color:#fff;font-size:.78rem;font-weight:600;letter-spacing:.04em;padding:.5rem 1.15rem;border-radius:2px;border:none;cursor:pointer;transition:background .2s}
+.btn-nav:hover{background:var(--ember2)}
+
+/* ── VARIANT LABEL ── */
+.variant-label{position:absolute;top:calc(var(--nav) + 1.5rem);right:2rem;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(184,160,144,.4);z-index:10}
+
+/* ── SHARED HERO ── */
+.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden}
+.hero-content{position:relative;z-index:5;max-width:1280px;margin:0 auto;padding:var(--nav) clamp(1.25rem,5vw,4rem) 0;width:100%}
+.eyebrow{display:flex;align-items:center;gap:.7rem;font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ember);margin-bottom:1.75rem}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--ember);display:block}
+.h1{font-family:var(--font-d);font-size:clamp(2.6rem,5.8vw,5.4rem);font-weight:400;line-height:1.06;color:var(--cream);max-width:14ch;text-wrap:balance;letter-spacing:-.015em}
+.h1 em{font-style:italic;color:var(--stone)}
+.sub{margin-top:1.35rem;font-size:clamp(.9rem,1.35vw,1.05rem);color:var(--stone);max-width:40ch;line-height:1.72}
+.cta-row{margin-top:2.25rem;display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;gap:.45rem;background:var(--ember);color:#fff;font-size:.875rem;font-weight:600;letter-spacing:.02em;padding:.82rem 1.65rem;border-radius:2px;border:none;cursor:pointer;transition:background .2s,transform .15s}
+.btn-p:hover{background:var(--ember2);transform:translateY(-1px)}
+.btn-g{font-size:.875rem;color:rgba(237,229,218,.7);border-bottom:1px solid rgba(237,229,218,.2);padding-bottom:1px;transition:color .2s}
+.btn-g:hover{color:var(--cream)}
+.scroll-dot{position:absolute;bottom:2.25rem;left:clamp(1.25rem,5vw,4rem);display:flex;align-items:center;gap:.65rem;z-index:5}
+.scroll-dot span{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.scroll-dot::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--ember);display:block;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ═══════════════════════════════════════════
+   HERO A — Atmospheric Orbs (Canvas)
+   Powoli pulsujące sfery, miękkie gradienty
+═══════════════════════════════════════════ */
+#hero-a{background:var(--ink)}
+#ca{position:absolute;inset:0;width:100%;height:100%}
+.ha-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(12,9,7,.75) 0%,rgba(12,9,7,.3) 50%,rgba(12,9,7,.6) 100%)}
+
+/* ═══════════════════════════════════════════
+   HERO B — Bold Planes (CSS geometric layers)
+   Nakładające się płaszczyzny jak HelloMortal
+═══════════════════════════════════════════ */
+#hero-b{background:var(--ink)}
+.hb-bg{position:absolute;inset:0;overflow:hidden}
+.hb-plane{position:absolute;border-radius:2px;animation:planeDrift 20s ease-in-out infinite alternate}
+.hb-p1{width:55vw;height:90vh;right:-8vw;top:-5vh;background:linear-gradient(145deg,var(--burg2) 0%,#3B0F0F 100%);transform-origin:bottom left;animation-delay:0s}
+.hb-p2{width:42vw;height:80vh;right:-2vw;top:5vh;background:linear-gradient(155deg,var(--burg) 0%,#4E1414 100%);animation-delay:-6s}
+.hb-p3{width:30vw;height:70vh;right:4vw;top:12vh;background:linear-gradient(160deg,#9B2828 0%,var(--burg) 100%);animation-delay:-11s}
+.hb-p4{width:18vw;height:55vh;right:10vw;top:20vh;background:linear-gradient(165deg,var(--ember2) 0%,var(--burg) 100%);animation-delay:-16s}
+.hb-circle{position:absolute;width:22vw;height:22vw;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.15) 0%,transparent 70%);right:12vw;top:50%;transform:translateY(-50%);animation:hbPulse 8s ease-in-out infinite}
+.hb-line{position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(255,107,53,.2),transparent);top:50%}
+@keyframes planeDrift{0%{transform:skewY(-.5deg) translateY(0)}100%{transform:skewY(.5deg) translateY(-12px)}}
+@keyframes hbPulse{0%,100%{opacity:.6;transform:translateY(-50%) scale(1)}50%{opacity:1;transform:translateY(-50%) scale(1.08)}}
+.hb-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(12,9,7,.88) 0%,rgba(12,9,7,.4) 55%,rgba(12,9,7,.2) 100%)}
+
+/* ═══════════════════════════════════════════
+   HERO C — Circle Slash
+   Jeden ogromny okrąg wypełniający prawą stronę
+═══════════════════════════════════════════ */
+#hero-c{background:var(--ink)}
+.hc-bg{position:absolute;inset:0;overflow:hidden}
+.hc-circle-main{position:absolute;width:85vw;height:85vw;max-width:950px;max-height:950px;border-radius:50%;right:-28vw;top:50%;transform:translateY(-50%);background:conic-gradient(from 200deg,var(--burg2) 0%,var(--burg) 25%,#9B2828 50%,var(--ember2) 65%,var(--burg) 80%,var(--burg2) 100%);animation:circleRotate 40s linear infinite}
+.hc-circle-inner{position:absolute;width:62vw;height:62vw;max-width:700px;max-height:700px;border-radius:50%;right:-20vw;top:50%;transform:translateY(-50%);background:radial-gradient(circle at 35% 35%,rgba(196,150,42,.18) 0%,var(--burg2) 50%,#1C0808 100%);animation:circleRotate 60s linear infinite reverse}
+.hc-circle-accent{position:absolute;width:20vw;height:20vw;border-radius:50%;border:1px solid rgba(255,107,53,.2);right:18vw;top:15vh;animation:hbPulse 10s ease-in-out infinite}
+.hc-arc{position:absolute;right:30vw;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(255,107,53,.15),transparent)}
+@keyframes circleRotate{from{filter:hue-rotate(0deg)}to{filter:hue-rotate(15deg)}}
+.hc-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(12,9,7,.95) 0%,rgba(12,9,7,.7) 40%,rgba(12,9,7,.15) 70%,rgba(12,9,7,.05) 100%)}
+
+/* ═══════════════════════════════════════════
+   HERO D — Grid Blocks
+   Asymetryczna siatka bloków, jak abstrakcyjny moodboard
+═══════════════════════════════════════════ */
+#hero-d{background:var(--ink)}
+.hd-bg{position:absolute;inset:0;overflow:hidden}
+.hd-block{position:absolute;animation:blockFloat 18s ease-in-out infinite alternate}
+.hd-b1{width:38vw;height:55vh;right:0;bottom:0;background:linear-gradient(135deg,var(--burg2),#2A0A0A);animation-delay:0s}
+.hd-b2{width:26vw;height:38vh;right:10vw;bottom:0;background:linear-gradient(125deg,var(--burg),var(--burg2));animation-delay:-5s}
+.hd-b3{width:18vw;height:28vh;right:24vw;bottom:0;background:linear-gradient(120deg,var(--ember2),var(--burg));animation-delay:-10s}
+.hd-b4{width:12vw;height:18vh;right:30vw;bottom:10vh;background:var(--ember);animation-delay:-14s;opacity:.85}
+.hd-circ1{position:absolute;width:30vw;height:30vw;border-radius:50%;right:5vw;top:-10vh;background:radial-gradient(circle,rgba(122,31,31,.5),transparent 70%);animation:hbPulse 12s ease-in-out infinite}
+.hd-circ2{position:absolute;width:14vw;height:14vw;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.25),transparent 70%);right:28vw;top:20vh;animation:hbPulse 8s ease-in-out infinite;animation-delay:-4s}
+.hd-grid-line-h{position:absolute;left:0;right:0;height:1px;background:linear-gradient(to right,transparent 30%,rgba(184,160,144,.06),transparent 70%)}
+.hd-gl1{top:33vh}.hd-gl2{top:66vh}
+.hd-grid-line-v{position:absolute;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(184,160,144,.06),transparent)}
+.hd-gv1{right:38vw}.hd-gv2{right:18vw}
+@keyframes blockFloat{0%{transform:translateY(0) scale(1)}100%{transform:translateY(-18px) scale(1.02)}}
+.hd-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(12,9,7,.92) 0%,rgba(12,9,7,.5) 45%,rgba(12,9,7,.1) 100%)}
+
+/* ── SECTION: LICZBY ── */
+.s-nums{background:var(--ink);border-top:1px solid rgba(184,160,144,.08)}
+.nums-head{max-width:1280px;margin:0 auto;padding:clamp(3.5rem,6vw,6rem) clamp(1.25rem,5vw,4rem) 2.5rem;border-bottom:1px solid rgba(184,160,144,.08)}
+.nums-head .ey{font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+.nums-head h2{font-family:var(--font-d);font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:400;color:var(--cream);margin-top:.6rem;max-width:28ch;text-wrap:balance}
+.nums-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.num-item{padding:3rem clamp(1.25rem,3vw,3rem);border-right:1px solid rgba(184,160,144,.08);position:relative;overflow:hidden}
+.num-item:last-child{border-right:none}
+.num-bg{position:absolute;font-family:var(--font-d);font-size:clamp(7rem,16vw,13rem);font-weight:400;color:rgba(122,31,31,.06);line-height:1;top:50%;right:-.05em;transform:translateY(-50%);pointer-events:none;user-select:none;letter-spacing:-.05em}
+.num-val{font-family:var(--font-d);font-size:clamp(2.6rem,4.5vw,4rem);font-weight:400;color:var(--cream);line-height:1;font-variant-numeric:tabular-nums;position:relative}
+.num-val .u{font-size:.42em;color:var(--ember);vertical-align:top;margin-top:.2em;font-variant-numeric:normal}
+.num-ctx{margin-top:.85rem;font-size:.95rem;font-weight:600;color:var(--cream);position:relative}
+.num-det{margin-top:.3rem;font-size:.8rem;color:var(--stone);line-height:1.6;position:relative;max-width:22ch}
+
+@media(max-width:900px){
+  .nums-grid{grid-template-columns:repeat(2,1fr)}
+  .num-item:nth-child(2){border-right:none}
+  .num-item:nth-child(n+3){border-top:1px solid rgba(184,160,144,.08)}
+  .hb-p1,.hb-p2,.hb-p3,.hb-p4{width:80vw;right:-20vw}
+}
+@media(max-width:580px){
+  .nums-grid{grid-template-columns:1fr}
+  .num-item{border-right:none;border-top:1px solid rgba(184,160,144,.08)}
+  .num-item:first-child{border-top:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#" class="logo">
+      <img src="LOGO.svg" class="logo-img" alt="Kredito">
+    </a>
+    <a href="tel:+48000000000" class="btn-nav">Zadzwoń teraz</a>
+  </div>
+</nav>
+
+<!-- ─────────────────────────────────
+     HERO A — Atmospheric Orbs
+     Canvas: animowane sfery burgund/ember/złoto
+───────────────────────────────── -->
+<section class="hero" id="hero-a">
+  <canvas id="ca" aria-hidden="true"></canvas>
+  <div class="ha-overlay" aria-hidden="true"></div>
+  <span class="variant-label">Wariant A — Atmospheric Orbs</span>
+  <div class="hero-content">
+    <div class="eyebrow">Pożyczki hipoteczne dla firm</div>
+    <h1 class="h1">Finansowanie, które inni uznali za <em>niemożliwe.</em></h1>
+    <p class="sub">20 lat. 30–40 instytucji. Jedna rozmowa przez telefon.<br>Jeśli masz nieruchomość — mamy rozwiązanie.</p>
+    <div class="cta-row">
+      <a href="tel:+48000000000" class="btn-p">Zadzwoń — pierwsze 3 minuty bezpłatnie →</a>
+      <a href="#liczby" class="btn-g">Jak działamy</a>
+    </div>
+  </div>
+  <div class="scroll-dot"><span>Przewiń</span></div>
+</section>
+
+<!-- ─────────────────────────────────
+     HERO B — Bold Planes
+     CSS: nakładające się burgund płaszczyzny
+───────────────────────────────── -->
+<section class="hero" id="hero-b">
+  <div class="hb-bg" aria-hidden="true">
+    <div class="hb-plane hb-p1"></div>
+    <div class="hb-plane hb-p2"></div>
+    <div class="hb-plane hb-p3"></div>
+    <div class="hb-plane hb-p4"></div>
+    <div class="hb-circle"></div>
+    <div class="hb-line"></div>
+  </div>
+  <div class="hb-overlay" aria-hidden="true"></div>
+  <span class="variant-label">Wariant B — Bold Planes</span>
+  <div class="hero-content">
+    <div class="eyebrow">Pożyczki hipoteczne dla firm</div>
+    <h1 class="h1">Tam gdzie bank mówi nie — <em>zaczynamy rozmowę.</em></h1>
+    <p class="sub">20 lat relacji z decydentami. Nie z infoliniami.<br>Minimum 1 000 000 PLN. Decyzja w 2 dni.</p>
+    <div class="cta-row">
+      <a href="tel:+48000000000" class="btn-p">Zadzwoń — wstępna ocena w 3 minuty →</a>
+      <a href="#liczby" class="btn-g">Sprawdź liczby</a>
+    </div>
+  </div>
+  <div class="scroll-dot"><span>Przewiń</span></div>
+</section>
+
+<!-- ─────────────────────────────────
+     HERO C — Circle Slash
+     Obracający się gigantyczny okrąg
+───────────────────────────────── -->
+<section class="hero" id="hero-c">
+  <div class="hc-bg" aria-hidden="true">
+    <div class="hc-circle-main"></div>
+    <div class="hc-circle-inner"></div>
+    <div class="hc-circle-accent"></div>
+    <div class="hc-arc"></div>
+  </div>
+  <div class="hc-overlay" aria-hidden="true"></div>
+  <span class="variant-label">Wariant C — Circle Slash</span>
+  <div class="hero-content">
+    <div class="eyebrow">Private debt · Pożyczki hipoteczne</div>
+    <h1 class="h1">Pożyczka hipoteczna dla firm. W&nbsp;2&nbsp;dni. <em>Bez BIK.</em></h1>
+    <p class="sub">Private debt działa inaczej niż bank. Oceniamy zabezpieczenie — nie historię kredytową. Decyzja w 48 godzin.</p>
+    <div class="cta-row">
+      <a href="tel:+48000000000" class="btn-p">Sprawdź czy kwalifikujesz →</a>
+      <a href="#liczby" class="btn-g">20 lat · 30–40 instytucji</a>
+    </div>
+  </div>
+  <div class="scroll-dot"><span>Przewiń</span></div>
+</section>
+
+<!-- ─────────────────────────────────
+     HERO D — Grid Blocks
+     Abstrakcyjna siatka bloków geometrycznych
+───────────────────────────────── -->
+<section class="hero" id="hero-d">
+  <div class="hd-bg" aria-hidden="true">
+    <div class="hd-block hd-b1"></div>
+    <div class="hd-block hd-b2"></div>
+    <div class="hd-block hd-b3"></div>
+    <div class="hd-block hd-b4"></div>
+    <div class="hd-circ1"></div>
+    <div class="hd-circ2"></div>
+    <div class="hd-grid-line-h hd-gl1"></div>
+    <div class="hd-grid-line-h hd-gl2"></div>
+    <div class="hd-grid-line-v hd-gv1"></div>
+    <div class="hd-grid-line-v hd-gv2"></div>
+  </div>
+  <div class="hd-overlay" aria-hidden="true"></div>
+  <span class="variant-label">Wariant D — Grid Blocks</span>
+  <div class="hero-content">
+    <div class="eyebrow">Pośrednictwo finansowe B2B</div>
+    <h1 class="h1">Ostatnia rozmowa, jakiej <em>potrzebujesz.</em></h1>
+    <p class="sub">Specjalizujemy się w sprawach, które inni pośrednicy odsyłają. Zbyt skomplikowane, zbyt duże, zbyt pilne — to właśnie nasze pole.</p>
+    <div class="cta-row">
+      <a href="tel:+48000000000" class="btn-p">Omów swoją sprawę →</a>
+      <a href="#liczby" class="btn-g">Poznaj Kredito</a>
+    </div>
+  </div>
+  <div class="scroll-dot"><span>Przewiń</span></div>
+</section>
+
+<!-- ─────────────────────────────────
+     SEKCJA LICZBY
+───────────────────────────────── -->
+<section id="liczby">
+  <div class="nums-head">
+    <div class="ey">Przewaga konkurencyjna</div>
+    <h2>Nie "kompleksowe usługi finansowe". Konkretne liczby.</h2>
+  </div>
+  <div class="nums-grid">
+    <div class="num-item">
+      <div class="num-bg" aria-hidden="true">20</div>
+      <div class="num-val">20<span class="u">lat</span></div>
+      <div class="num-ctx">Relacji z decydentami</div>
+      <div class="num-det">Nie z infoliniami — z ludźmi, którzy podpisują decyzje.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-bg" aria-hidden="true">40</div>
+      <div class="num-val">30–40<span class="u">inst.</span></div>
+      <div class="num-ctx">Banki, fundusze, private debt</div>
+      <div class="num-det">Rynki PL i zagraniczne, w tym Szwajcaria. Przeciętny broker — 3–4.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-bg" aria-hidden="true">3'</div>
+      <div class="num-val">2–3<span class="u">min</span></div>
+      <div class="num-ctx">Wstępna ocena sprawy</div>
+      <div class="num-det">Przez telefon. Zero papierów. Zero spotkań.</div>
+    </div>
+    <div class="num-item">
+      <div class="num-bg" aria-hidden="true">2</div>
+      <div class="num-val">2<span class="u">dni</span></div>
+      <div class="num-ctx">Decyzja private debt</div>
+      <div class="num-det">Bez BIK. Bez wizyty w banku. Oceniamy nieruchomość.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+// NAV
+(function(){
+  const n=document.getElementById('nav');
+  const s=()=>n.classList.toggle('on',window.scrollY>55);
+  window.addEventListener('scroll',s,{passive:true});s();
+})();
+
+// CANVAS — Hero A: animated geometric orbs
+(function(){
+  const canvas=document.getElementById('ca');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+
+  function resize(){
+    canvas.width=canvas.offsetWidth;
+    canvas.height=canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+
+  // Orbs: each has base position, size, color, speed
+  const orbs=[
+    // Large burgund sphere, center-right
+    {bx:.68,by:.45,br:.55,r:[100,22,22],sx:.000022,sy:.000018,ph:0,   opacity:.9},
+    // Medium ember sphere, top-right
+    {bx:.82,by:.2, br:.32,r:[224,78,26],sx:-.000031,sy:.000025,ph:1.8,opacity:.7},
+    // Large dark maroon, bottom
+    {bx:.55,by:.85,br:.45,r:[61,15,15], sx:.000017,sy:-.000021,ph:3.2,opacity:.8},
+    // Gold accent, left
+    {bx:.15,by:.55,br:.28,r:[196,150,42],sx:-.000019,sy:.000015,ph:5.1,opacity:.5},
+    // Small ember, top-left
+    {bx:.22,by:.18,br:.18,r:[200,60,20],sx:.000041,sy:.000033,ph:2.4,opacity:.4},
+    // Deep dark burg, bottom-right
+    {bx:.9, by:.8, br:.38,r:[80,18,18], sx:-.000014,sy:-.000028,ph:4.7,opacity:.65},
+  ];
+
+  // Geometric shapes (rectangles, lines) that drift
+  const rects=[
+    {bx:.55,by:.15,w:.22,h:.004,rot:.15,col:[255,107,53],opacity:.12,sx:.000008,sy:.000006,ph:0},
+    {bx:.7, by:.7, w:.18,h:.003,rot:-.1,col:[196,150,42],opacity:.08,sx:-.000009,sy:.000007,ph:2},
+    {bx:.42,by:.9, w:.25,h:.002,rot:.05,col:[255,107,53],opacity:.06,sx:.000007,sy:-.000005,ph:4},
+  ];
+
+  let t=0;
+  function draw(){
+    t+=16;
+    const W=canvas.width,H=canvas.height;
+
+    // Base fill
+    ctx.fillStyle='#0C0907';
+    ctx.fillRect(0,0,W,H);
+
+    // Draw orbs using 'lighter' blend for glow effect
+    ctx.globalCompositeOperation='lighter';
+    orbs.forEach(o=>{
+      const px=(o.bx+Math.sin(t*o.sx+o.ph)*.18)*W;
+      const py=(o.by+Math.cos(t*o.sy+o.ph)*.15)*H;
+      const rr=o.br*Math.min(W,H);
+
+      const pulse=1+Math.sin(t*.0003+o.ph)*.04; // gentle pulse
+      const g=ctx.createRadialGradient(px,py,0,px,py,rr*pulse);
+      g.addColorStop(0,   `rgba(${o.r[0]},${o.r[1]},${o.r[2]},${o.opacity*.4})`);
+      g.addColorStop(.35, `rgba(${o.r[0]},${o.r[1]},${o.r[2]},${o.opacity*.18})`);
+      g.addColorStop(.7,  `rgba(${o.r[0]},${o.r[1]},${o.r[2]},${o.opacity*.05})`);
+      g.addColorStop(1,   `rgba(${o.r[0]},${o.r[1]},${o.r[2]},0)`);
+
+      ctx.fillStyle=g;
+      ctx.beginPath();
+      ctx.arc(px,py,rr*pulse,0,Math.PI*2);
+      ctx.fill();
+    });
+
+    // Draw drifting geometric lines/rectangles
+    ctx.globalCompositeOperation='source-over';
+    rects.forEach(r=>{
+      const px=(r.bx+Math.sin(t*r.sx+r.ph)*.1)*W;
+      const py=(r.by+Math.cos(t*r.sy+r.ph)*.08)*H;
+      const rw=r.w*W, rh=r.h*H;
+
+      ctx.save();
+      ctx.translate(px,py);
+      ctx.rotate(r.rot);
+      ctx.fillStyle=`rgba(${r.col[0]},${r.col[1]},${r.col[2]},${r.opacity})`;
+      ctx.fillRect(-rw/2,-rh/2,rw,rh);
+      ctx.restore();
+    });
+
+    ctx.globalCompositeOperation='source-over';
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
