@@ -185,7 +185,7 @@ a { color: inherit; text-decoration: none; }
   display: inline-flex; align-items: center;
   border: 1px solid #620e0c; border-radius: 50px;
   padding: 15px 25px;
-  font-family: var(--font-d); font-size: 18px; font-weight: 400;
+  font-family: var(--font-d); font-size: 18px; font-weight: 500;
   color: #150407; background: transparent;
   transition: background .2s, color .2s;
 }
@@ -297,7 +297,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── SEKCJA F24: O NAS / LICZBY ── */
 .about {
-  background: #fff;
+  background: linear-gradient(114.68deg, #5b0e0c 0.49%, #950e0c 99.85%);
   padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
   display: flex;
   align-items: center;
@@ -309,14 +309,14 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-d);
   font-size: 40px; font-weight: 500;
   line-height: 60px;
-  color: #150407;
+  color: #fff;
   margin-bottom: 1.5rem;
 }
 .about-body {
   font-family: var(--font-b);
   font-size: 18px; font-weight: 300;
   line-height: 30px;
-  color: #150407;
+  color: #fff;
   margin-bottom: 2.5rem;
 }
 .about-metrics {
@@ -329,13 +329,13 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-d);
   font-size: 40px; font-weight: 500;
   line-height: 60px;
-  color: #150407;
+  color: #fff;
 }
 .metric-label {
   font-family: var(--font-b);
   font-size: 18px; font-weight: 300;
   line-height: 30px;
-  color: #150407;
+  color: rgba(255,255,255,0.75);
 }
 .about-photo {
   position: relative;
@@ -376,7 +376,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ── SEKCJA F23: KWALIFIKACJA ── */
 .qualify {
-  background: linear-gradient(114.68deg, #5b0e0c 0.49%, #950e0c 99.85%);
+  background: #FFFFFF;
   padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
   overflow: hidden;
 }
@@ -388,7 +388,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-d);
   font-size: 40px; font-weight: 600;
   line-height: 60px;
-  color: #fff;
+  color: #150407;
 }
 .qualify-grid {
   display: flex;
@@ -410,7 +410,7 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-d);
   font-size: 20px; font-weight: 600;
   line-height: 30px;
-  color: #150407;
+  color: #fff;
 }
 .qcard-desc {
   position: absolute;
@@ -418,22 +418,22 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-b);
   font-size: 18px; font-weight: 300;
   line-height: 30px;
-  color: #150407;
+  color: rgba(255,255,255,0.85);
 }
 .qcard-cta {
   position: absolute;
   left: 20px;
   display: inline-flex; align-items: center;
-  border: 1px solid #620e0c; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.6); border-radius: 50px;
   padding: 15px 25px;
-  font-family: var(--font-d); font-size: 18px; font-weight: 400;
-  color: #150407; background: #fff;
+  font-family: var(--font-d); font-size: 18px; font-weight: 500;
+  color: #fff; background: transparent;
   white-space: nowrap;
   transform: translateY(-50%);
   transition: background .2s, color .2s;
   z-index: 1;
 }
-.qcard-cta:hover { background: #620e0c; color: #fff; }
+.qcard-cta:hover { background: rgba(255,255,255,0.2); color: #fff; }
 @media (max-width: 1260px) {
   .qualify-grid { overflow-x: auto; padding-bottom: 1rem; justify-content: flex-start; }
 }
@@ -580,7 +580,7 @@ a { color: inherit; text-decoration: none; }
   <!-- KAFELEK — wideo Higgsfield -->
   <div class="he-card">
     <video autoplay muted loop playsinline>
-      <source src="assets/hf_20260802_170444_0c23df30-b482-42a8-bef5-e99dc95eced2.mp4" type="video/mp4">
+      <source src="assets/hf_20260802_154146_633e54ae-2b54-4d44-88a0-305f66a906ca.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -618,15 +618,12 @@ a { color: inherit; text-decoration: none; }
 
   <div class="qualify-grid">
 
-    <!-- Karta 1: Finansowanie dla firm -->
+    <!-- Karta 1: Finansowanie dla firm (top-left notch) -->
     <div class="qcard">
-      <!-- Orange strip (behind white card) -->
-      <img class="qcard-bg" src="assets/subtract-orange-1.svg"
-           style="left:10px;top:57px;width:367px;height:387px" alt="">
-      <!-- White subtract shape (top-left notch) -->
-      <img class="qcard-bg" src="assets/subtract-white-1.svg"
+      <img class="qcard-bg" src="assets/qcard-accent-1.svg"
+           style="left:10px;top:313px;width:367px;height:131px" alt="">
+      <img class="qcard-bg" src="assets/qcard-dark.svg"
            style="left:0;top:0;width:387px;height:424px" alt="">
-      <!-- Title: left:82 avoids the top-left notch -->
       <h3 class="qcard-title" style="left:82px;top:20px;width:284px">
         Finansowanie dla firm od 1&nbsp;mln PLN
       </h3>
@@ -636,16 +633,14 @@ a { color: inherit; text-decoration: none; }
       <a href="#" class="qcard-cta" style="top:calc(50% + 125px)">Oferta dla firm</a>
     </div>
 
-    <!-- Karta 2: Spółka z trudną historią (plain white) -->
+    <!-- Karta 2: Spółka z trudną historią (plain gradient) -->
     <div class="qcard">
-      <!-- Orange strip (behind white card) -->
-      <img class="qcard-bg" src="assets/subtract-orange-2.svg"
+      <img class="qcard-bg" src="assets/qcard-accent-2.svg"
            style="left:10px;top:110px;width:367px;height:334px" alt="">
-      <!-- Plain white rectangle, no subtract shape -->
-      <div class="qcard-bg" style="left:0;top:0;width:387px;height:424px;
-           background:#fff;border-radius:10px"></div>
+      <div class="qcard-bg" style="left:0;top:0;width:387px;height:424px;border-radius:10px;
+           background:linear-gradient(180deg,rgb(86,14,12) 0%,rgb(162,14,12) 100%)"></div>
       <h3 class="qcard-title" style="left:30px;top:20px;width:284px">
-        Prowadzisz spółkę z trudną historią kredytową?
+        Prowadzisz spółkę z trudną historią kredytową
       </h3>
       <p class="qcard-desc" style="top:90px">
         Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością — od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy i rynków zagranicznych.
@@ -653,24 +648,21 @@ a { color: inherit; text-decoration: none; }
       <a href="#" class="qcard-cta" style="top:calc(50% + 125px)">Oferta dla spółek</a>
     </div>
 
-    <!-- Karta 3: Pośrednik (bottom-right notch) -->
+    <!-- Karta 3: Pośrednik (bottom-right notch — qcard-dark rotated 180°) -->
     <div class="qcard">
-      <!-- Orange strip (behind white card) -->
-      <img class="qcard-bg" src="assets/subtract-orange-3.svg"
-           style="left:10px;top:104px;width:367px;height:340px" alt="">
-      <!-- Small square fills the bottom-right notch corner -->
+      <img class="qcard-bg" src="assets/qcard-accent-3.svg"
+           style="left:20px;top:313px;width:348px;height:131px" alt="">
       <div style="position:absolute;left:324px;top:391px;width:53px;height:53px;
-           background:#920e0c;border-radius:0 0 10px 0"></div>
-      <!-- White subtract shape (bottom-right notch) -->
-      <img class="qcard-bg" src="assets/subtract-white-3.svg"
-           style="left:0;top:0;width:387px;height:424px" alt="">
-      <h3 class="qcard-title" style="left:30px;top:20px;width:284px">
-        Jesteś pośrednikiem i masz wymagającego klienta?
+           background:#FAFAFA;border-radius:0 0 10px 0"></div>
+      <img class="qcard-bg" src="assets/qcard-dark.svg"
+           style="left:0;top:0;width:387px;height:424px;transform:rotate(180deg)" alt="">
+      <h3 class="qcard-title" style="left:30px;top:20px;width:322px">
+        Jesteś pośrednikiem<br>i masz wymagającego klienta?
       </h3>
-      <p class="qcard-desc" style="top:90px">
+      <p class="qcard-desc" style="top:100px">
         Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością — od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy i rynków zagranicznych.
       </p>
-      <a href="#" class="qcard-cta" style="top:calc(50% + 155px)">Oferta dla pośredników</a>
+      <a href="#" class="qcard-cta" style="top:calc(50% + 135px)">Oferta dla pośredników</a>
     </div>
 
   </div>
@@ -707,7 +699,7 @@ a { color: inherit; text-decoration: none; }
 <!-- SEKCJA F25: PRIVATE DEBT -->
 <section class="private-debt">
   <div class="pd-banner">
-    <img src="assets/colton-duke-UGw4owZlPD8-unsplash.jpg" alt="Brooklyn Bridge" style="object-position: center 60%;">
+    <img src="assets/colton-duke-UGw4owZlPD8-unsplash.jpg" alt="Brooklyn Bridge" style="object-position: center 35%;">
   </div>
   <div class="pd-content">
     <div class="pd-text">
