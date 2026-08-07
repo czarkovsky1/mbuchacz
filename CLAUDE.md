@@ -344,7 +344,7 @@ Single-file HTML z inline CSS. Brak frameworka. Fonty: Google Fonts (Montserrat 
 | 03 | `.statement` | "Rozwiązujemy sprawy finansowe..." — biały | ✅ Gotowe |
 | 04 | `.qualify` | Kwalifikacja — 3 karty na gradiencie bordowym | ✅ Gotowe |
 | 05 | `.about` | Liczby / Unfair Advantage — 4 metryki + zdjęcie | ✅ Gotowe |
-| 06 | `.private-debt` | Private Debt — "finansowanie w 2 dni bez BIK" | ✅ Gotowe |
+| 06 | `.private-debt` | Private Debt — "finansowanie w 2 dni bez BIK" | ⚠️ Do przebudowy — sekcja ma pozostać wyróżnioną usługą, ale nie może być nazywana "Private Debt" (decyzja 07.08.2026). Docelowa nazwa/koncepcja do ustalenia z klientką. |
 | 07 | `.about-monika` | O Monice — zdjęcie, tekst, sieć relacji | ✅ Gotowe |
 
 #### Do zbudowania (Faza 1 MVP)
