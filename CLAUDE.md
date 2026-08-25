@@ -22,6 +22,8 @@
 
 **Kredito** — nazwa robocza zatwierdzona do pracy projektowej. Możliwa zmiana po konsultacji z klientką. Docelowy model: **"Kredito by Monika Buchacz"** → stopniowe wycofanie "by Monika" gdy marka nabierze rozpoznawalności.
 
+**Aktualizacja 25.08.2026:** przygotowana short-lista nowych nazw (kredito.pl/credito.pl zajęte, brzmienie zbyt masowe): **Fineza / Rezolva / Kapitero** (wolne domeny .pl, brak kolizji) + zapas Findera, Credovia, Kredona. Szczegóły i uzasadnienia: `content-plan.md` §4. Decyzja: Monika po teście rynkowym.
+
 ---
 
 ## 3\. GRUPY DOCELOWE
@@ -283,6 +285,7 @@ Cel: lead gen, skala, kampanie Zakres: SEO, lejki, kalkulatory, CRM, doradcy onl
 
 | Plik | Zawartość |
 | :---- | :---- |
+| `content-plan.md` | **PLAN TREŚCI CAŁEGO SERWISU** (25.08.2026) — docelowe copy wszystkich sekcji i podstron, propozycje nazw, wytyczne wizualne, pytania otwarte |
 | `hero-e.html` | **GŁÓWNY PLIK ROBOCZY** — strona główna MVP (single-file HTML) |
 | `LOGO.svg` | Logo Kredito (ciemna wersja, na białe tła) |
 | `LOGO-WHITE.svg` | Logo Kredito (biała wersja, na ciemne tła) |
@@ -404,6 +407,28 @@ Single-file HTML z inline CSS. Brak frameworka. Fonty: Google Fonts (Montserrat 
 ### Pytania nadal otwarte (nie padły w żadnym warsztacie)
 
 Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q13, Q14, Q15, Q16, Q17, Q19 — **muszą być zadane Monice bezpośrednio**. Nie zakładaj, że gdzieś są ukryte — sprawdzono kompletne transkrypcje.
+
+### Aktualizacja 25.08.2026 — plik "Monika Buchacz - informacje.pdf" (odpowiedzi klientki)
+
+Nowe źródło (w katalogu nadrzędnym `MONIKA-B/`) domyka znaczną część luk. Kluczowe fakty:
+
+- **Q6 zamknięte, z twistem:** próg 1 mln NIE jest sztywny — *"Nie musimy trzymać się sztywno kwoty 1 milion, ale tak żeby charakter strony/firmy ściągał klienta na wyższe wolumeny"*. Najwięcej klientów: 100k–1,5M; docelowe segmenty: 300k–2,5M i 2,5–10M+. W copy: "typowe sprawy od 1 mln PLN" + gwiazdka "inny temat? i tak zadzwoń".
+- **Q10/Q11 zamknięte:** pełny opis pożyczki pozabankowej — LTV 40–60%, okres 6–24 mies., exit strategy = refinansowanie bankowe, brak raportowania do BIK, wymagane tylko nr KW + podstawa nabycia.
+- **Q12 zamknięte:** pełne listy — akceptowane/odrzucane nieruchomości, branże wykluczone, dokumenty NIE-wymagane.
+- **Czasy urealnione:** decyzja 24–48 h, wypłata 2–5 dni roboczych (skrajnie 48 h); harmonogram dzień-po-dniu D1–D4. **Standard w copy: 2–3 min ocena / 24–48 h decyzja / 2–5 dni wypłata.**
+- **FAQ gotowe:** 4 dosłowne skrypty rozwiewania obaw ("Fundusz zarabia na pieniądzu, nie na betonie" itd.) + rama kosztowa (instrument pomostowy/naprawczy, nie drogi kredyt).
+
+Nadal otwarte (lista w `content-plan.md` §6): nazwa firmy, nazwa sekcji "szybka ścieżka", numer telefonu publicznie, CTA nawigacji, tytułowanie, pola formularza (akceptacja), testimoniale.
+
+### Decyzje projektowe 25.08.2026 (plan zatwierdzony przez Cezarego)
+
+- Pełna architektura treści serwisu + docelowe copy: **`content-plan.md`** (strona główna 12 sekcji + 5 podstron).
+- Sekcja "Private Debt" → rekomendowana nazwa **"Szybka ścieżka: pieniądze w 48 godzin"** (warianty B/C w content-plan §1.3).
+- Hero: H1 rekomendowany **"Bank powiedział „nie"? To dopiero początek rozmowy."**; obecny sub jest kopią 1:1 z LoanHub — do wymiany.
+- Metryki: 3 → 4 (20 lat / 30–40 instytucji / 2–3 min / 48 h); "minimum 1 000 000" schodzi z metryk do treści.
+- Karty kwalifikacji: przebudowa z pozycjonowania absolutnego (px) na flex/grid.
+- **Nowa strona główna budowana jako `home2.html`** (decyzja 25.08): obecna strona główna (`index.html`/`hero-e.html`) pozostaje bez zmian poza linkiem "Home2" w menu; wszystkie zmiany treści i nowe sekcje trafiają do `home2.html`.
+- **Formularz kontaktowy: wyłącznie makieta graficzna** — żadnych funkcjonalności (bez wysyłki, bez walidacji, bez backendu). Decyzja 25.08.2026.
 
 ### Kluczowe ustalenia z transkrypcji (poza listą pytań)
 
