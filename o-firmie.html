@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O firmie — Kredito | Niezależny pośrednik finansowy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:   #0C0907;
+  --burg:  #7A1F1F;
+  --ember: #FF6B35;
+  --nav-h: 72px;
+  --gap:   1.25rem;
+  --font-d: 'Montserrat', sans-serif;
+  --font-b: 'Lato', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-b);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV (jak na home2) ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: var(--nav-h);
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 10px max(var(--gap), calc((100vw - 1200px) / 2));
+}
+.nav-logo { justify-self: start; }
+.nav-logo a { display: flex; flex-direction: column; gap: 3px; }
+.logo-img { height: 38px; width: auto; display: block; }
+.nav-links {
+  list-style: none;
+  display: flex; align-items: center; gap: 2rem;
+  justify-self: center;
+}
+.nav-links a {
+  font-family: var(--font-d);
+  font-size: 16px; font-weight: 300;
+  color: #333;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  transition: color .18s;
+}
+.nav-links a:hover { color: #000; }
+.nav-cta { justify-self: end; }
+.btn-nav {
+  display: inline-block;
+  background: #620E0C; color: #fff;
+  font-family: var(--font-d); font-size: 18px; font-weight: 500;
+  letter-spacing: .02em;
+  padding: 15px 25px;
+  border-radius: 50px;
+  transition: background .18s;
+}
+.btn-nav:hover { background: #4e0b09; }
+
+/* ── PRZYCISKI ── */
+.btn-filled {
+  display: inline-flex; align-items: center;
+  background: #620e0c; color: #fff;
+  font-family: var(--font-d); font-size: 18px; font-weight: 500;
+  padding: 15px 25px; border-radius: 50px;
+  transition: background .2s;
+}
+.btn-filled:hover { background: #4e0b09; }
+.btn-outline {
+  display: inline-flex; align-items: center;
+  border: 1px solid #620e0c; border-radius: 50px;
+  padding: 15px 25px;
+  font-family: var(--font-d); font-size: 18px; font-weight: 500;
+  color: #150407; background: transparent;
+  transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: #620e0c; color: #fff; }
+
+/* ── HERO: MISJA ── */
+.of-hero {
+  padding: calc(var(--nav-h) + 80px) max(var(--gap), calc((100vw - 1200px) / 2)) 80px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.of-hero-kicker {
+  font-family: var(--font-d);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: #620E0C;
+  margin-bottom: 1.2rem;
+}
+.of-hero-h1 {
+  font-family: var(--font-d);
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: -.018em;
+  color: var(--ink);
+  max-width: 22ch;
+}
+.of-hero-graphic {
+  position: absolute;
+  right: max(var(--gap), calc((100vw - 1200px) / 2));
+  bottom: -70px;
+  width: 220px; height: 220px;
+}
+.of-sq-orange {
+  position: absolute; right: 0; bottom: 0;
+  width: 180px; height: 180px;
+  background: linear-gradient(180deg, #ff8b1e 0%, #ff7503 100%);
+}
+.of-sq-burg {
+  position: absolute; right: 22px; bottom: 14px;
+  width: 180px; height: 180px;
+  background: linear-gradient(180deg, #560e0c 0%, #a20e0c 100%);
+  transform: rotate(-8deg);
+}
+
+/* ── HISTORIA ── */
+.of-story {
+  background: #FAFAFA;
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+}
+.of-story-photo {
+  position: relative;
+  width: 437px; height: 432px;
+  flex-shrink: 0;
+}
+.of-story-orange {
+  position: absolute;
+  left: 22px; top: 31px;
+  width: 378px; height: 378px;
+  background: linear-gradient(180deg, #ff8b1e 0%, #ff7503 100%);
+  border-radius: 9px;
+}
+.of-story-card {
+  position: absolute;
+  left: 24px; top: 25px;
+  width: 388px; height: 382px;
+  border-radius: 9px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #560e0c 0%, #a20e0c 100%);
+  transform: rotate(8deg);
+  transform-origin: 50% 50%;
+}
+.of-story-card img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 55% 100%;
+}
+.of-story-text { flex: 1; min-width: 0; }
+.of-h2 {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 400;
+  line-height: 56px;
+  color: #150407;
+  margin-bottom: 1.5rem;
+}
+.of-story-text p {
+  font-family: var(--font-b);
+  font-size: 18px; font-weight: 300;
+  line-height: 30px;
+  color: #150407;
+  margin-bottom: 1.3rem;
+}
+.of-story-text p:last-of-type { margin-bottom: 0; }
+
+/* ── WARTOŚCI ── */
+.of-values {
+  background: #fff;
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+}
+.of-values-h2 { margin-bottom: 3rem; }
+.of-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 19px;
+}
+.vcard {
+  background: #FAFAFA;
+  border-radius: 10px;
+  padding: 28px 24px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.vcard::before {
+  content: "";
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, #ff8b1e 0%, #ff7503 100%);
+}
+.vcard-title {
+  font-family: var(--font-d);
+  font-size: 20px; font-weight: 600;
+  line-height: 28px;
+  color: #620E0C;
+  margin-bottom: 10px;
+}
+.vcard-desc {
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  line-height: 26px;
+  color: rgba(21,4,7,.85);
+}
+
+/* ── MISJA + WIZJA ── */
+.of-mission {
+  background: linear-gradient(114.68deg, #5b0e0c 0.49%, #950e0c 99.85%);
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.mv-block {}
+.mv-kicker {
+  font-family: var(--font-d);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 1rem;
+}
+.mv-text {
+  font-family: var(--font-d);
+  font-size: 28px; font-weight: 300;
+  line-height: 1.55;
+  color: #fff;
+}
+
+/* ── FILOZOFIA PRACY ── */
+.of-philosophy {
+  background: #fff;
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+.of-phil-text { flex: 1; min-width: 0; }
+.of-phil-text p {
+  font-family: var(--font-b);
+  font-size: 18px; font-weight: 300;
+  line-height: 30px;
+  color: #150407;
+  margin-bottom: 1.3rem;
+}
+.of-phil-text p strong { font-weight: 700; }
+.of-phil-photo {
+  flex-shrink: 0;
+  width: 420px; height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.of-phil-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── LICZBY + KNF + CTA ── */
+.of-numbers {
+  background: var(--ink);
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+}
+.of-numbers-h2 { color: #fff; margin-bottom: 3rem; }
+.of-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.metric { display: flex; flex-direction: column; }
+.metric-num {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 500;
+  line-height: 56px;
+  color: #fff;
+}
+.metric-label {
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  line-height: 26px;
+  color: rgba(255,255,255,.75);
+}
+.of-knf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 2rem;
+}
+.of-knf-text {
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  line-height: 26px;
+  color: rgba(255,255,255,.75);
+  max-width: 56ch;
+}
+.of-knf .btn-filled { background: var(--ember); }
+.of-knf .btn-filled:hover { background: #e55a24; }
+
+/* ── FOOTER (jak na home2) ── */
+.footer {
+  background: var(--ink);
+  color: #fff;
+  padding: 60px max(var(--gap), calc((100vw - 1200px) / 2)) 32px;
+  border-top: 1px solid rgba(255,255,255,.1);
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.footer-brand { max-width: 320px; }
+.footer-brand img { height: 38px; width: auto; display: block; margin-bottom: 18px; }
+.footer-brand p {
+  font-family: var(--font-b);
+  font-size: 15px; font-weight: 300;
+  line-height: 25px;
+  color: rgba(255,255,255,.65);
+}
+.footer-cols { display: flex; gap: 4rem; flex-wrap: wrap; }
+.fcol h4 {
+  font-family: var(--font-d);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 16px;
+}
+.fcol a {
+  display: block;
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 10px;
+  transition: color .18s;
+}
+.fcol a:hover { color: #fff; }
+.footer-legal {
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255,255,255,.55);
+}
+
+/* ── MOBILE ── */
+@media (max-width: 1080px) {
+  .of-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .of-story { flex-direction: column; gap: 2.5rem; }
+  .of-story-photo { width: 100%; max-width: 437px; margin: 0 auto; }
+  .of-philosophy { flex-direction: column-reverse; gap: 2.5rem; }
+  .of-phil-photo { width: 100%; max-width: 420px; }
+}
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .of-mission { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .of-hero { padding: calc(var(--nav-h) + 3rem) var(--gap) 3rem; }
+  .of-hero-h1 { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+  .of-hero-graphic { display: none; }
+  .of-story, .of-values, .of-mission, .of-philosophy, .of-numbers { padding: 3rem var(--gap); }
+  .of-h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.3; }
+  .mv-text { font-size: clamp(1.3rem, 4.5vw, 1.75rem); }
+  .metric-num { font-size: clamp(1.8rem, 6vw, 2.5rem); line-height: 1.3; }
+  .footer { padding: 3rem var(--gap) 2rem; }
+  .footer-cols { gap: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <a href="home2.html">
+      <img src="LOGO.svg" class="logo-img" alt="Kredito">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="o-firmie.html" style="color:#620E0C;font-weight:500">O firmie</a></li>
+    <li><a href="#">Pożyczki hipoteczne</a></li>
+    <li><a href="#">Dla pośredników kredytowych</a></li>
+    <li><a href="#">Dla spółek</a></li>
+    <li><a href="home2.html">Home2</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="home2.html#kontakt" class="btn-nav">Umów rozmowę</a>
+  </div>
+</nav>
+
+<!-- HERO: MISJA -->
+<section class="of-hero">
+  <div class="of-hero-kicker">O firmie</div>
+  <h1 class="of-hero-h1">Rozwiązujemy trudne sprawy kredytowe tam, gdzie inni pośrednicy rozkładają ręce.</h1>
+  <div class="of-hero-graphic">
+    <div class="of-sq-orange"></div>
+    <div class="of-sq-burg"></div>
+  </div>
+</section>
+
+<!-- HISTORIA -->
+<section class="of-story">
+  <div class="of-story-photo">
+    <div class="of-story-orange"></div>
+    <div class="of-story-card">
+      <img src="assets/monika-portrait.jpg" alt="Monika Buchacz">
+    </div>
+  </div>
+  <div class="of-story-text">
+    <h2 class="of-h2">Zaczynałam w bankach. Dziś dzwonię do ludzi, z którymi awansowałam.</h2>
+    <p>Zaczynałam w bankach — i awansowałam razem z ludźmi, którzy dziś zasiadają w zarządach funduszy. Dlatego kiedy dzwonię w sprawie klienta, po drugiej stronie nie ma infolinii. Jest ktoś, kto wie, że jeśli dzwonię, to sprawa jest poważna.</p>
+    <p>Przez 20 lat nauczyłam się najwięcej na sprawach, których nikt nie chciał. Nudzą mnie łatwe tematy. Trudne — układam jak puzzle: przekładam zabezpieczenia, zestawiam produkty, łączę instytucje, aż wszystko zagra.</p>
+    <p>Nieraz dźwignęłam firmę, w którą nikt już nie wierzył — także wtedy, gdy komornik był już w drodze. Klienci to pamiętają: wracają po 15 i 20 latach. To jest dla mnie miara sukcesu. Wynagrodzenie jest drugorzędne.</p>
+  </div>
+</section>
+
+<!-- WARTOŚCI -->
+<section class="of-values">
+  <h2 class="of-h2 of-values-h2">Na czym stoi ta firma.</h2>
+  <div class="of-values-grid">
+    <div class="vcard">
+      <h3 class="vcard-title">Niezależność</h3>
+      <p class="vcard-desc">Nie jesteśmy na pasku żadnego banku ani funduszu. Mamy wejście wszędzie, więc wybieramy to, co najlepsze dla Ciebie.</p>
+    </div>
+    <div class="vcard">
+      <h3 class="vcard-title">Nieustępliwość</h3>
+      <p class="vcard-desc">Doprowadzamy sprawy do końca. Nie ma „nie da się" — jest „jeszcze nie znalazłam jak".</p>
+    </div>
+    <div class="vcard">
+      <h3 class="vcard-title">Wiedza</h3>
+      <p class="vcard-desc">20 lat na rynku i szkolenia niemal codziennie. O nowych produktach wiemy, zanim dowie się rynek.</p>
+    </div>
+    <div class="vcard">
+      <h3 class="vcard-title">Relacje</h3>
+      <p class="vcard-desc">Klient to nie rekord w CRM. Osobisty doradca od A do Z, w czasach gdy inni chwalą się botami na infolinii.</p>
+    </div>
+    <div class="vcard">
+      <h3 class="vcard-title">Ambicja</h3>
+      <p class="vcard-desc">Nowe instrumenty, nowe rynki, Szwajcaria, obligacje. Tam, gdzie inni widzą ścianę, my widzimy zadanie.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISJA + WIZJA -->
+<section class="of-mission">
+  <div class="mv-block">
+    <div class="mv-kicker">Misja</div>
+    <p class="mv-text">Rozwiązywanie trudnych spraw kredytowych, dzielenie się doświadczeniem tam, gdzie inni pośrednicy rozkładają ręce.</p>
+  </div>
+  <div class="mv-block">
+    <div class="mv-kicker">Wizja</div>
+    <p class="mv-text">Rynek, na którym przedsiębiorcy świadomie i chętnie korzystają z dostępnych możliwości finansowania. Wiedzą, że dzięki naszej pomocy mądre zarządzanie finansami przypomina układanie puzzli.</p>
+  </div>
+</section>
+
+<!-- FILOZOFIA PRACY -->
+<section class="of-philosophy">
+  <div class="of-phil-text">
+    <h2 class="of-h2">Wszystkie sprawy prowadzę przez telefon. To nie przypadek — to filozofia.</h2>
+    <p>Nie dlatego, że nie lubię ludzi — dlatego, że szanuję Twój czas. Rozmawiamy, kiedy masz spokój, także po południu i w sobotę. Dyskretnie: o finansach firmy nie rozmawia się przy otwartych drzwiach.</p>
+    <p><strong>I nie jesteśmy porównywarką z botem.</strong> Po drugiej stronie zawsze jest człowiek, który zna Twoją sprawę — i który zna odpowiedź, zanim skończysz zdanie.</p>
+  </div>
+  <div class="of-phil-photo">
+    <img src="assets/monika-network.jpg" alt="Sieć relacji finansowych">
+  </div>
+</section>
+
+<!-- LICZBY + KNF + CTA -->
+<section class="of-numbers">
+  <h2 class="of-h2 of-numbers-h2">Liczby zamiast obietnic.</h2>
+  <div class="of-metrics">
+    <div class="metric">
+      <span class="metric-num">20 lat</span>
+      <span class="metric-label">na rynku finansowania firm — relacje z decydentami, nie z infoliniami</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">30–40</span>
+      <span class="metric-label">instytucji: banki, fundusze, rynki zagraniczne (przeciętny pośrednik: 3–4)</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">2–3 min</span>
+      <span class="metric-label">tyle trwa wstępna ocena Twojej sprawy przy pierwszym telefonie</span>
+    </div>
+    <div class="metric">
+      <span class="metric-num">48 h</span>
+      <span class="metric-label">decyzja o finansowaniu szybką ścieżką — bez wizyty w banku</span>
+    </div>
+  </div>
+  <div class="of-knf">
+    <p class="of-knf-text">Jesteśmy pośrednikiem zarejestrowanym w rejestrze KNF — możesz nas sprawdzić po imieniu i nazwisku.</p>
+    <a href="home2.html#kontakt" class="btn-filled">Poznajmy się</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="LOGO-WHITE.svg" alt="Kredito">
+      <p>Niezależny pośrednik finansowy. Finansowanie dla firm — pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="fcol">
+        <h4>Oferta</h4>
+        <a href="#">Pożyczki hipoteczne</a>
+        <a href="#">Oferta dla spółek</a>
+        <a href="#">Dla pośredników kredytowych</a>
+      </div>
+      <div class="fcol">
+        <h4>Firma</h4>
+        <a href="o-firmie.html">O firmie</a>
+        <a href="home2.html#kontakt">Kontakt</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span>Pośrednik finansowy zarejestrowany w rejestrze KNF — możesz nas sprawdzić po imieniu i nazwisku.</span>
+    <span>© 2026 Kredito. Wszystkie prawa zastrzeżone.</span>
+  </div>
+</footer>
+
+</body>
+</html>
