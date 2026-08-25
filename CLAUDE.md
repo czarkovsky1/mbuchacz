@@ -1,6 +1,6 @@
 # CLAUDE.md — Projekt: Kredito (strona internetowa dla Moniki Buchacz)
 
-> Baza wiedzy projektu. Używaj tego pliku jako kontekstu we wszystkich sesjach Claude Code. Ostatnia aktualizacja: 02.08.2026 | Prowadzący: Cezary Kutwin (Verseo)
+> Baza wiedzy projektu. Używaj tego pliku jako kontekstu we wszystkich sesjach Claude Code. Ostatnia aktualizacja: 25.08.2026 | Prowadzący: Cezary Kutwin (Verseo)
 
 ---
 
@@ -287,18 +287,20 @@ Cel: lead gen, skala, kampanie Zakres: SEO, lejki, kalkulatory, CRM, doradcy onl
 | `LOGO.svg` | Logo Kredito (ciemna wersja, na białe tła) |
 | `LOGO-WHITE.svg` | Logo Kredito (biała wersja, na ciemne tła) |
 | `assets/` | Zdjęcia i wideo — patrz sekcja 19 |
-| `monika-buchacz-discovery-synthesis.html` | Pełna synteza warsztatów — Etap 1+2+3 |
 | `CLAUDE.md` | Ten plik — baza wiedzy projektu |
 
 > **Uwaga:** `index.html` i `hero-variants.html` to wcześniejsze wersje robocze — nie są aktywnie rozwijane.
 
 ### Źródła wiedzy
 
-- Transkrypcja warsztatu 1: 02.07.2026 (42 strony)  
-- Transkrypcja warsztatu 2: 07.07.2026 (33 strony)  
-- FigJam warsztatów: [Monika Buchacz Finance](https://www.figma.com/board/k02JxpkksjMILBvLsihAiO/MONIKA-BUCHACZ-FINANCE)  
-- FigJam szablonów: [Warsztaty](https://www.figma.com/board/Yo72M0VxIER96aKdePF8by/WARSZTATY)  
-- Figma projekt (design): `RWnZ8hbwF5eyEgGlg4y08m`
+| Plik/Link | Opis |
+| :-- | :-- |
+| `assets/MONIKA BUCHACZ - transkrypcja spotkania 02.07.2026.pdf` | Transkrypcja warsztatu 1 (~151k znaków, wiarygodna) |
+| `MONIKA BUCHACZ - transkrypcja spotkania - 07.07.2026.pdf` | Transkrypcja warsztatu 2 (~117k znaków, wiarygodna) |
+| [FigJam — Monika Buchacz Finance](https://www.figma.com/board/k02JxpkksjMILBvLsihAiO/MONIKA-BUCHACZ-FINANCE) | Wyniki warsztatów discovery — moodboardy, wartości, grupy docelowe |
+| Figma projekt (design): `RWnZ8hbwF5eyEgGlg4y08m` | Projekt wizualny strony |
+
+> **Uwaga dot. transkrypcji:** Notatki Gemini z tych samych spotkań są **niewiarygodne** — zawierają treści niezwiązane z projektem (wzmianki o Wietnamie, Maroku, integracji AI, e-commerce). Używaj wyłącznie PDF-ów wymienionych wyżej.
 
 ---
 
@@ -376,6 +378,43 @@ Single-file HTML z inline CSS. Brak frameworka. Fonty: Google Fonts (Montserrat 
 - Dekoracyjne kwadraty (pomarańcz/burgund) w sekcji "O Monice" są za zdjęciem sieci (`z-index: 0` vs `z-index: 1` na `.am-network`)  
 - SVG assety muszą mieć rozszerzenie `.svg` (nie `.png`) — MIME type mismatch blokuje ładowanie  
 - Wideo hero: `background: transparent` na `.he-card` — eliminuje bordowe narożniki przy ładowaniu
+
+---
+
+---
+
+## 20\. WIEDZA Z TRANSKRYPCJI — STATUS PYTAŃ §13
+
+> Obie transkrypcje zostały przeczytane w całości (07.08.2026). Poniżej rzeczywisty status — nie dokumentacyjna luka, a realny stan wiedzy.
+
+### Pytania odpowiedziane w transkrypcjach
+
+| # | Pytanie | Status | Źródło |
+| :-- | :-- | :-- | :-- |
+| Q11 | Jak wyjaśnia private debt (2 dni, bez BIK) | ✅ Gotowe | Warsztat 2, ~1:33–1:34 |
+| Q12 | Lista wymagań wejściowych | ⏳ Częściowe | Warsztat 1, ~1:13 |
+| Q18 | Cel formularza kontaktowego | ⏳ Częściowe | Warsztat 2, ~1:14 |
+
+**Q11 — gotowy cytat do copy:** Monika opisuje private debt jako serwis premium-wygoda, nie ryzyko: *"nie było raportowane do BIK-u... nie tłumaczył się przed doradcą... nie biegał po urzędach"*
+
+**Q12 — częściowy cytat:** *"przygotuj nam dokumenty, potrzebujemy BIK, potrzebujemy twoją finansówkę i potrzebujemy dwa dni"* — lista może być niepełna.
+
+**Q18 — cel potwierdzony:** formularz jako narzędzie badawcze "kto się zgłasza" od dnia 1 (zgodne z §14), ale konkretnych pól brak.
+
+### Pytania nadal otwarte (nie padły w żadnym warsztacie)
+
+Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8, Q9, Q10, Q13, Q14, Q15, Q16, Q17, Q19 — **muszą być zadane Monice bezpośrednio**. Nie zakładaj, że gdzieś są ukryte — sprawdzono kompletne transkrypcje.
+
+### Kluczowe ustalenia z transkrypcji (poza listą pytań)
+
+**Red flag — pojemność Moniki (Warsztat 1, ~1:42):**
+Monika powiedziała wprost: *"nie wyrabiam się z liczbą klientów... nie nadążam z oddzwanianiem"*. Przed umieszczeniem jakiejkolwiek obietnicy szybkości oddzwonienia na stronie (Q17) potrzebna jest rozmowa o procesie i pojemności — twarda obietnica może się obrócić przeciwko niej.
+
+**Nazwa "Kredito" — niezatwierdzona przez Monikę (Warsztat 2, ~53:46):**
+Monika powiedziała *"nie wiem, proszę o wasze wskazówki, ja się zdaję tutaj na was"* — sama nazwa pochodzi z propozycji zespołu jako przykład ilustracyjny, a nie decyzja klientki. §2 już to hedguje, ale traktuj nazwę jako **realnie niezatwierdzoną**, nie tylko formalnie-oczekującą.
+
+**Sekcja Private Debt — decyzja 07.08.2026:**
+Sekcja `.private-debt` w `hero-e.html` ma pozostać jako wyróżniona usługa, ale **nie może być nazywana "Private Debt"** — decyzja po konsultacji. Docelowa nazwa/koncepcja do ustalenia z Moniką przed kolejną sesją.
 
 ---
 
