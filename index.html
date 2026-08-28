@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kredito — Hero E: Split Card</title>
+<title>Kredito — Finansowanie dla firm | Pożyczki pod zastaw nieruchomości</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -552,6 +552,334 @@ a { color: inherit; text-decoration: none; }
   .am-network { width: 100%; }
   .about-monika { padding: 3rem var(--gap); }
 }
+/* ── HERO CTA ── */
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.2rem; }
+
+/* ── LICZBY: 4 metryki w siatce 2×2 (home2) ── */
+.about-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem 2rem;
+}
+.metric-label { font-size: 16px; line-height: 26px; }
+
+/* ── KWALIFIKACJA: gwiazdka pod gridem ── */
+.qualify-note {
+  text-align: center;
+  margin-top: 2.4rem;
+  font-family: var(--font-b);
+  font-style: italic;
+  font-size: 17px; font-weight: 300;
+  line-height: 28px;
+  color: rgba(21,4,7,.75);
+}
+
+/* ── SEKCJA: JAK PRACUJEMY ── */
+.process {
+  background: #fff;
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+  padding-bottom: 130px;
+  position: relative;
+  z-index: 2;
+}
+.process-h2 {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 400;
+  line-height: 60px;
+  color: #150407;
+  margin-bottom: 1rem;
+}
+.process-lead {
+  font-family: var(--font-b);
+  font-size: 18px; font-weight: 300;
+  line-height: 30px;
+  color: #150407;
+  max-width: 62ch;
+  margin-bottom: 3rem;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 19px;
+  margin-bottom: 2.5rem;
+}
+.pstep {
+  background: #FAFAFA;
+  border-radius: 10px;
+  padding: 28px 24px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.pstep::before {
+  content: "";
+  position: absolute; left: 0; top: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, #ff8b1e 0%, #ff7503 100%);
+}
+.pstep-num {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 500;
+  line-height: 1;
+  color: #620E0C;
+  margin-bottom: 14px;
+}
+.pstep-title {
+  font-family: var(--font-d);
+  font-size: 20px; font-weight: 600;
+  line-height: 28px;
+  color: #150407;
+  margin-bottom: 10px;
+}
+.pstep-desc {
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  line-height: 26px;
+  color: rgba(21,4,7,.85);
+}
+@media (max-width: 1080px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 860px) {
+  .process { padding: 3rem var(--gap); padding-bottom: 130px; }
+  .process-h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.3; }
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+/* ── SEKCJA: HISTORIE KLIENTÓW ── */
+.stories {
+  background: var(--ink);
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+  position: relative;
+  z-index: 4;
+}
+.stories-h2 {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 400;
+  line-height: 60px;
+  color: #fff;
+  margin-bottom: 3rem;
+}
+.stories-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 19px;
+  margin-bottom: 3rem;
+}
+.story {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: 32px 28px;
+}
+.story-tag {
+  font-family: var(--font-d);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ember);
+  margin-bottom: 14px;
+}
+.story-title {
+  font-family: var(--font-d);
+  font-size: 22px; font-weight: 600;
+  line-height: 32px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.story-body {
+  font-family: var(--font-b);
+  font-size: 17px; font-weight: 300;
+  line-height: 28px;
+  color: rgba(255,255,255,.85);
+}
+.trust-bar {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 2rem;
+}
+.trust-item {
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,.75);
+  display: flex; align-items: center; gap: .6rem;
+}
+.trust-item::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--ember);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .stories { padding: 3rem var(--gap); }
+  .stories-h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.3; }
+  .stories-grid { grid-template-columns: 1fr; }
+}
+
+/* ── SEKCJA: DLA POŚREDNIKÓW (teaser) ── */
+.brokers {
+  background: #fff;
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+}
+.brokers-quote {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 400;
+  line-height: 1.4;
+  color: #150407;
+  margin-bottom: 1.25rem;
+}
+.brokers-body {
+  font-family: var(--font-b);
+  font-size: 18px; font-weight: 300;
+  line-height: 30px;
+  color: #150407;
+  max-width: 62ch;
+  margin-bottom: 2.5rem;
+}
+@media (max-width: 860px) {
+  .brokers { padding: 3rem var(--gap); }
+  .brokers-quote { font-size: clamp(1.8rem, 5vw, 2.5rem); }
+}
+
+/* ── SEKCJA: KONTAKT ── */
+.contact {
+  background: #FAFAFA;
+  padding: 80px max(var(--gap), calc((100vw - 1200px) / 2));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.contact-h2 {
+  font-family: var(--font-d);
+  font-size: 40px; font-weight: 400;
+  line-height: 60px;
+  color: #150407;
+  margin-bottom: 1.25rem;
+}
+.contact-lead {
+  font-family: var(--font-b);
+  font-size: 18px; font-weight: 300;
+  line-height: 30px;
+  color: #150407;
+  margin-bottom: 2rem;
+}
+.contact-note {
+  font-family: var(--font-b);
+  font-style: italic;
+  font-size: 17px; font-weight: 300;
+  line-height: 28px;
+  color: rgba(21,4,7,.75);
+}
+.cform { display: flex; flex-direction: column; gap: 16px; }
+.cform-field label {
+  font-family: var(--font-d);
+  font-size: 14px; font-weight: 500;
+  color: #150407;
+  display: block;
+  margin-bottom: 6px;
+}
+.cform input, .cform select, .cform textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 10px;
+  font-family: var(--font-b);
+  font-size: 16px;
+  background: #fff;
+  color: var(--ink);
+}
+.cform input:focus, .cform select:focus, .cform textarea:focus {
+  outline: 2px solid #620E0C;
+  border-color: transparent;
+}
+.cform textarea { resize: vertical; min-height: 96px; }
+.cform-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.cform-consent {
+  display: flex; gap: .6rem; align-items: flex-start;
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  line-height: 1.55;
+  color: rgba(21,4,7,.7);
+}
+.cform-consent input { width: auto; margin-top: 3px; }
+.cform-submit {
+  align-self: flex-start;
+  display: inline-flex; align-items: center;
+  background: #620e0c; color: #fff;
+  font-family: var(--font-d); font-size: 18px; font-weight: 500;
+  padding: 15px 32px; border-radius: 50px;
+  border: none; cursor: pointer;
+  transition: background .2s;
+}
+.cform-submit:hover { background: #4e0b09; }
+@media (max-width: 960px) {
+  .contact { grid-template-columns: 1fr; gap: 2.5rem; padding: 3rem var(--gap); }
+  .contact-h2 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.3; }
+  .cform-row { grid-template-columns: 1fr; }
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--ink);
+  color: #fff;
+  padding: 60px max(var(--gap), calc((100vw - 1200px) / 2)) 32px;
+}
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+.footer-brand { max-width: 320px; }
+.footer-brand img { height: 38px; width: auto; display: block; margin-bottom: 18px; }
+.footer-brand p {
+  font-family: var(--font-b);
+  font-size: 15px; font-weight: 300;
+  line-height: 25px;
+  color: rgba(255,255,255,.65);
+}
+.footer-cols { display: flex; gap: 4rem; flex-wrap: wrap; }
+.fcol h4 {
+  font-family: var(--font-d);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: 16px;
+}
+.fcol a {
+  display: block;
+  font-family: var(--font-b);
+  font-size: 16px; font-weight: 300;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 10px;
+  transition: color .18s;
+}
+.fcol a:hover { color: #fff; }
+.footer-legal {
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-family: var(--font-b);
+  font-size: 13px; font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255,255,255,.55);
+}
+@media (max-width: 860px) {
+  .footer { padding: 3rem var(--gap) 2rem; }
+  .footer-cols { gap: 2.5rem; }
+}
 </style>
 </head>
 <body>
@@ -568,10 +896,9 @@ a { color: inherit; text-decoration: none; }
     <li><a href="#">Pożyczki hipoteczne</a></li>
     <li><a href="#">Dla pośredników kredytowych</a></li>
     <li><a href="#">Dla spółek</a></li>
-    <li><a href="home2.html">Home2</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="kontakt.html" class="btn-nav">Kontakt</a>
+    <a href="kontakt.html" class="btn-nav">Umów rozmowę</a>
   </div>
 </nav>
 
@@ -587,13 +914,17 @@ a { color: inherit; text-decoration: none; }
 
   <!-- TEKST PRAWY -->
   <div class="he-text">
-    <h1 class="hero-h1">Najlepsze pożyczki pod zastaw nieruchomości dla firm</h1>
+    <h1 class="hero-h1">Bank powiedział „nie"? To dopiero początek rozmowy.</h1>
     <p class="hero-sub">
-      Zadbamy o interesy Twojego przedsiębiorstwa.
-      Zaproponujemy korzystne wsparcie finansowe w ramach pożyczki
-      pod zastaw nieruchomości. Nasze oferty są proste, przejrzyste
-      i skrupulatnie przeanalizowane.
+      Od 20 lat znajduję finansowanie tam, gdzie standardowa ścieżka
+      się kończy — w 30–40 bankach, funduszach i instytucjach
+      zagranicznych. Wstępną ocenę swojej sprawy usłyszysz
+      w 2–3 minuty. Przez telefon, bez wniosków i bez wizyt.
     </p>
+    <div class="hero-ctas">
+      <a href="kontakt.html" class="btn-filled">Umów rozmowę</a>
+      <a href="#proces" class="btn-outline">Zobacz, jak pracuję</a>
+    </div>
   </div>
 
 </section>
@@ -602,8 +933,8 @@ a { color: inherit; text-decoration: none; }
 <section class="statement">
   <div class="statement-text">
     <h2 class="statement-h2">Jesteśmy niezależnym pośrednikiem finansowym&nbsp;— tam gdzie bank mówi nie.</h2>
-    <p class="statement-sub">Oferujemy pełen zakres finansowania:<br>pożyczki hipoteczne, private debt i alternatywne finansowanie pod nieruchomości.</p>
-    <a href="#" class="btn-outline">Poznaj nas</a>
+    <p class="statement-sub">Pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z&nbsp;funduszy i&nbsp;instytucji zagranicznych. Nie jesteśmy na pasku żadnego banku — wybieramy z&nbsp;całego rynku.</p>
+    <a href="o-firmie.html" class="btn-outline">Poznaj nas</a>
   </div>
   <div class="statement-graphic">
     <div class="sq-orange"></div>
@@ -626,10 +957,10 @@ a { color: inherit; text-decoration: none; }
       <img class="qcard-bg" src="assets/qcard-dark.svg"
            style="left:0;top:0;width:387px;height:424px" alt="">
       <h3 class="qcard-title" style="left:82px;top:20px;width:284px">
-        Finansowanie dla firm od 1&nbsp;mln PLN
+        Finansowanie dla firm — typowe sprawy od 1&nbsp;mln PLN
       </h3>
       <p class="qcard-desc" style="top:90px">
-        Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością — od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy i rynków zagranicznych.
+        Pożyczki pod zastaw nieruchomości, kredyty firmowe, faktoring, finansowanie zagraniczne. Prowadzę sprawę od pierwszego telefonu do podpisania umowy — Ty nie odwiedzasz żadnego banku.
       </p>
       <a href="#" class="qcard-cta" style="top:calc(50% + 125px)">Oferta dla firm</a>
     </div>
@@ -641,10 +972,10 @@ a { color: inherit; text-decoration: none; }
       <div class="qcard-bg" style="left:0;top:0;width:387px;height:424px;border-radius:10px;
            background:linear-gradient(180deg,rgb(86,14,12) 0%,rgb(162,14,12) 100%)"></div>
       <h3 class="qcard-title" style="left:30px;top:20px;width:284px">
-        Prowadzisz spółkę z trudną historią kredytową
+        Spółka z trudną historią kredytową?
       </h3>
       <p class="qcard-desc" style="top:90px">
-        Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością — od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy i rynków zagranicznych.
+        Czerwony BIK, wpisy w KRD, strata na dokumentach — w banku to koniec rozmowy, u mnie jej początek. O finansowaniu decyduje nieruchomość i plan spłaty, nie przeszłość w bazach.
       </p>
       <a href="#" class="qcard-cta" style="top:calc(50% + 125px)">Oferta dla spółek</a>
     </div>
@@ -658,34 +989,40 @@ a { color: inherit; text-decoration: none; }
       <img class="qcard-bg" src="assets/qcard-dark.svg"
            style="left:0;top:0;width:387px;height:424px;transform:rotate(180deg)" alt="">
       <h3 class="qcard-title" style="left:30px;top:20px;width:322px">
-        Jesteś pośrednikiem<br>i masz wymagającego klienta?
+        Jesteś pośrednikiem<br>i masz temat nie do zrobienia?
       </h3>
       <p class="qcard-desc" style="top:100px">
-        Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością — od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy i rynków zagranicznych.
+        Tam, gdzie kończy się Twoja lista instytucji, zaczyna się moja. Zgłaszasz temat, prowadzę sprawę, po sukcesie dzielimy się prowizją — a klient wraca do Ciebie.
       </p>
       <a href="#" class="qcard-cta" style="top:calc(50% + 135px)">Oferta dla pośredników</a>
     </div>
 
   </div>
+
+  <p class="qualify-note">Masz temat, który nie pasuje do żadnej karty? I&nbsp;tak się odezwij —<br>podejmuję sprawy, przy których inni odpadli.</p>
 </section>
 
 <!-- SEKCJA F24: O NAS / LICZBY -->
 <section class="about">
   <div class="about-text">
     <h2 class="about-h2">Rozwiązujemy sprawy finansowe, których inni nie podejmują.</h2>
-    <p class="about-body">Przez 20 lat zbudowaliśmy sieć relacji z decydentami w bankach, funduszach i instytucjach prywatnych — nie z infoliniami. Łączymy wiedzę, doświadczenie i dostęp do rynku, żeby znaleźć finansowanie tam, gdzie standardowa ścieżka się kończy.</p>
+    <p class="about-body">Przez 20 lat zbudowaliśmy sieć relacji z decydentami w bankach, funduszach i instytucjach prywatnych — nie z infoliniami. Typowe sprawy, które prowadzimy, zaczynają się od 1&nbsp;mln PLN — a&nbsp;kończą na dziesiątkach milionów.</p>
     <div class="about-metrics">
       <div class="metric">
-        <span class="metric-num">20</span>
-        <span class="metric-label">Lat doświadczenia</span>
+        <span class="metric-num">20 lat</span>
+        <span class="metric-label">na rynku finansowania firm — relacje z decydentami, nie z infoliniami</span>
       </div>
       <div class="metric">
-        <span class="metric-num">40</span>
-        <span class="metric-label">Instytucji finansowych</span>
+        <span class="metric-num">30–40</span>
+        <span class="metric-label">instytucji: banki, fundusze, rynki zagraniczne (przeciętny pośrednik: 3–4)</span>
       </div>
       <div class="metric">
-        <span class="metric-num">1.000.000</span>
-        <span class="metric-label">Minimalnego finansowania</span>
+        <span class="metric-num">2–3 min</span>
+        <span class="metric-label">tyle trwa wstępna ocena Twojej sprawy przy pierwszym telefonie</span>
+      </div>
+      <div class="metric">
+        <span class="metric-num">48 h</span>
+        <span class="metric-label">decyzja o finansowaniu szybką ścieżką — bez wizyty w banku</span>
       </div>
     </div>
   </div>
@@ -704,17 +1041,48 @@ a { color: inherit; text-decoration: none; }
   </div>
   <div class="pd-content">
     <div class="pd-text">
-      <h2 class="pd-h2">Usługi osobiste, finansowanie w 2 dni.</h2>
-      <p class="pd-body">Kiedy czas gra kluczową rolę, a standardowa ścieżka bankowa trwa tygodniami — <strong>private debt to rozwiązanie, o którym większość brokerów milczy.</strong> My mówimy o tym wprost: oferujemy finansowanie zabezpieczone nieruchomością z decyzją w ciągu 2 dni roboczych, bez weryfikacji historii kredytowej i bez konieczności osobistej wizyty w instytucji.</p>
+      <h2 class="pd-h2">Pieniądze na koncie w 48 godzin. Bez BIK, bez wizyt, bez tłumaczenia się.</h2>
+      <p class="pd-body">Kiedy czas decyduje o kontrakcie, jest ścieżka, o której większość pośredników milczy: <strong>finansowanie z funduszy prywatnych.</strong> Rozmawiasz ze mną, ja rozmawiam z decydentem funduszu — i w 48 godzin masz decyzję, a pieniądze na koncie w 2–5 dni. Nie siedzisz w banku, nie spowiadasz się z wyników finansowych, nie biegasz po urzędach. Ta pożyczka nie jest raportowana do BIK, więc nie obniża zdolności Twojej firmy przy kolejnych kredytach. To usługa premium: droższa niż bank, zawierana na krótko — i właśnie dlatego działa, gdy bank potrzebuje ośmiu tygodni.</p>
       <div class="pd-ctas">
-        <a href="#" class="btn-outline">Oferta Private Debt</a>
-        <a href="#" class="btn-filled">Umów się na konsultację</a>
+        <a href="#" class="btn-outline">Sprawdź szybką ścieżkę</a>
+        <a href="kontakt.html" class="btn-filled">Umów rozmowę</a>
       </div>
     </div>
     <div class="pd-photo">
       <img src="assets/unsplash_PSmDDeXaEWE.png" alt="Nowoczesny budynek">
     </div>
   </div>
+</section>
+
+<!-- SEKCJA: JAK PRACUJEMY -->
+<section class="process" id="proces">
+  <h2 class="process-h2">Cały proces przez telefon i mail. Ty nie jeździsz nigdzie.</h2>
+  <p class="process-lead">Kto ma dziś czas zebrać trzech udziałowców i obejść z nimi pięć banków? Cały ten ogrom pracy wykonuję ja — Ty odbierasz telefon z gotowym rozwiązaniem.</p>
+
+  <div class="process-grid">
+    <div class="pstep">
+      <div class="pstep-num">1</div>
+      <h3 class="pstep-title">Telefon</h3>
+      <p class="pstep-desc">Opowiadasz o sprawie. Po 2–3 minutach wiesz, czy temat jest do zrobienia — i mniej więcej na jakich warunkach.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">2</div>
+      <h3 class="pstep-title">Dokumenty mailem</h3>
+      <p class="pstep-desc">Przy pożyczce pod nieruchomość: numer księgi wieczystej i podstawa nabycia. Przy kredycie: BIK i dokumenty finansowe. Bez zaświadczeń z ZUS i US, bez biznesplanów.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">3</div>
+      <h3 class="pstep-title">Decyzja w 24–48 h</h3>
+      <p class="pstep-desc">Rozmawiam bezpośrednio z analitykami i decydentami instytucji. Wracam z konkretem: gdzie, ile i za ile.</p>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">4</div>
+      <h3 class="pstep-title">Umowa i wypłata</h3>
+      <p class="pstep-desc">Podpisanie u notariusza (często w Twojej okolicy), pieniądze na koncie w 2–5 dni roboczych od kompletu dokumentów.</p>
+    </div>
+  </div>
+
+  <a href="kontakt.html" class="btn-filled">Zacznij od telefonu</a>
 </section>
 
 <!-- SEKCJA F39: O MONICE -->
@@ -731,15 +1099,15 @@ a { color: inherit; text-decoration: none; }
     <div class="am-text">
       <h2 class="am-h2">Nazywam się Monika Buchacz<br>i jestem po drugiej stronie telefonu</h2>
       <p class="am-body">Przez dwie dekady zbudowałam sieć relacji w 30–40 instytucjach finansowych — bankach, funduszach i podmiotach zagranicznych. Nie z infoliniami. Z osobami, które odbierają mój telefon i wiedzą, że jeśli dzwonię, to sprawa jest poważna.</p>
-      <a href="#" class="btn-filled">Umów się na konsultację</a>
+      <a href="kontakt.html" class="btn-filled">Umów rozmowę</a>
     </div>
   </div>
 
   <!-- Dół: tekst + zdjęcie sieci -->
   <div class="am-bottom">
     <div class="am-bottom-text">
-      <p class="am-bt-medium">Przez dwie dekady zbudowałam sieć relacji w 30–40 instytucjach finansowych.</p>
-      <p class="am-bt-light">Bankach, funduszach i podmiotach zagranicznych. Nie z infoliniami. Z osobami, które odbierają mój telefon i wiedzą, że jeśli dzwonię, to sprawa jest poważna.</p>
+      <p class="am-bt-medium">Chcę, żeby ta firma działała jak dobry adwokat od spraw beznadziejnych: masz trudny temat — wiesz, do kogo dzwonisz.</p>
+      <p class="am-bt-light">Możesz złożyć wniosek przez stronę banku albo zapytać czata. Przy dużych sprawach rzadko kończy się to dobrze. U mnie po drugiej stronie telefonu jest człowiek, który zna odpowiedź, zanim skończysz zdanie.</p>
     </div>
     <div class="am-net-wrap">
       <img src="assets/Frame%2041.png" class="am-deco-img" alt="">
@@ -750,6 +1118,125 @@ a { color: inherit; text-decoration: none; }
   </div>
 
 </section>
+
+<!-- SEKCJA: HISTORIE KLIENTÓW -->
+<section class="stories" id="historie">
+  <h2 class="stories-h2">Sprawy, przy których inni rozłożyli ręce.</h2>
+
+  <div class="stories-grid">
+    <article class="story">
+      <div class="story-tag">Case study</div>
+      <h3 class="story-title">Dwóch pośredników odmówiło</h3>
+      <p class="story-body">Spółka technologiczna z dużym obrotem. Dwóch pośredników nie znalazło finansowania i odpuściło. Usiedliśmy z prezesem do struktury od nowa: przełożyliśmy zabezpieczenia między nieruchomościami, zmieniliśmy produkty, połączyliśmy dwie instytucje. Finansowanie spięte. Nie było magii — była układanka, którą trzeba było chcieć ułożyć.</p>
+    </article>
+    <article class="story">
+      <div class="story-tag">Case study</div>
+      <h3 class="story-title">Hotel za 60 mln</h3>
+      <p class="story-body">Właściciel hotelu potrzebował 60 mln PLN. Znał jednego doradcę w jednym banku — samodzielne obejście rynku zajęłoby mu pół roku. Ja rozmawiam z analitykami wszystkich banków, które w ogóle mogły ten temat udźwignąć. Pełna mapa możliwości w dwa dni.</p>
+    </article>
+  </div>
+
+  <div class="trust-bar">
+    <span class="trust-item">Pośrednik zarejestrowany w KNF</span>
+    <span class="trust-item">20 lat na rynku</span>
+    <span class="trust-item">Klienci, którzy wracają od 15–20 lat</span>
+  </div>
+</section>
+
+<!-- SEKCJA: DLA POŚREDNIKÓW (teaser) -->
+<section class="brokers">
+  <h2 class="brokers-quote">„Ej, Monika, teraz ty coś zrób."</h2>
+  <p class="brokers-body">Tak zaczyna się większość telefonów od pośredników. Masz klienta z tematem poza Twoją specjalizacją? Nie zostawiaj go bez rozwiązania — zgłoś temat do mnie. Po sukcesie dzielimy się prowizją, a klient pamięta, że to Ty mu pomogłeś.</p>
+  <a href="#" class="btn-outline">Zobacz zasady współpracy</a>
+</section>
+
+<!-- SEKCJA: KONTAKT -->
+<section class="contact" id="kontakt">
+  <div class="contact-info">
+    <h2 class="contact-h2">Poznajmy się.</h2>
+    <p class="contact-lead">Pierwsza rozmowa nic nie kosztuje i do niczego nie zobowiązuje. W&nbsp;2–3 minuty powiem Ci, czy temat jest do zrobienia.</p>
+    <p class="contact-note">Oddzwaniam osobiście — to zawsze będę ja, nie call center.</p>
+  </div>
+
+  <!-- Formularz: wyłącznie makieta graficzna — bez obsługi wysyłki (decyzja 25.08.2026) -->
+  <div class="cform">
+    <div class="cform-row">
+      <div class="cform-field">
+        <label for="cf-name">Imię</label>
+        <input type="text" id="cf-name" name="name">
+      </div>
+      <div class="cform-field">
+        <label for="cf-phone">Telefon</label>
+        <input type="tel" id="cf-phone" name="phone">
+      </div>
+    </div>
+    <div class="cform-row">
+      <div class="cform-field">
+        <label for="cf-email">E-mail</label>
+        <input type="email" id="cf-email" name="email">
+      </div>
+      <div class="cform-field">
+        <label for="cf-who">Kim jesteś?</label>
+        <select id="cf-who" name="who">
+          <option value="" selected disabled>Wybierz…</option>
+          <option value="firma">Prowadzę firmę</option>
+          <option value="posrednik">Jestem pośrednikiem</option>
+        </select>
+      </div>
+    </div>
+    <div class="cform-row">
+      <div class="cform-field">
+        <label for="cf-amount">Orientacyjna kwota finansowania</label>
+        <input type="text" id="cf-amount" name="amount" placeholder="np. 1 500 000 PLN">
+      </div>
+      <div class="cform-field">
+        <label for="cf-property">Czy zabezpieczeniem może być nieruchomość?</label>
+        <select id="cf-property" name="property">
+          <option value="" selected disabled>Wybierz…</option>
+          <option value="tak">Tak</option>
+          <option value="nie">Nie</option>
+          <option value="niewiem">Nie wiem</option>
+        </select>
+      </div>
+    </div>
+    <div class="cform-field">
+      <label for="cf-msg">Opisz sprawę w 2–3 zdaniach (opcjonalnie)</label>
+      <textarea id="cf-msg" name="message"></textarea>
+    </div>
+    <label class="cform-consent">
+      <input type="checkbox" name="rodo">
+      <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia, zgodnie z polityką prywatności.</span>
+    </label>
+    <span class="cform-submit">Wyślij zgłoszenie</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="LOGO-WHITE.svg" alt="Kredito">
+      <p>Niezależny pośrednik finansowy. Finansowanie dla firm — pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="fcol">
+        <h4>Oferta</h4>
+        <a href="#">Pożyczki hipoteczne</a>
+        <a href="#">Oferta dla spółek</a>
+        <a href="#">Dla pośredników kredytowych</a>
+      </div>
+      <div class="fcol">
+        <h4>Firma</h4>
+        <a href="o-firmie.html">O firmie</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <span>Pośrednik finansowy zarejestrowany w rejestrze KNF — możesz nas sprawdzić po imieniu i nazwisku.</span>
+    <span>© 2026 Kredito. Wszystkie prawa zastrzeżone.</span>
+  </div>
+</footer>
 
 </body>
 </html>
