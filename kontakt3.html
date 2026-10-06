@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Monolith Finance</title>
+<meta name="description" content="Porozmawiajmy o finansowaniu. Telefon, e-mail lub formularz — wstępna ocena sprawy już podczas pierwszej rozmowy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;500&family=Open+Sans:wght@300;400;700&family=PT+Serif&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens (wspólne z home3.html / o-mnie.html) ===== */
+:root {
+  --green-1: #143836;
+  --green-2: #102423;
+  --green-grad: linear-gradient(180deg, var(--green-1) 0%, var(--green-2) 100%);
+  --green-grad-up: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%);
+  --silver: linear-gradient(180deg, #eee 0%, #a3a3a3 100%);
+  --gold: linear-gradient(135deg, #8f774b 0%, #b19563 14%, #dec38e 21%, #fadfaa 34%, #c6ac79 54%, #9e8252 73%, #886839 86%, #78592b 100%);
+  --gold-line: #b39051;
+  --card: #e9e9e9;
+  --text: #333;
+  --teal: #256d69;
+  --nav-h: 72px;
+  --pad: 80px;
+  --max: 1280px;
+  --f-display: 'Space Grotesk', sans-serif;
+  --f-ui: 'Montserrat', sans-serif;
+  --f-body: 'Open Sans', sans-serif;
+  --f-card: 'Lato', sans-serif;
+  --f-serif: 'PT Serif', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body { font-family: var(--f-body); color: #fff; background: var(--green-2); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.h2 { font: 700 40px/60px var(--f-display); }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 24px; border-radius: 50px;
+  font: 500 16px/1.2 var(--f-ui); white-space: nowrap; cursor: pointer;
+  border: 2px solid transparent; transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--dark { background: var(--green-grad); color: #fff; filter: drop-shadow(2px 2px 4px rgba(20,56,54,.15)); }
+.btn--dark:hover { box-shadow: 0 6px 18px rgba(16,36,35,.35); }
+.btn--light { background: #fff; color: var(--green-1); filter: drop-shadow(2px 2px 2px rgba(20,56,54,.15)); }
+.btn--light:hover { box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.btn--outline { border-color: #fff; color: #fff; font-weight: 400; box-shadow: 2px 2px 4px rgba(20,56,54,.15); }
+.btn--outline:hover { background: rgba(255,255,255,.08); }
+.btn--outline-dark { border-color: var(--green-1); color: var(--green-1); font-weight: 400; box-shadow: 2px 2px 4px rgba(20,56,54,.15); }
+.btn--outline-dark:hover { background: rgba(20,56,54,.06); }
+.btns { display: flex; flex-wrap: wrap; gap: 15px 29px; }
+
+/* ===== Logo ===== */
+.logo { display: inline-flex; align-items: center; gap: 4px; height: 51px; }
+.logo__mark { position: relative; width: 51px; height: 49px; flex: none; }
+.logo__mark::before { content: ""; position: absolute; right: 0; bottom: 0; width: 43px; height: 43px; background: var(--silver); }
+.logo__mark::after { content: ""; position: absolute; right: 4px; bottom: 3px; width: 43px; height: 43px; transform: rotate(-8deg); background: var(--gold); }
+.logo__mark span { position: absolute; z-index: 1; left: 9px; width: 30px; text-align: center; font: 7px/5.2px var(--f-serif); color: var(--green-2); }
+.logo__mark span:first-child { top: 18px; }
+.logo__mark span:last-child { top: 25px; }
+.logo__divider { width: 1px; height: 45px; background: currentColor; opacity: .5; margin: 0 2px 0 0; }
+.logo__text { font-family: var(--f-serif); color: var(--green-1); display: flex; flex-direction: column; }
+.logo__text b { font-weight: 400; font-size: 16.4px; line-height: 16px; }
+.logo__text small { font-size: 8.2px; line-height: 12px; opacity: .7; color: #000; }
+.logo--light .logo__text, .logo--light .logo__text small { color: #fff; }
+.logo--light .logo__divider { color: #fff; }
+
+/* ===== NAV ===== */
+.nav { position: sticky; top: 0; z-index: 50; height: var(--nav-h); background: #fff; border-bottom: .8px solid rgba(0,0,0,.08); }
+.nav .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.nav__menu { display: flex; gap: 32px; list-style: none; margin-left: auto; margin-right: 38px; }
+.nav__menu a { font: 400 16px/1.2 var(--f-display); color: var(--text); transition: color .2s; }
+.nav__menu a:hover, .nav__menu a[aria-current="page"] { color: var(--teal); }
+.nav .btn { font-family: var(--f-display); }
+.nav__burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
+.nav__burger span, .nav__burger::before, .nav__burger::after { content: ""; position: absolute; left: 10px; right: 10px; height: 2px; background: var(--green-1); transition: transform .25s, opacity .25s; }
+.nav__burger::before { top: 15px; } .nav__burger span { top: 21px; } .nav__burger::after { top: 27px; }
+.nav.is-open .nav__burger::before { transform: translateY(6px) rotate(45deg); }
+.nav.is-open .nav__burger span { opacity: 0; }
+.nav.is-open .nav__burger::after { transform: translateY(-6px) rotate(-45deg); }
+
+.phone-row { display: inline-flex; align-items: center; gap: 10px; font: 700 20px/30px var(--f-display); letter-spacing: -.972px; white-space: nowrap; }
+.phone-row img { width: 20px; height: 20px; }
+
+/* ===== 01 HERO ===== */
+.k-hero { background: var(--green-grad); padding: 80px 0 60px; min-height: 521px; }
+.k-hero .wrap { display: grid; grid-template-columns: 693px 67px 258px; justify-content: start; }
+.k-hero .wrap > div:first-child { max-width: 550px; }
+.k-hero h1 { font: 700 54px/65.88px var(--f-display); letter-spacing: -.972px; }
+.k-hero__lead { font: 300 18px/31.5px var(--f-body); color: rgba(255,255,255,.9); margin-top: 28px; }
+.k-hero__note { font: 400 18px/31.5px var(--f-body); color: rgba(255,255,255,.9); margin-top: 20px; }
+.k-hero__divider { width: 1px; height: 328px; background: rgba(255,255,255,.3); }
+.k-hero__info { display: flex; flex-direction: column; gap: 20px; }
+.k-hero__info dt { font: 700 18px/31.5px var(--f-body); color: rgba(255,255,255,.9); }
+.k-hero__info dd { font: 700 20px/30px var(--f-display); letter-spacing: -.972px; overflow-wrap: break-word; }
+.k-hero__info a:hover { text-decoration: underline; }
+
+/* ===== 02 FORM (makieta — bez wysyłki) ===== */
+.k-form { background: var(--green-grad-up); padding: 79px 0 60px; min-height: 719px; }
+.k-form .wrap { display: grid; grid-template-columns: 550px 550px; justify-content: space-between; gap: 40px; }
+.k-form__intro p { font: 300 18px/31.5px var(--f-body); max-width: 534px; margin-top: 20px; }
+.k-form__intro p + p { font-weight: 400; margin-top: 24px; }
+.k-form__title { font: 700 24px/31.5px var(--f-display); color: rgba(255,255,255,.9); margin-bottom: 20px; }
+.form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 26px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field--full { grid-column: 1 / -1; }
+.field label { font: 500 14px/18px var(--f-ui); }
+.field input, .field textarea, .field select {
+  height: 49px; width: 100%; padding: 0 16px; border-radius: 10px; border: 1px solid var(--gold-line);
+  background: rgba(255,255,255,.1); color: #fff; font: 400 16px var(--f-card); outline: none; transition: border-color .2s, background .2s;
+}
+.field select {
+  height: 51px; padding: 0 44px 0 20px; appearance: none; -webkit-appearance: none; cursor: pointer;
+  background: rgba(255,255,255,.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23fff' stroke-width='1.5'/%3E%3C/svg%3E") right 18px center / 12px 8px no-repeat;
+}
+.field select option { color: #102423; }
+.field textarea { height: 96px; padding: 12px 16px; resize: none; width: calc(100% - 10px); }
+.field input::placeholder { color: #fff; }
+.field input:focus, .field textarea:focus, .field select:focus { border-color: #dec38e; background-color: rgba(255,255,255,.14); }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: 4px; }
+.consent input { width: 13px; height: 13px; margin-top: 3px; flex: none; accent-color: var(--green-1); }
+.consent span { font: 300 13px/20.15px var(--f-card); color: rgba(255,255,255,.7); }
+.form .btn { grid-column: 1 / -1; justify-self: start; margin-top: 15px; }
+
+/* ===== 03 PREPARE ===== */
+.prep { background: linear-gradient(0deg, var(--green-2) 0%, var(--green-1) 100%); padding: 94px 0 67px; }
+.prep__lead { font: 300 18px/31.5px var(--f-body); max-width: 930px; margin-top: 21px; }
+.prep__grid { display: grid; grid-template-columns: 550px 550px; justify-content: space-between; gap: 40px 20px; margin-top: 40px; list-style: none; }
+.prep__item h3 { display: flex; align-items: center; gap: 20px; font: 700 20px/32px var(--f-display); }
+.prep__item h3::before { content: ""; flex: none; width: 27px; height: 27px; margin: 2px; transform: rotate(-8deg); background: var(--gold); box-shadow: 1px 1px 3px rgba(0,0,0,.25); }
+.prep__item p { font: 300 18px/31.5px var(--f-body); padding-left: 50px; margin-top: 8px; }
+
+/* ===== 04 PROCESS ===== */
+.process { background: var(--green-grad); padding: 87px 0 87px; background: linear-gradient(180deg, var(--green-2) 0%, var(--green-1) 100%); }
+.process__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 20px; margin-top: 40px; list-style: none; }
+.step { background: var(--card); border-radius: 20px; padding: 18px 20px 22px; min-height: 268px; color: var(--green-1); transition: transform .3s ease, box-shadow .3s ease; }
+.step:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.step__no { display: block; font: 700 40px/40px var(--f-display); }
+.step h3 { font: 700 22px/36px var(--f-display); margin-top: 20px; }
+.step p { font: 300 18px/24px var(--f-body); margin-top: 6px; }
+
+/* ===== 05 CTA BOX ===== */
+.cta { background: var(--green-grad); padding: 80px 0 74px; }
+.cta__box { max-width: 1099px; background: rgba(255,255,255,.97); border-radius: 20px; padding: 71px 40px 70px; text-align: center; color: var(--green-1); display: flex; flex-direction: column; align-items: center; }
+.cta__box h2 { font: 700 28px/40px var(--f-display); max-width: 950px; }
+.cta__box p { font: 300 18px/27px var(--f-body); max-width: 874px; margin-top: 20px; }
+.cta__box .btns { justify-content: center; margin-top: 36px; }
+.cta__box .phone-row { margin-top: 20px; color: var(--green-1); }
+
+/* ===== 06 FAQ ===== */
+.faq { background: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%); padding: 96px 0 115px; }
+.faq__list { margin-top: 40px; }
+.faq__item { padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.3); margin-bottom: 40px; }
+.faq__item h3 { font: 700 24px/32px var(--f-display); }
+.faq__item p { font: 300 18px/27px var(--f-body); margin-top: 20px; }
+.faq .btns { justify-content: center; margin-top: 14px; }
+
+/* ===== 07 BROKERS ===== */
+.brokers { background: linear-gradient(0deg, var(--green-2) 0%, var(--green-1) 100%); padding: 80px 0; }
+.brokers .wrap { display: flex; gap: 48px; align-items: flex-start; }
+.brokers__photo { position: relative; width: 507px; height: 333px; flex: none; overflow: hidden; }
+.brokers__photo img { position: absolute; left: -22.16%; top: -10.66%; width: 144.7%; height: 117.16%; max-width: none; object-fit: cover; }
+.brokers__copy { flex: 1; max-width: 565px; }
+.brokers h2 { font: 700 32px/41.6px var(--f-display); }
+.brokers p { font: 400 18px/32px var(--f-body); margin-top: 20px; }
+.brokers .phone-row { margin-top: 20px; }
+
+/* ===== 08 QUOTE ===== */
+.quote { position: relative; padding: 60px 0 50px; overflow: hidden; }
+.quote__bg { position: absolute; inset: 0; background: url(assets/home3/quote-bg.jpg) center 45% / cover no-repeat; }
+.quote__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(16,36,35,.8) 0%, rgba(20,56,54,.8) 100%); }
+.quote p { position: relative; font: 400 30px/50px var(--f-display); text-align: center; max-width: 1120px; margin: 0 auto; }
+
+/* ===== FOOTER ===== */
+.footer { background: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%); border-top: 1px solid rgba(255,255,255,.3); padding: 34px 0 40px; }
+.footer .wrap { display: grid; grid-template-columns: 1fr 380px 170px; gap: 40px; }
+.footer__about p { margin-top: 20px; max-width: 324px; font: 400 16px/24px var(--f-body); color: rgba(255,255,255,.9); }
+.footer__about .phone-row { margin-top: 20px; color: rgba(250,250,250,.8); }
+.footer h4 { font: 700 15px/1.2 var(--f-display); margin: 20px 0 20px; }
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer li a { font: 400 15px/1.35 var(--f-body); opacity: .7; transition: opacity .2s; }
+.footer li a:hover, .footer li a[aria-current="page"] { opacity: 1; }
+
+/* ===== Reveal on scroll ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  :root { --pad: 48px; }
+  .nav__menu { gap: 20px; margin-right: 16px; }
+  .nav__menu a { font-size: 14px; }
+  .k-hero .wrap { grid-template-columns: 1fr 1px 258px; column-gap: 40px; }
+  .k-hero .wrap > div:first-child { max-width: none; }
+  .k-form .wrap, .prep__grid { grid-template-columns: 1fr 1fr; }
+  .brokers .wrap { gap: 40px; }
+  .brokers__photo { width: 42%; }
+  .footer .wrap { grid-template-columns: 1fr 300px 150px; }
+}
+@media (max-width: 1024px) {
+  .nav__burger { display: block; }
+  .nav__menu {
+    position: absolute; top: var(--nav-h); left: 0; right: 0; margin: 0; flex-direction: column; gap: 0;
+    background: #fff; border-bottom: 1px solid rgba(0,0,0,.08); padding: 8px var(--pad) 20px;
+    transform: translateY(-8px); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s;
+  }
+  .nav__menu a { display: block; padding: 12px 0; font-size: 16px; }
+  .nav.is-open .nav__menu { opacity: 1; transform: none; pointer-events: auto; }
+  .nav .btn { margin-left: auto; }
+
+  .k-hero { min-height: 0; }
+  .k-hero .wrap { grid-template-columns: 1fr; row-gap: 40px; }
+  .k-hero__divider { width: 100%; height: 1px; }
+  .k-form { min-height: 0; }
+  .k-form .wrap, .prep__grid { grid-template-columns: 1fr; }
+  .process__grid { grid-template-columns: 1fr 1fr; }
+  .brokers .wrap { flex-direction: column; }
+  .brokers__photo { width: 100%; height: auto; aspect-ratio: 507 / 333; }
+  .brokers__copy { width: 100%; }
+  .footer .wrap { grid-template-columns: 1fr 1fr; }
+  .footer__about { grid-column: 1 / -1; }
+}
+@media (max-width: 680px) {
+  :root { --pad: 16px; --nav-h: 64px; }
+  .nav .btn { display: none; }
+  .k-hero, .k-form, .prep, .process, .cta, .faq, .brokers { padding-top: 56px; padding-bottom: 56px; }
+  .k-hero h1 { font-size: 38px; line-height: 46px; }
+  .h2 { font-size: 28px; line-height: 40px; }
+  .form { grid-template-columns: 1fr; }
+  .field textarea { width: 100%; }
+  .prep__item p { padding-left: 0; }
+  .process__grid { grid-template-columns: 1fr; gap: 20px; }
+  .step { min-height: 0; }
+  .cta__box { padding: 40px 20px; }
+  .cta__box h2 { font-size: 22px; line-height: 32px; }
+  .faq__item h3 { font-size: 20px; line-height: 28px; }
+  .brokers h2 { font-size: 26px; line-height: 34px; }
+  .brokers p { font-size: 16px; line-height: 30px; }
+  .quote p { font-size: 21px; line-height: 34px; }
+  .btns .btn { flex: 1 1 auto; }
+  .footer .wrap { grid-template-columns: 1fr; gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="home3.html" class="logo" aria-label="Monolith Finance — strona główna">
+      <span class="logo__mark" aria-hidden="true"><span>Monolith</span><span>Finance</span></span>
+      <span class="logo__divider" aria-hidden="true"></span>
+      <span class="logo__text"><b>Monolith</b><b>Finance</b><small>Monika Buchacz</small></span>
+    </a>
+    <ul class="nav__menu" id="menu">
+      <li><a href="o-mnie.html">O mnie</a></li>
+      <li><a href="home3.html#oferta">Pożyczki hipoteczne</a></li>
+      <li><a href="home3.html#oferta">Dla spółek i JDG</a></li>
+      <li><a href="home3.html#private-debt">Private Debt</a></li>
+      <li><a href="kontakt3.html" aria-current="page">Współpraca</a></li>
+    </ul>
+    <a href="#formularz" class="btn btn--dark">Umów rozmowę</a>
+    <button class="nav__burger" type="button" aria-label="Menu" aria-controls="menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 01 HERO -->
+  <section class="k-hero">
+    <div class="wrap">
+      <div class="reveal">
+        <h1>Porozmawiajmy o finansowaniu</h1>
+        <p class="k-hero__lead">Jeśli szukasz finansowania dla przedsiębiorstwa, opowiedz nam krótko o swojej sytuacji. Często już podczas pierwszej rozmowy jesteśmy w stanie wstępnie ocenić dostępne możliwości i wskazać, jakie informacje lub dokumenty będą potrzebne na kolejnym etapie.</p>
+        <p class="k-hero__note">Możesz skontaktować się z nami telefonicznie, mailowo lub za pomocą formularza.</p>
+      </div>
+      <div class="k-hero__divider" aria-hidden="true"></div>
+      <dl class="k-hero__info reveal">
+        <div><dt>Telefon</dt><dd><a href="tel:+48722649938">+48 722 649 938</a></dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:kontakt@monolithfinance.com">kontakt@monolithfinance.<wbr>com</a></dd></div>
+        <div><dt>Godziny pracy</dt><dd>Pracujemy elastycznie - możesz zadzwonić o każdej porze</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 02 FORM (makieta — bez wysyłki) -->
+  <section class="k-form" id="formularz">
+    <div class="wrap">
+      <div class="k-form__intro reveal">
+        <h2 class="h2">Napisz, czego potrzebuje Twoja firma</h2>
+        <p>W formularzu wystarczy krótko opisać sytuację i podać podstawowe informacje dotyczące finansowania.</p>
+        <p>Zawsze oddzwaniam osobiście</p>
+      </div>
+      <div class="reveal">
+        <h2 class="k-form__title">Formularz kontaktowy</h2>
+        <form class="form" action="#" onsubmit="return false" novalidate aria-label="Formularz kontaktowy (makieta)">
+          <div class="field"><label for="f-name">Imię</label><input id="f-name" type="text" autocomplete="off"></div>
+          <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" type="tel" autocomplete="off"></div>
+          <div class="field"><label for="f-mail">E-mail</label><input id="f-mail" type="email" autocomplete="off"></div>
+          <div class="field"><label for="f-who">Kim jesteś?</label>
+            <select id="f-who">
+              <option value="" selected>Wybierz…</option>
+              <option>Spółka</option>
+              <option>JDG</option>
+              <option>Pośrednik kredytowy</option>
+              <option>Inne</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-amount">Orientacyjna kwota finansowania</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
+          <div></div>
+          <div class="field field--full"><label for="f-note">Opisz sprawę w 2–3 zdaniach (opcjonalnie)</label><textarea id="f-note"></textarea></div>
+          <label class="consent"><input type="checkbox"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia, zgodnie z polityką prywatności.</span></label>
+          <button type="button" class="btn btn--light">Wyślij zgłoszenie</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PREPARE -->
+  <section class="prep">
+    <div class="wrap">
+      <h2 class="h2 reveal">Co warto przygotować przed pierwszą rozmową?</h2>
+      <p class="prep__lead reveal">Nie potrzebuję od Ciebie od razu stosu dokumentów. Abyśmy mogli szybko i sprawnie przeanalizować Twoją sytuację i wybrać najlepszą ścieżkę finansowania, przygotuj odpowiedzi na poniższe pytania:</p>
+      <ul class="prep__grid">
+        <li class="prep__item reveal"><h3>Ile kapitału potrzebujesz?</h3><p>Określ konkretną kwotę, jaka jest niezbędna do realizacji Twojego celu lub rozwiązania problemu w firmie.</p></li>
+        <li class="prep__item reveal"><h3>Na jak długo chcesz pożyczyć pieniądze?</h3><p>Zastanów się, jaki okres spłaty (np. rok, 3 lata, 5 lat) jest bezpieczny dla płynności Twojego biznesu.</p></li>
+        <li class="prep__item reveal"><h3>Jaka jest kondycja finansowa firmy?</h3><p>Przygotuj podstawowe dane o swoich wynikach – jaki firma generuje obrót, czy wykazuje zysk, czy stratę.</p></li>
+        <li class="prep__item reveal"><h3>Jaka jest Twoja realna sytuacja w BIK i bazach?</h3><p>Powiedz otwarcie, jak wygląda historia kredytowa – czy masz opóźnienia, czy sytuacja wymaga najpierw "wyczyszczenia" i restrukturyzacji.</p></li>
+        <li class="prep__item reveal"><h3>Jaka jest szacunkowa wartość nieruchomości?</h3><p>Podaj mi orientacyjną wartość rynkową oraz rodzaj nieruchomości (działka, dom, lokal komercyjny), która ma stanowić zabezpieczenie transakcji.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 04 PROCESS -->
+  <section class="process">
+    <div class="wrap">
+      <h2 class="h2 reveal">Jak przebiega współpraca?</h2>
+      <ol class="process__grid">
+        <li class="step reveal"><span class="step__no">1</span><h3>Pierwszy kontakt i krótka rozmowa:</h3><p>Dzwonisz do nas lub zostawiasz zgłoszenie. Podczas krótkiej rozmowy telefonicznej opisujesz swoją sytuację i podajesz nam podstawowe informacje o firmie oraz potrzebach finansowych.</p></li>
+        <li class="step reveal"><span class="step__no">2</span><h3>Błyskawiczna weryfikacja</h3><p>Dzięki naszemu 20-letniemu doświadczeniu już w trakcie tej pierwszej rozmowy jesteśmy w stanie precyzyjnie ocenić sytuację i od razu powiedzieć Ci, czy podejmiemy się realizacji Twojego tematu.</p></li>
+        <li class="step reveal"><span class="step__no">3</span><h3>Lista dokumentów na maila:</h3><p>Jeśli widzimy realną szansę na finansowanie, wysyłamy do Ciebie wiadomość e-mail z precyzyjną i ograniczoną do minimum listą dokumentów potrzebnych do analizy.</p></li>
+        <li class="step reveal"><span class="step__no">4</span><h3>Analiza rynku w 48 godzin</h3><p>Od momentu, gdy odeślesz nam komplet dokumentów, potrzebujemy średnio 2 dni roboczych, aby przeanalizować Twoją sytuację w bankach, funduszach Private Debt oraz firmach pożyczkowych.</p></li>
+        <li class="step reveal"><span class="step__no">5</span><h3>Wstępna decyzja i warunki:</h3><p>Wracamy do Ciebie z konkretną informacją, że możemy działać, wskazujemy realną do uzyskania na rynku kwotę oraz podajemy wysokość naszego wynagrodzenia.</p></li>
+        <li class="step reveal"><span class="step__no">6</span><h3>Umowa i start procesowania:</h3><p>Jeśli akceptujesz przedstawione warunki, podpisujemy przejrzystą umowę współpracy. Po jej odesłaniu natychmiast uruchamiamy proces i wprowadzamy Twój wniosek na najszybszą ścieżkę decyzyjną.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 05 CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="cta__box reveal">
+        <h2>Nie musisz tracić czasu na samodzielne bieganie po bankach, dzwonienie na infolinie czy umawianie się do oddziałów.</h2>
+        <p>Od tego jesteśmy my. Regularnie szkolimy się bezpośrednio w instytucjach finansowych i funduszach, dzięki czemu posiadamy stale aktualizowaną wiedzę o procedurach, bieżących algorytmach oceny ryzyka oraz najnowszych rozwiązaniach na rynku, które natychmiast wykorzystujemy dla Twojej korzyści.</p>
+        <div class="btns">
+          <a href="tel:+48722649938" class="btn btn--outline-dark">Zadzwoń</a>
+          <a href="#formularz" class="btn btn--dark">Umów rozmowę</a>
+        </div>
+        <a href="tel:+48722649938" class="phone-row"><img src="assets/home3/icon-phone-dark.svg" alt="">+48 722 649 938</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <h2 class="h2 reveal">Częste pytania przed pierwszym telefonem.</h2>
+      <div class="faq__list">
+        <div class="faq__item reveal"><h3>Ile kosztuje pierwsza rozmowa?</h3><p>Nic. Rozmowa i wstępna ocena sprawy są darmowe. Wynagrodzenie rozliczamy od sukcesu — dopiero wtedy, gdy finansowanie jest przyznane, na warunkach ustalonych z góry.</p></div>
+        <div class="faq__item reveal"><h3>Co mam przygotować?</h3><p>Przy pożyczce pod nieruchomość wystarczy numer księgi wieczystej — resztę sprawdzę w trakcie rozmowy. Przy kredycie firmowym: BIK i dokumenty finansowe, ale te doślesz mailem już po rozmowie.</p></div>
+        <div class="faq__item reveal"><h3>Czy musimy się spotkać osobiście?</h3><p>Nie. Wszystkie sprawy prowadzę przez telefon i mail — od pierwszej rozmowy po decyzję instytucji. Jedyne spotkanie w całym procesie to podpisanie umowy u notariusza.</p></div>
+        <div class="faq__item reveal"><h3>Jak szybko poznam odpowiedź?</h3><p>Wstępną ocenę usłyszysz już w trakcie pierwszej rozmowy — po 2–3 minutach. Decyzja instytucji finansującej to zwykle 24–48 godzin od kompletu dokumentów.</p></div>
+      </div>
+      <div class="btns reveal">
+        <a href="o-mnie.html" class="btn btn--outline">Poznaj mnie</a>
+        <a href="#formularz" class="btn btn--light">Wyślij zapytanie</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 BROKERS -->
+  <section class="brokers">
+    <div class="wrap">
+      <div class="brokers__photo reveal"><img src="assets/home3/broker-photo.jpg" alt=""></div>
+      <div class="brokers__copy reveal">
+        <h2>Jesteś pośrednikiem finansowym?</h2>
+        <p>Jeśli prowadzisz sprawę, która wykracza poza Twoją specjalizację albo wymaga dostępu do innych źródeł finansowania, również możesz się z nami skontaktować. Wspieramy pośredników w bardziej złożonych i niestandardowych przypadkach.</p>
+        <a href="tel:+48722649938" class="phone-row"><img src="assets/home3/icon-phone-white.svg" alt="">+48 722 649 938</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 QUOTE -->
+  <section class="quote">
+    <div class="quote__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="reveal">Kiedy w 2020 roku stawiałam pierwsze kroki, działałam w pojedynkę. Dzisiaj MONOLITH tworzy grono zaufanych, osobiście dobranych przeze mnie specjalistów. Wspólnie opieramy naszą pracę na trzech filarach: solidnej wiedzy, bogatej praktyce i empatii.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__about">
+      <a href="home3.html" class="logo logo--light" aria-label="Monolith Finance — strona główna">
+        <span class="logo__mark" aria-hidden="true"><span>Monolith</span><span>Finance</span></span>
+        <span class="logo__divider" aria-hidden="true"></span>
+        <span class="logo__text"><b>Monolith</b><b>Finance</b><small>Monika Buchacz</small></span>
+      </a>
+      <p>Niezależny pośrednik finansowy. Finansowanie dla firm - pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
+      <a href="tel:+48722649938" class="phone-row"><img src="assets/home3/icon-phone.svg" alt="">+48 722 649 938</a>
+    </div>
+    <nav aria-label="Oferta">
+      <h4>OFERTA</h4>
+      <ul>
+        <li><a href="home3.html#oferta">Pożyczki hipoteczne</a></li>
+        <li><a href="home3.html#oferta">Oferta dla spółek</a></li>
+        <li><a href="home3.html#oferta">Dla pośredników kredytowych</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Firma">
+      <h4>OFERTA</h4>
+      <ul>
+        <li><a href="o-mnie.html">O mnie</a></li>
+        <li><a href="kontakt3.html" aria-current="page">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const burger = nav.querySelector('.nav__burger');
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('.nav__menu a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', false);
+  }));
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -287,6 +287,10 @@ Cel: lead gen, skala, kampanie Zakres: SEO, lejki, kalkulatory, CRM, doradcy onl
 | :---- | :---- |
 | `content-plan.md` | **PLAN TREŚCI CAŁEGO SERWISU** (25.08.2026) — docelowe copy wszystkich sekcji i podstron, propozycje nazw, wytyczne wizualne, pytania otwarte |
 | `hero-e.html` | **GŁÓWNY PLIK ROBOCZY** — strona główna MVP (single-file HTML) |
+| `index.html` | **Live homepage na Vercelu (mbuchacz.vercel.app)** — od 06.10.2026 kopia `home3.html`. Zmiany rób w `home3.html` i kopiuj do `index.html` przed deployem (push na `master` = deploy produkcyjny) |
+| `home3.html` | Strona główna "Monolith Finance" 1:1 z Figmy (`2bbo1vBni1ROFxluOJqlTY`, node `1:4`), 06.10.2026. Assety w `assets/home3/`, formularz = makieta. Podgląd: `.claude/launch.json` → `monika-static-site` (port 8090) |
+| `kontakt3.html` | Podstrona "Kontakt" z Figmy (node `4:689`), 06.10.2026. Linkowana z menu "Współpraca" i stopki "Kontakt" w `home3.html`/`o-mnie.html`. **Nie mylić z `kontakt.html`** — to podstrona starszej wersji (`home2`) |
+| `o-mnie.html` | Podstrona "O mnie" z Figmy (ten sam plik, node `2:2`), 06.10.2026. Linkowana z `home3.html` (menu "O mnie", "Poznaj mnie", "Więcej o mnie", stopka) |
 | `LOGO.svg` | Logo Kredito (ciemna wersja, na białe tła) |
 | `LOGO-WHITE.svg` | Logo Kredito (biała wersja, na ciemne tła) |
 | `assets/` | Zdjęcia i wideo — patrz sekcja 19 |
