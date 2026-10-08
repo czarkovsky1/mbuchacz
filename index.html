@@ -100,7 +100,11 @@ a { color: inherit; text-decoration: none; }
 .hero__plate { width: 403px; height: 388px; }
 .hero__plate .plate__back { right: 0; bottom: 0; width: 340px; height: 340px; }
 .hero__plate .plate__front { right: 19px; bottom: 25px; width: 340px; height: 341px; transform: rotate(-8deg); display: flex; align-items: center; justify-content: center; }
-.plate__brand { font: 55px/41px var(--f-serif); text-align: center; color: var(--green-1); transform: rotate(8deg); }
+/* Połyskujące kafelki: pętle wideo 14 s z plate-gold.jpg / plate-silver.jpg (kadr 103% jak tło), połysk LG→PD i z powrotem,
+   nawroty poza kafelkiem → pętla bez szwu. Tło jpg zostaje jako fallback. */
+.plate__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .plate__video { display: none; } }
+.plate__brand { position: relative; z-index: 1; font: 55px/41px var(--f-serif); text-align: center; color: var(--green-1); transform: rotate(8deg); }
 .plate__brand span { display: block; }
 .plate__brand span + span { color: #112625; margin-top: 12px; }
 .hero__copy { width: 550px; display: flex; flex-direction: column; gap: 20px; }
@@ -330,8 +334,13 @@ a { color: inherit; text-decoration: none; }
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="wrap">
       <div class="plate hero__plate reveal" aria-hidden="true">
-        <div class="plate__back"></div>
-        <div class="plate__front"><div class="plate__brand"><span>Monolith</span><span>Finance</span></div></div>
+        <div class="plate__back">
+          <video class="plate__video" autoplay muted loop playsinline preload="auto" poster="assets/home3/plate-silver-poster.jpg"><source src="assets/home3/plate-silver.mp4" type="video/mp4"></video>
+        </div>
+        <div class="plate__front">
+          <video class="plate__video" autoplay muted loop playsinline preload="auto" poster="assets/home3/plate-gold-poster.jpg"><source src="assets/home3/plate-gold.mp4" type="video/mp4"></video>
+          <div class="plate__brand"><span>Monolith</span><span>Finance</span></div>
+        </div>
       </div>
       <div class="hero__copy reveal">
         <h1>Szukasz bezpiecznej pożyczki pod zastaw nieruchomości?</h1>
