@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Monolith Finance — Monika Buchacz</title>
-<meta name="description" content="Niezależny pośrednik finansowy. Pożyczki pod zastaw nieruchomości, private debt i finansowanie dla firm.">
+<title>Pożyczki pod zastaw nieruchomości dla firm | Monolith Finance</title>
+<meta name="description" content="Niezależny pośrednik finansowy dla firm. Pożyczki pod zastaw nieruchomości, private debt i finansowanie pozabankowe, gdy bank odmawia. Bezpłatna rozmowa.">
+<link rel="icon" href="assets/monolith/favicon-32.webp" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/monolith/favicon-180.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@300;400;500&family=Open+Sans:wght@300;400;700&family=PT+Serif&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -94,7 +96,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== 02 HERO ===== */
 .hero { position: relative; min-height: 567px; display: flex; align-items: center; padding: 75px 0 105px; overflow: hidden; }
-.hero__bg { position: absolute; inset: 0; background: url(assets/home3/hero-bg.jpg) center / cover no-repeat; }
+.hero__bg { position: absolute; inset: 0; background: url(assets/monolith/hero-warszawa.webp) center / cover no-repeat; }
 .hero__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,56,54,.8) 1%, rgba(16,36,35,.8) 97%); }
 .hero .wrap { position: relative; display: flex; align-items: center; justify-content: center; gap: 80px; padding-left: 90px; padding-right: 110px; }
 .hero__plate { width: 403px; height: 388px; }
@@ -112,26 +114,13 @@ a { color: inherit; text-decoration: none; }
 .hero p { font-size: 18px; line-height: 31.5px; }
 
 /* ===== 03 STATEMENT ===== */
-.statement { position: relative; min-height: 660px; padding: 80px 0 60px; overflow: hidden; background: var(--green-grad-up); }
+.statement { position: relative; padding: 80px 0 80px; overflow: hidden; background: var(--green-grad-up); }
 .statement .wrap { position: relative; z-index: 2; }
 .statement h2 { font: 700 40px/60px var(--f-display); max-width: 1042px; }
-.statement__lead { font: 300 40px/60px var(--f-display); max-width: 966px; margin-top: 10px; }
+.statement__lead { font: 300 20px/34px var(--f-body); max-width: 935px; margin-top: 24px; }
 .statement .btns { margin-top: 48px; gap: 15px; }
 .statement__note { margin-top: 48px; font: 400 16px/30px var(--f-ui); max-width: 935px; }
 .statement__note a { text-decoration: underline; }
-
-/* decorative MF plates */
-.mf { position: absolute; width: 208px; height: 200px; }
-.mf .plate__back { right: 0; bottom: 0; width: 175px; height: 175px; }
-.mf .plate__front { right: 14px; bottom: 11px; width: 175px; height: 175px; transform: rotate(-8deg); }
-.mf__letters { position: absolute; inset: 0; z-index: 2; font: 65px/1 var(--f-serif); text-shadow: 3px 3px 6px rgba(7,20,19,.5); }
-.mf__letters i { font-style: normal; position: absolute; transform: rotate(4.77deg); }
-.mf__letters i:first-child { left: 31%; top: 30%; color: #fff; }
-.mf__letters i:last-child { left: 53%; top: 41%; color: var(--green-1); }
-.mf--ghost { opacity: .4; }
-.mf--ghost .plate__back { background: var(--silver); }
-.statement .mf--main { left: calc(66.67% + 58px); top: 382px; transform: rotate(20deg); }
-.statement .mf--g2 { left: calc(83.33% + 81px); top: 143px; transform: scaleY(-1) rotate(-174deg); }
 
 /* ===== 04 QUALIFY ===== */
 .qualify { background: var(--green-grad); padding: 80px 0 80px; }
@@ -153,28 +142,24 @@ a { color: inherit; text-decoration: none; }
 .stats { display: grid; grid-template-columns: 209px 316px; gap: 30px 100px; margin-top: 40px; }
 .stat strong { display: block; font: 700 40px/60px var(--f-display); }
 .stat span { display: block; font-size: 18px; line-height: 30px; color: rgba(255,255,255,.75); opacity: .8; }
-.why__visual { width: 430px; height: 426px; margin-right: -20px; }
-.why__visual .plate__front { left: 21px; top: 31px; width: 372px; height: 372px; transform: none; }
-.why__photo { position: absolute; left: 24px; top: 25px; width: 382px; height: 376px; transform: rotate(8deg); overflow: hidden; filter: drop-shadow(4px 4px 10px rgba(31,63,62,.4)); }
-.why__photo img { width: 100%; height: 100%; object-fit: cover; }
+.why__visual { width: 440px; flex: none; margin-right: -20px; }
+.why__visual img { width: 100%; height: auto; }
 
 /* ===== 06 FAST TRACK ===== */
 .fast { position: relative; min-height: 420px; padding: 74px 0 72px; overflow: hidden; }
-.fast__bg { position: absolute; inset: 0; background: url(assets/home3/fast-bg.jpg) center 40% / cover no-repeat; }
+.fast__bg { position: absolute; inset: 0; background: url(assets/monolith/fast-bg.webp) center 40% / cover no-repeat; }
 .fast__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,56,54,.8) 0%, rgba(16,36,35,.8) 100%); }
 .fast .wrap { position: relative; }
-.fast h2 { font: 700 40px/55px var(--f-display); max-width: 660px; }
-.fast p { font-size: 18px; line-height: 30px; max-width: 630px; margin: 20px 0 30px; }
+.fast h2 { font: 700 40px/55px var(--f-display); max-width: 960px; }
+.fast__list { list-style: none; display: grid; gap: 16px; max-width: 700px; margin: 30px 0 40px; }
+.fast__list li { display: flex; gap: 14px; align-items: flex-start; font-size: 18px; line-height: 30px; }
+.fast__list img { width: 22px; height: 22px; flex: none; margin-top: 4px; }
 
 /* ===== 07 ABOUT MONIKA ===== */
 .monika { background: var(--green-grad); padding: 70px 0 70px; }
 .monika__top { display: grid; grid-template-columns: 449px 1fr; gap: 55px; align-items: center; }
 .monika__photo { width: 449px; height: 444px; }
-.monika__photo .plate__back { left: 23px; top: 32px; width: 388px; height: 388px; box-shadow: none; }
-.monika__photo .plate__front { left: 25px; top: 26px; width: 398px; height: 392px; transform: rotate(8deg); background-color: #a20e0c; }
-.monika__photo .plate__front img { position: absolute; left: 62px; top: 12px; width: 272px; height: auto; transform: rotate(-8.11deg); }
-.monika__caption { text-align: center; margin-top: 18px; font: 400 20px/30px var(--f-display); width: 449px; padding-right: 30px; }
-.monika__caption strong { display: block; font-weight: 700; }
+.monika__photo img { width: 100%; height: 100%; object-fit: contain; }
 .monika h2 { font: 700 40px/60px var(--f-display); max-width: 616px; margin-bottom: 52px; }
 .monika__bio, .monika__more { font: 300 18px/30px var(--f-body); }
 .monika__bio { max-width: 616px; }
@@ -184,9 +169,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== 08 TEAM STATEMENT ===== */
 .team { position: relative; min-height: 384px; padding: 80px 0; display: flex; align-items: center; overflow: hidden; background: var(--green-2); }
-.team__bg { position: absolute; inset: 0; background: url(assets/home3/team-photo.jpg) center / cover no-repeat; }
+.team__bg { position: absolute; inset: 0; background: url(assets/monolith/panorama-warszawa.webp) center / cover no-repeat; }
 .team__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,56,54,.8) 0%, rgba(16,36,35,.8) 100%); }
-.team p { position: relative; z-index: 2; font: 400 30px/50px var(--f-display); text-align: center; max-width: 1120px; margin: 0 auto; }
+.team p { position: relative; z-index: 2; font: 700 30px/50px var(--f-display); text-align: center; max-width: 1120px; margin: 0 auto; }
 
 /* ===== 09 CONTACT ===== */
 .contact { background: var(--green-grad); padding: 60px 0 73px; }
@@ -210,21 +195,26 @@ a { color: inherit; text-decoration: none; }
 .field textarea { height: 96px; padding: 12px 16px; resize: none; width: calc(100% - 10px); }
 .field input::placeholder { color: #fff; }
 .field input:focus, .field textarea:focus { border-color: #dec38e; background: rgba(255,255,255,.14); }
-.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: 4px; }
+.consent__title { grid-column: 1 / -1; font: 500 14px/18px var(--f-ui); margin-top: 4px; }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; }
 .consent input { width: 13px; height: 13px; margin-top: 3px; flex: none; accent-color: var(--green-1); }
 .consent span { font: 300 13px/20.15px var(--f-card); color: rgba(255,255,255,.7); }
+.consent a { text-decoration: underline; }
 .form .btn { grid-column: 1 / -1; justify-self: start; margin-top: 20px; }
 
 /* ===== 10 FOOTER ===== */
-.footer { background: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%); border-top: 1px solid rgba(255,255,255,.3); padding: 34px 0 40px; }
+.footer { background: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%); border-top: 1px solid rgba(255,255,255,.3); padding: 34px 0 30px; }
 .footer .wrap { display: grid; grid-template-columns: 1fr 380px 170px; gap: 40px; }
 .footer__about p { margin-top: 20px; max-width: 324px; font-size: 16px; line-height: 24px; color: rgba(255,255,255,.9); }
 .footer__phone { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; font: 700 20px/30px var(--f-display); letter-spacing: -.972px; color: rgba(250,250,250,.8); }
 .footer__phone img { width: 20px; height: 20px; }
-.footer h4 { font: 700 15px/1.2 var(--f-display); margin: 20px 0 20px; }
+.footer h4 { font: 700 15px/1.2 var(--f-display); text-transform: uppercase; margin: 20px 0 20px; }
 .footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer li a { font: 400 15px/1.35 var(--f-body); opacity: .7; transition: opacity .2s; }
 .footer li a:hover { opacity: 1; }
+.footer__bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; margin-top: 10px; font: 400 14px/1.4 var(--f-body); color: rgba(255,255,255,.7); }
+.footer__bottom a { display: inline-flex; align-items: center; gap: 8px; }
+.footer__bottom img { height: 14px; width: auto; }
 
 /* ===== Reveal on scroll ===== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
@@ -268,7 +258,7 @@ a { color: inherit; text-decoration: none; }
   .qcard { min-height: 0; }
   .qcard .btn { margin-top: 32px; }
   .qcard + .qcard + .qcard h3 { margin: 0 0 30px; }
-  .statement .mf--g2 { display: none; }
+  .why__visual { width: min(440px, 100%); }
 }
 @media (max-width: 680px) {
   :root { --pad: 16px; --nav-h: 64px; }
@@ -278,20 +268,16 @@ a { color: inherit; text-decoration: none; }
   .hero h1 { font-size: 34px; letter-spacing: -.5px; }
   .hero p { font-size: 16px; line-height: 27px; }
   .statement, .why, .monika, .contact { padding-top: 56px; padding-bottom: 56px; }
-  .statement { min-height: 0; padding-bottom: 220px; }
   .statement h2, .qualify h2, .why h2, .fast h2, .monika h2 { font-size: 28px; line-height: 40px; }
-  .statement__lead { font-size: 24px; line-height: 36px; }
-  .statement .mf--main { left: auto; right: -10px; top: auto; bottom: 10px; transform: rotate(20deg) scale(.8); }
+  .statement__lead { font-size: 17px; line-height: 29px; }
   .qualify { padding: 56px 0 72px; }
   .qcard h3 { font-size: 22px; }
   .stats { grid-template-columns: 1fr 1fr; gap: 24px 20px; }
   .stat strong { font-size: 32px; line-height: 44px; }
   .stat span { font-size: 15px; line-height: 24px; }
-  .why__visual { scale: .72; margin: -60px -60px; }
   .fast { padding: 56px 0; }
-  .fast p { font-size: 16px; line-height: 27px; }
+  .fast__list li { font-size: 16px; line-height: 27px; }
   .monika__photo { scale: .72; margin: -62px -63px; }
-  .monika__caption { width: auto; padding: 0; }
   .monika h2 { margin-bottom: 24px; }
   .monika__bio, .monika__more { font-size: 16px; line-height: 27px; }
   .team { min-height: 0; padding: 64px 0; }
@@ -302,6 +288,7 @@ a { color: inherit; text-decoration: none; }
   .field textarea { width: 100%; }
   .btns .btn { flex: 1 1 auto; }
   .footer .wrap { grid-template-columns: 1fr; gap: 8px; }
+  .footer__bottom { margin-top: 24px; }
 }
 </style>
 </head>
@@ -317,12 +304,12 @@ a { color: inherit; text-decoration: none; }
     </a>
     <ul class="nav__menu" id="menu">
       <li><a href="o-mnie.html">O mnie</a></li>
-      <li><a href="#oferta">Pożyczki hipoteczne</a></li>
-      <li><a href="#oferta">Dla spółek i JDG</a></li>
-      <li><a href="#private-debt">Private Debt</a></li>
-      <li><a href="kontakt3.html">Współpraca</a></li>
+      <li><a href="pozyczki-hipoteczne.html">Pożyczki hipoteczne</a></li>
+      <li><a href="dla-spolek-i-jdg.html">Dla spółek i JDG</a></li>
+      <li><a href="private-debt.html">Private Debt</a></li>
+      <li><a href="dla-posrednikow-kredytowych.html">Współpraca</a></li>
     </ul>
-    <a href="#kontakt" class="btn btn--dark">Umów rozmowę</a>
+    <a href="kontakt3.html" class="btn btn--dark">Umów rozmowę</a>
     <button class="nav__burger" type="button" aria-label="Menu" aria-controls="menu" aria-expanded="false"><span></span></button>
   </div>
 </header>
@@ -352,19 +339,14 @@ a { color: inherit; text-decoration: none; }
   <!-- 03 STATEMENT -->
   <section class="statement">
     <div class="wrap">
-      <h2 class="reveal">Jesteśmy niezależnym pośrednikiem finansowym - tam gdzie bank mówi nie.</h2>
-      <p class="statement__lead reveal">Oferujemy pełen zakres finansowania:<br>pożyczki hipoteczne, private debt i alternatywne finansowanie pod nieruchomości.</p>
+      <h2 class="reveal">Jesteśmy niezależnym pośrednikiem finansowym – tam gdzie bank mówi nie.</h2>
+      <p class="statement__lead reveal">Zabezpieczamy pełne spektrum kapitałowe dla Twojego biznesu. Dostarczamy zaawansowane finansowanie: od pożyczek hipotecznych, przez private debt, aż po skrojone na miarę alternatywne finansowanie nieruchomości. Działamy tam, gdzie liczy się szybkość, skala i skuteczność.</p>
       <div class="btns reveal">
         <a href="#kontakt" class="btn btn--light">Umów rozmowę</a>
-        <a href="o-mnie.html" class="btn btn--outline">Poznaj mnie</a>
+        <a href="#o-mnie" class="btn btn--outline">Poznaj mnie</a>
       </div>
-      <p class="statement__note reveal">Potrzebujesz wsparcia z kredytem, ale nie znalazłaś/eś tego, czego szukasz?<br>Napisz do mnie: <a href="mailto:mbuchacz@fineza.pl">mbuchacz@fineza.pl</a></p>
+      <p class="statement__note reveal">Potrzebujesz wsparcia z kredytem, ale nie znalazłaś/eś tego, czego szukasz?<br>Napisz do mnie: <a href="mailto:kontakt@monolith-finance.pl">kontakt@monolith-finance.pl</a></p>
     </div>
-    <div class="plate mf mf--main" aria-hidden="true">
-      <div class="plate__back"></div><div class="plate__front"></div>
-      <div class="mf__letters"><i>M</i><i>F</i></div>
-    </div>
-    <div class="plate mf mf--ghost mf--g2" aria-hidden="true"><div class="plate__back"></div><div class="plate__front"></div></div>
   </section>
 
   <!-- 04 QUALIFY -->
@@ -374,7 +356,7 @@ a { color: inherit; text-decoration: none; }
       <div class="qualify__grid">
         <article class="qcard reveal">
           <h3>Finansowanie dla firm</h3>
-          <p>Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością - od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy.</p>
+          <p>Pomagamy firmom pozyskać finansowanie zabezpieczone nieruchomością – od pierwszej rozmowy telefonicznej aż po podpisanie umowy. Mamy dostęp do 30–40 instytucji finansowych: banków, funduszy, firm pozabankowych i firm pożyczkowych.</p>
           <a href="#kontakt" class="btn btn--dark">Umów rozmowę</a>
         </article>
         <article class="qcard reveal">
@@ -395,19 +377,16 @@ a { color: inherit; text-decoration: none; }
   <section class="why">
     <div class="wrap">
       <div class="why__copy">
-        <h2 class="reveal">Dlaczego warto ze mną pracować?</h2>
-        <p class="why__lead reveal">Przez 20 lat zbudowaliśmy sieć relacji z decydentami w bankach, funduszach i instytucjach prywatnych — nie z infoliniami. Łączymy wiedzę, doświadczenie i dostęp do rynku, żeby znaleźć finansowanie tam, gdzie standardowa ścieżka się kończy.</p>
+        <h2 class="reveal">Dlaczego warto podjąć współpracę?</h2>
+        <p class="why__lead reveal">Przez 20 lat zbudowaliśmy sieć relacji z ekspertami w bankach, funduszach i instytucjach prywatnych – nie z infoliniami. Łączymy wiedzę, doświadczenie i dostęp do rynku, żeby znaleźć finansowanie tam, gdzie standardowa ścieżka się kończy.</p>
         <div class="stats">
           <div class="stat reveal"><strong>20 lat</strong><span>na rynku finansowania firm</span></div>
           <div class="stat reveal"><strong>40+</strong><span>tyle instytucji jest w moim portfelu: banki, fundusze, rynki zagraniczne</span></div>
           <div class="stat reveal"><strong>2-3 min</strong><span>tyle trwa wstępna ocena Twojej sprawy</span></div>
-          <div class="stat reveal"><strong>48h</strong><span>decyzja o finansowaniu szybką ścieżką - bez wizyty w banku</span></div>
+          <div class="stat reveal"><strong>48h</strong><span>decyzja o finansowaniu szybką ścieżką – bez wizyty w banku</span></div>
         </div>
       </div>
-      <div class="plate why__visual reveal" aria-hidden="true">
-        <div class="plate__front"></div>
-        <div class="why__photo"><img src="assets/home3/documents.jpg" alt=""></div>
-      </div>
+      <div class="why__visual reveal" aria-hidden="true"><img src="assets/monolith/why-finanse.webp" alt="" width="1024" height="1024"></div>
     </div>
   </section>
 
@@ -415,10 +394,14 @@ a { color: inherit; text-decoration: none; }
   <section class="fast" id="private-debt">
     <div class="fast__bg" aria-hidden="true"></div>
     <div class="wrap">
-      <h2 class="reveal">Pieniądze w 48 godzin.<br>Bez BIKU procesu bankowego.</h2>
-      <p class="reveal">nieruchomością z decyzją w ciągu 2 dni roboczych, bez weryfikacji historii kredytowej i bez konieczności osobistej wizyty w instytucji.</p>
+      <h2 class="reveal">Alternatywa dla procedur bankowych: szybki kapitał na elastycznych warunkach.</h2>
+      <ul class="fast__list reveal">
+        <li><img src="assets/monolith/icon-mark.svg" alt="">Decyzja kredytowa: w 2 dni</li>
+        <li><img src="assets/monolith/icon-mark.svg" alt="">Uruchomienie środków: do 24 godzin</li>
+        <li><img src="assets/monolith/icon-mark.svg" alt="">Podejście do BIK: Liberalna weryfikacja. Obniżona ocena punktowa (scoring) nie wyklucza możliwości otrzymania finansowania.</li>
+      </ul>
       <div class="btns reveal">
-        <a href="#kontakt" class="btn btn--outline">Jak działa private debt?</a>
+        <a href="private-debt.html" class="btn btn--outline">Jak działa private debt?</a>
         <a href="#kontakt" class="btn btn--light">Umów rozmowę</a>
       </div>
     </div>
@@ -428,13 +411,7 @@ a { color: inherit; text-decoration: none; }
   <section class="monika" id="o-mnie">
     <div class="wrap">
       <div class="monika__top">
-        <div class="reveal">
-          <div class="plate monika__photo">
-            <div class="plate__back"></div>
-            <div class="plate__front"><img src="assets/home3/monika.png" alt="Monika Buchacz"></div>
-          </div>
-          <p class="monika__caption"><strong>Monika Buchacz</strong>Dyrektor sprzedaży</p>
-        </div>
+        <div class="monika__photo reveal"><img src="assets/monolith/monika-buchacz.png" alt="Monika Buchacz" width="449" height="444"></div>
         <div>
           <h2 class="reveal">Nazywam się Monika Buchacz<br>i jestem po drugiej stronie telefonu</h2>
           <p class="monika__bio reveal">Moja blisko 20-letnia kariera w czołowych instytucjach, takich jak Citi, Deutsche Bank oraz BNP Paribas, dała mi ogromne doświadczenie i pozwoliła poznać bankowe mechanizmy oceny ryzyka od podszewki. Po latach pracy w strukturach bankowych stworzyłam własną firmę, aby tę unikalną wiedzę przekładać na niezależne, bezkompromisowo skuteczne pozyskiwanie kapitału.</p>
@@ -453,7 +430,7 @@ a { color: inherit; text-decoration: none; }
   <section class="team">
     <div class="team__bg" aria-hidden="true"></div>
     <div class="wrap">
-      <p class="reveal">Kiedy w 2020 roku stawiałam pierwsze kroki, działałam w pojedynkę. Dzisiaj MONOLITH tworzy grono zaufanych, osobiście dobranych przeze mnie specjalistów. Wspólnie opieramy naszą pracę na trzech filarach: solidnej wiedzy, bogatej praktyce i empatii.</p>
+      <p class="reveal">Kiedy w 2020 roku stawiałam pierwsze kroki, działałam w pojedynkę. Dzisiaj MONOLITH-FINANCE tworzy grono zaufanych, osobiście dobranych przeze mnie specjalistów. Wspólnie opieramy naszą pracę na trzech filarach: solidnej wiedzy, bogatej praktyce i empatii.</p>
     </div>
   </section>
 
@@ -462,18 +439,19 @@ a { color: inherit; text-decoration: none; }
     <div class="wrap">
       <div class="contact__info reveal">
         <h2>Porozmawiajmy</h2>
-        <p>Pierwsza rozmowa nic nie kosztuje i do niczego nie zobowiązuje. W 2–3 minuty powiem Ci, czy temat jest do zrobienia — i mniej więcej na jakich warunkach.</p>
-        <p>Oddzwaniam osobiście - to ja z Tobą rozmawiam</p>
+        <p>Pierwsza rozmowa nic nie kosztuje i do niczego nie zobowiązuje. W 2–3 minuty powiem Ci, czy temat jest do zrobienia – i mniej więcej na jakich warunkach.</p>
+        <p>Oddzwaniam osobiście – to ja z Tobą rozmawiam</p>
         <div class="contact__line"></div>
-        <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48722649938">+48 722 649 938</a></div>
+        <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48601200302">+48 601 200 302</a></div>
       </div>
       <form class="form reveal" action="#" onsubmit="return false" novalidate aria-label="Formularz kontaktowy (makieta)">
-        <div class="field"><label for="f-name">Imię</label><input id="f-name" type="text" autocomplete="off"></div>
-        <div class="field"><label for="f-phone">Telefon</label><input id="f-phone" type="tel" autocomplete="off"></div>
-        <div class="field"><label for="f-mail">E-mail</label><input id="f-mail" type="email" autocomplete="off"></div>
+        <div class="field"><label for="f-name">Imię*</label><input id="f-name" type="text" autocomplete="off"></div>
+        <div class="field"><label for="f-phone">Telefon*</label><input id="f-phone" type="tel" autocomplete="off"></div>
+        <div class="field"><label for="f-mail">E-mail*</label><input id="f-mail" type="email" autocomplete="off"></div>
         <div class="field"><label for="f-amount">Orientacyjna kwota finansowania</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
         <div class="field field--full"><label for="f-note">Notatka</label><textarea id="f-note"></textarea></div>
-        <label class="consent"><input type="checkbox"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia, zgodnie z polityką prywatności.</span></label>
+        <p class="consent__title">Zgoda na przetwarzanie danych osobowych</p>
+        <label class="consent"><input type="checkbox"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu obsługi zgłoszenia, zgodnie z <a href="polityka-prywatnosci.html">polityką prywatności</a>.*</span></label>
         <button type="button" class="btn btn--light">Wyślij zgłoszenie</button>
       </form>
     </div>
@@ -490,24 +468,30 @@ a { color: inherit; text-decoration: none; }
         <span class="logo__divider" aria-hidden="true"></span>
         <span class="logo__text"><b>Monolith</b><b>Finance</b><small>Monika Buchacz</small></span>
       </a>
-      <p>Niezależny pośrednik finansowy. Finansowanie dla firm - pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
+      <p>Niezależny pośrednik finansowy. Finansowanie dla firm – pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
       <a href="tel:+48722649938" class="footer__phone"><img src="assets/home3/icon-phone.svg" alt="">+48 722 649 938</a>
     </div>
     <nav aria-label="Oferta">
-      <h4>OFERTA</h4>
+      <h4>Oferta</h4>
       <ul>
-        <li><a href="#oferta">Pożyczki hipoteczne</a></li>
-        <li><a href="#oferta">Oferta dla spółek</a></li>
-        <li><a href="#oferta">Dla pośredników kredytowych</a></li>
+        <li><a href="pozyczki-hipoteczne.html">Pożyczki hipoteczne</a></li>
+        <li><a href="dla-spolek-i-jdg.html">Dla spółek i JDG</a></li>
+        <li><a href="private-debt.html">Private debt</a></li>
+        <li><a href="dla-posrednikow-kredytowych.html">Współpraca</a></li>
       </ul>
     </nav>
     <nav aria-label="Firma">
-      <h4>OFERTA</h4>
+      <h4>Firma</h4>
       <ul>
         <li><a href="o-mnie.html">O mnie</a></li>
         <li><a href="kontakt3.html">Kontakt</a></li>
+        <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
       </ul>
     </nav>
+    <div class="footer__bottom">
+      <span>© 2026 Wszystkie prawa zastrzeżone</span>
+      <a href="https://verseo.pl" target="_blank" rel="noopener">Realizacja: <img src="assets/monolith/verseo-logo.svg" alt="Verseo"></a>
+    </div>
   </div>
 </footer>
 

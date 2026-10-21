@@ -289,8 +289,13 @@ Cel: lead gen, skala, kampanie Zakres: SEO, lejki, kalkulatory, CRM, doradcy onl
 | `hero-e.html` | **GŁÓWNY PLIK ROBOCZY** — strona główna MVP (single-file HTML) |
 | `index.html` | **Live homepage na Vercelu (mbuchacz.vercel.app)** — od 06.10.2026 kopia `home3.html`. Zmiany rób w `home3.html` i kopiuj do `index.html` przed deployem (push na `master` = deploy produkcyjny) |
 | `home3.html` | Strona główna "Monolith Finance" 1:1 z Figmy (`2bbo1vBni1ROFxluOJqlTY`, node `1:4`), 06.10.2026. Assety w `assets/home3/`, formularz = makieta. Podgląd: `.claude/launch.json` → `monika-static-site` (port 8090) |
-| `kontakt3.html` | Podstrona "Kontakt" z Figmy (node `4:689`), 06.10.2026. Linkowana z menu "Współpraca" i stopki "Kontakt" w `home3.html`/`o-mnie.html`. **Nie mylić z `kontakt.html`** — to podstrona starszej wersji (`home2`) |
-| `o-mnie.html` | Podstrona "O mnie" z Figmy (ten sam plik, node `2:2`), 06.10.2026. Linkowana z `home3.html` (menu "O mnie", "Poznaj mnie", "Więcej o mnie", stopka) |
+| `kontakt3.html` | Podstrona "Kontakt" z Figmy (node `4:689`), 06.10.2026. Linkowana z przycisku "Umów rozmowę" i stopki "Kontakt". **Nie mylić z `kontakt.html`** — to podstrona starszej wersji (`home2`) |
+| `o-mnie.html` | Podstrona "O mnie" — od 21.10.2026 przebudowana wg monolith-finance.pl (oś kompetencji, wartości, CTA) |
+| `pozyczki-hipoteczne.html`, `dla-spolek-i-jdg.html`, `private-debt.html`, `dla-posrednikow-kredytowych.html` | "Strona w przygotowaniu" — jak na monolith-finance.pl (21.10.2026). Menu "Współpraca" → `dla-posrednikow-kredytowych.html` |
+| `polityka-prywatnosci.html` | Polityka prywatności 1:1 z monolith-finance.pl (21.10.2026) |
+| `assets/monolith/` | Grafiki pobrane z monolith-finance.pl (hero, zdjęcie Moniki, tła, ikona, favicon, logo Verseo) |
+
+> **Stan 21.10.2026:** strony `home3`/`index`, `o-mnie`, `kontakt3` + 5 nowych podstron odwzorowują treści produkcyjnej strony **https://monolith-finance.pl/** (WordPress/Kadence). Świadome odstępstwa: kafelki w hero zostają jako wideo z połyskiem (na WP statyczne SVG), menu zostaje paskiem na całą szerokość (na WP „pływająca” zaokrąglona belka). Telefony jak na WP: +48 601 200 302 w treści, +48 722 649 938 w stopce i przycisku "Zadzwoń" w hero kontaktu.
 | `LOGO.svg` | Logo Kredito (ciemna wersja, na białe tła) |
 | `LOGO-WHITE.svg` | Logo Kredito (biała wersja, na ciemne tła) |
 | `assets/` | Zdjęcia i wideo — patrz sekcja 19 |
