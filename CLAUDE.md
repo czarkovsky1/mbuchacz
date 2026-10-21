@@ -293,13 +293,13 @@ Cel: lead gen, skala, kampanie Zakres: SEO, lejki, kalkulatory, CRM, doradcy onl
 | `o-mnie.html` | Podstrona "O mnie" — od 21.10.2026 przebudowana wg monolith-finance.pl (oś kompetencji, wartości, CTA) |
 | `pozyczki-hipoteczne.html`, `dla-spolek-i-jdg.html`, `private-debt.html`, `dla-posrednikow-kredytowych.html` | "Strona w przygotowaniu" — jak na monolith-finance.pl (21.10.2026). Menu "Współpraca" → `dla-posrednikow-kredytowych.html` |
 | `polityka-prywatnosci.html` | Polityka prywatności 1:1 z monolith-finance.pl (21.10.2026) |
-| `assets/monolith/` | Grafiki pobrane z monolith-finance.pl (hero, zdjęcie Moniki, tła, ikona, favicon, logo Verseo) |
-
-> **Stan 21.10.2026:** strony `home3`/`index`, `o-mnie`, `kontakt3` + 5 nowych podstron odwzorowują treści produkcyjnej strony **https://monolith-finance.pl/** (WordPress/Kadence). Świadome odstępstwa: kafelki w hero zostają jako wideo z połyskiem (na WP statyczne SVG), menu zostaje paskiem na całą szerokość (na WP „pływająca” zaokrąglona belka). Telefony jak na WP: +48 601 200 302 w treści, +48 722 649 938 w stopce i przycisku "Zadzwoń" w hero kontaktu.
+| `assets/monolith/` | Grafiki pobrane z monolith-finance.pl (hero, logo menu/stopki/hero, zdjęcie Moniki, tła, ikona, favicon, logo Verseo) |
 | `LOGO.svg` | Logo Kredito (ciemna wersja, na białe tła) |
 | `LOGO-WHITE.svg` | Logo Kredito (biała wersja, na ciemne tła) |
 | `assets/` | Zdjęcia i wideo — patrz sekcja 19 |
 | `CLAUDE.md` | Ten plik — baza wiedzy projektu |
+
+> **Stan 21.10.2026:** strony `home3`/`index`, `o-mnie`, `kontakt3` + 5 nowych podstron są odwzorowaniem 1:1 (treść i wygląd) produkcyjnej strony **https://monolith-finance.pl/** (WordPress/Kadence): pływające menu-belka, hero ze statycznym logo (`assets/monolith/hero-logo.svg`), kontener 1210 px, nagłówki 34 px, tekst Open Sans 300 16 px, przyciski Space Grotesk 700. Wysokości sekcji sprawdzone pomiarem względem WP. Wideo kafelków (`assets/home3/plate-*.mp4`) nie jest już używane. Telefony jak na WP: +48 601 200 302 w treści, +48 722 649 938 w stopce i przycisku "Zadzwoń" w hero kontaktu.
 
 > **Uwaga:** `index.html` i `hero-variants.html` to wcześniejsze wersje robocze — nie są aktywnie rozwijane.
 
