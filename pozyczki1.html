@@ -39,6 +39,9 @@ a { color: inherit; text-decoration: none; }
 strong { font-weight: 700; }
 .wrap { width: min(var(--max), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
 .h2 { font: 700 34px/51px var(--f-display); }
+.h2, .cta__box h2, main h3, .note strong, .p-card strong, .indep__card strong { text-wrap: balance; }
+main p { text-wrap: pretty; }
+.use p, .step p, .stat span, .p-ltv__lead { text-wrap: balance; }
 
 /* ===== Buttons ===== */
 .btn {
@@ -54,6 +57,8 @@ strong { font-weight: 700; }
 .btn--light:hover { box-shadow: 0 6px 18px rgba(0,0,0,.25); }
 .btn--outline { border: 1.6px solid #fff; color: #fff; padding: 14.4px 22.4px; }
 .btn--outline:hover { background: rgba(255,255,255,.08); }
+.btn--outline-dark { border: 1.6px solid var(--green-1); color: var(--green-1); padding: 14.4px 22.4px; }
+.btn--outline-dark:hover { background: rgba(20,56,54,.06); }
 .btns { display: flex; flex-wrap: wrap; gap: 15px; }
 
 /* ===== NAV — pływająca belka ===== */
@@ -69,6 +74,10 @@ strong { font-weight: 700; }
 .nav.is-open .nav__burger::before { transform: translateY(6px) rotate(45deg); }
 .nav.is-open .nav__burger span { opacity: 0; }
 .nav.is-open .nav__burger::after { transform: translateY(-6px) rotate(-45deg); }
+
+.phone-row { display: inline-flex; align-items: center; gap: 10px; font: 700 18px/30.06px var(--f-display); white-space: nowrap; }
+.phone-row img { width: 20px; height: 20px; }
+.mark-text::before { content: ""; display: block; width: 25px; height: 25px; margin-bottom: 10px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 
 /* ===== 01 HERO (jak .k-hero w kontakt3) ===== */
 .p-hero { position: relative; min-height: 436px; padding: 182px 0 80px; overflow: hidden; }
@@ -88,34 +97,136 @@ strong { font-weight: 700; }
 /* zdjęcie w przechylonej karcie na złotej płycie (jak why-finanse / posrednik) */
 .tilt { position: relative; width: 480px; aspect-ratio: 1; }
 .tilt::before { content: ""; position: absolute; inset: 11%; border-radius: 14px; background: linear-gradient(222deg, var(--gold-stops)); box-shadow: 0 10px 30px rgba(0,0,0,.25); }
-.tilt img { position: absolute; left: 12.5%; top: 11%; width: 80%; height: 80%; object-fit: cover; object-position: 50% 30%; border-radius: 20px; transform: rotate(7deg); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.tilt img { position: absolute; left: 12.5%; top: 11%; width: 80%; height: 80%; object-fit: cover; object-position: 50% 100%; border-radius: 20px; transform: rotate(7deg); box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+.tilt--alt::before { background: linear-gradient(138deg, var(--gold-stops)); }
+.tilt--alt img { left: 7.5%; object-position: 50% 35%; transform: rotate(-6deg); }
 
 /* metryki — linia ze złotymi plakietkami (jak .timeline__line w o-mnie) */
 .stats { position: relative; list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; }
 .stats::before { content: ""; position: absolute; left: 0; right: 0; top: 24px; height: 1px; background: #fff; }
 .stat { position: relative; }
 .stat::before { content: ""; display: block; width: 50px; height: 49px; margin-bottom: 24px; background: url(assets/monolith/timeline-plate.png) center / contain no-repeat; }
-.stat strong { display: block; font: 700 32px/48px var(--f-display); }
-.stat strong small { font-size: 1em; font-weight: 300; }
-.stat span { display: block; color: rgba(255,255,255,.8); max-width: 300px; margin-top: 4px; }
+.stat strong { display: block; font: 700 40px/52px var(--f-display); }
+.stat strong small { font-size: .8em; font-weight: 300; }
+.stat span { display: block; color: rgba(255,255,255,.8); max-width: 300px; margin-top: 6px; }
 
 /* ===== 03 PRZEZNACZENIE ŚRODKÓW ===== */
 .uses { background: var(--green-grad-up); padding: 80px 0; }
 .uses h2 { text-align: center; }
 .uses__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-.use { background: var(--card); border-radius: 20px; padding: 30px 20px; color: var(--green-1); transition: transform .3s ease, box-shadow .3s ease; }
-.use:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.use { background: var(--card); border-radius: 20px; padding: 30px 20px; color: var(--green-1); }
 .use::before { content: ""; display: block; width: 25px; height: 25px; margin-bottom: 20px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 .use h3 { font: 700 23px/34.5px var(--f-display); color: #112625; }
 .use p { line-height: 24px; color: rgba(17,38,37,.9); margin-top: 10px; }
 
-/* callout — biała karta na złotej płycie */
-.note { grid-column: span 2; position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; padding: 30px 40px; color: var(--green-1); }
-.note::before { content: ""; position: absolute; inset: 0; z-index: -2; border-radius: 20px; background: linear-gradient(100deg, var(--gold-stops)); transform: rotate(-1.2deg) translate(-9px, 9px); }
-.note::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 20px; background: #fafafa; box-shadow: 0 18px 40px rgba(0,0,0,.25); }
+/* callout — biała karta na złotej płycie (płyta przesunięta równo w dół i w prawo) */
+.note { grid-column: span 2; position: relative; isolation: isolate; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 30px 40px; margin: 0 13px 13px 0; color: var(--green-1); }
+.note::before { content: ""; position: absolute; inset: 0; z-index: -2; border-radius: 20px; background: linear-gradient(110deg, var(--gold-stops)); transform: translate(13px, 13px); }
+.note::after { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 20px; background: #fafafa; box-shadow: 0 12px 30px rgba(0,0,0,.22); }
 .note strong { display: block; font: 700 23px/34.5px var(--f-display); color: #112625; }
 .note p { line-height: 24px; }
 .note p + p { margin-top: 10px; }
+.note .btn { margin-top: 22px; }
+
+/* ===== 04 ZABEZPIECZENIE (lista jak .prep__item w kontakt3) ===== */
+.p-secure { background: var(--green-grad); padding: 80px 0; }
+.p-secure__grid {
+  display: grid; grid-template-columns: minmax(0, 1fr) 480px; column-gap: 100px; align-items: start;
+  grid-template-areas: "title photo" "list photo" "card photo"; grid-template-rows: auto auto 1fr;
+}
+.p-secure__grid > h2 { grid-area: title; }
+.p-secure__list { grid-area: list; display: grid; row-gap: 28px; list-style: none; margin-top: 40px; }
+.p-secure .tilt { grid-area: photo; align-self: center; }
+.p-secure .p-card { grid-area: card; align-self: start; margin-top: 44px; }
+.prep__item { display: grid; grid-template-columns: 25px 1fr; column-gap: 20px; }
+.prep__item::before { content: ""; grid-row: 1 / 3; width: 25px; height: 25px; margin-top: 4px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.prep__item h3 { font: 700 20px/32px var(--f-display); }
+.prep__item p { line-height: 28.48px; margin-top: 6px; }
+
+/* callout — jasna karta ze złotym narożnikiem (jak .indep__card w o-mnie) */
+.p-card { background: #fafafa; color: var(--text); border-radius: 20px; padding: 30px; }
+.p-card strong { display: block; font: 700 23px/34.5px var(--f-display); color: var(--green-1); }
+.p-card p { line-height: 24px; }
+.p-card p + p { margin-top: 8px; }
+
+/* ===== 05 ILE MOŻNA POŻYCZYĆ (jak .indep w o-mnie) ===== */
+.p-ltv { background: var(--green-grad-up); padding: 80px 0; }
+.indep__top { display: grid; grid-template-columns: 582px 582px; justify-content: space-between; align-items: start; }
+.p-ltv__lead { margin-top: 64px; max-width: 920px; font: 700 30px/43.5px var(--f-display); }
+.gold-text { font-size: 1.2em; white-space: nowrap; background: linear-gradient(180deg, #fadfaa 0%, #dec38e 42%, #b19563 78%, #9e8252 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.p-ltv__bar { position: relative; height: 24px; margin-top: 32px; }
+.p-ltv__bar::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: rgba(255,255,255,.55); }
+.p-ltv__bar i { position: absolute; top: 4px; bottom: 4px; width: 1px; background: rgba(255,255,255,.55); }
+.p-ltv__bar i:first-child { left: 0; } .p-ltv__bar i:last-child { right: 0; }
+.p-ltv__bar b { position: absolute; left: 40%; width: 20%; top: 50%; height: 8px; transform: translateY(-50%); border-radius: 4px; background: linear-gradient(90deg, var(--gold-stops)); box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.indep__card { margin-top: 56px; background: #fafafa; color: var(--text); border-radius: 20px; padding: 30px; display: grid; grid-template-columns: 1fr 1.45fr; gap: 28px 48px; align-items: center; }
+.indep__card strong { display: block; font: 700 23px/34.5px var(--f-display); color: var(--green-1); max-width: 420px; }
+.indep__card p { line-height: 24px; }
+
+/* ===== 06 BIK / KRD (sekcja na zdjęciu jak .a-quote w o-mnie) ===== */
+.p-bik { position: relative; padding: 100px 0; overflow: hidden; text-align: center; }
+.p-bik__bg { position: absolute; inset: 0; background: url(assets/monolith/panorama-warszawa.webp) center 60% / cover no-repeat; }
+.p-bik__bg::after { content: ""; position: absolute; inset: 0; background: var(--green-grad-up); opacity: .8; }
+.p-bik .wrap { position: relative; max-width: 894px; }
+.p-bik h2 + p { margin-top: 20px; }
+.p-bik p { line-height: 28.48px; max-width: 620px; margin-inline: auto; }
+.p-bik p + p { margin-top: 10px; }
+.p-bik .btns { justify-content: center; margin-top: 34px; }
+
+/* ===== 07 PROCES (karty .step jak w kontakt3) + pasek zdjęcia + CTA box (jak o-mnie) ===== */
+.process { background: var(--green-grad-up); padding: 80px 0; }
+.process__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 40px; list-style: none; }
+.step { background: var(--card); border-radius: 20px; padding: 30px 20px; min-height: 236px; color: var(--green-1); }
+.step__no { display: block; font: 700 40px/40px var(--f-display); }
+.step h3 { font: 700 20px/30px var(--f-display); margin-top: 16px; }
+.step p { line-height: 24px; margin-top: 12px; }
+
+.a-band { position: relative; height: 310px; background: url(assets/monolith/cta-bg.webp) center / cover no-repeat; }
+.a-band::after { content: ""; position: absolute; inset: 0; background: rgba(16,36,35,.1); }
+.a-cta { background: var(--green-grad); padding: 80px 0; }
+.cta__box { background: #fff; border-radius: 20px; padding: 90px 30px; text-align: center; color: var(--green-1); display: flex; flex-direction: column; align-items: center; }
+.cta__box h2 { font: 700 32px/49.92px var(--f-display); max-width: 900px; }
+.cta__box p { line-height: 24px; max-width: 620px; margin-top: 20px; }
+.cta__box .btns { justify-content: center; gap: 29px; margin-top: 40px; }
+.cta__box .phone-row { margin-top: 33px; }
+
+/* ===== 08 FAQ (jak w kontakt3, odpowiedzi zawsze widoczne) ===== */
+.faq { background: var(--green-grad-up); padding: 80px 0; }
+.faq__list { margin-top: 40px; }
+.faq__item { padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.3); margin-bottom: 24px; }
+.faq__item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.faq__item h3 { font: 700 20px/30px var(--f-display); }
+.faq__item p { line-height: 24px; margin-top: 14px; }
+
+/* ===== 09 KONTAKT (układ .k-form z kontakt3 + blok telefonu z home3; makieta — bez wysyłki) ===== */
+.contact { background: var(--green-grad); padding: 80px 0; }
+.contact .wrap { display: grid; grid-template-columns: 555px 555px; justify-content: space-between; align-items: start; }
+.contact__info p { line-height: 28.48px; max-width: 534px; margin-top: 20px; }
+.contact__phone { margin-top: 40px; }
+.contact__phone small { display: block; font: 700 16px/28px var(--f-body); }
+.contact__phone a { font: 700 34px/44.88px var(--f-display); white-space: nowrap; }
+
+.form { background: rgba(0,0,0,.1); border-radius: 20px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field--full { grid-column: 1 / -1; }
+.field label { font: 500 14px/19.6px var(--f-ui); }
+.field input, .field select {
+  height: 46px; width: 100%; padding: 11px 16px; border-radius: 15px; border: .8px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.1); color: #fff; font: 300 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background .2s;
+}
+.field select {
+  appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 44px;
+  background: rgba(255,255,255,.1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23fff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 18px center / 12px 8px no-repeat;
+}
+.field select option { color: var(--text); background: #fff; }
+.field input::placeholder { color: rgba(255,255,255,.8); }
+.field input:focus, .field select:focus { border-color: rgba(255,255,255,.5); background-color: rgba(255,255,255,.14); }
+.consent__title { grid-column: 1 / -1; font: 500 14px/19.6px var(--f-ui); }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; }
+.consent input { width: 13px; height: 13px; margin-top: 4px; flex: none; accent-color: var(--green-1); }
+.consent span { font: 300 13px/20px var(--f-body); color: rgba(255,255,255,.8); }
+.consent a { text-decoration: underline; }
+.form .btn { grid-column: 1 / -1; justify-self: start; line-height: 25.6px; padding: 16px 24px; border: 0; }
 
 /* ===== FOOTER ===== */
 .footer { background: var(--green-grad-up); border-top: .8px solid rgba(255,255,255,.3); padding: 65px 0 40px; }
@@ -135,10 +246,14 @@ strong { font-weight: 700; }
 /* ===== Reveal on scroll ===== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.is-in { opacity: 1; transform: none; }
+/* hover-lift kart przez `translate` — nie koliduje z `transform` z .reveal.is-in */
+.use, .step { transition: opacity .8s ease, transform .8s ease, translate .3s ease, box-shadow .3s ease; }
+.use:hover, .step:hover { translate: 0 -6px; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
-  .use:hover, .btn:hover { transform: none; }
+  .reveal, .use, .step { opacity: 1; transform: none; transition: none; }
+  .use:hover, .step:hover { translate: none; }
+  .btn:hover { transform: none; }
 }
 
 /* ===== Responsive ===== */
@@ -147,7 +262,10 @@ strong { font-weight: 700; }
   .nav__menu a { font-size: 15px; }
   .p-intro__grid { grid-template-columns: 1fr 1fr; }
   .tilt { width: min(480px, 100%); }
-  .stat strong { font-size: 28px; line-height: 42px; }
+  .stat strong { font-size: 32px; line-height: 44px; }
+  .p-secure__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); column-gap: 56px; }
+  .indep__top { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact .wrap { grid-template-columns: 1fr 1fr; column-gap: 48px; }
 }
 @media (max-width: 1024px) {
   :root { --gutter: 24px; }
@@ -164,10 +282,25 @@ strong { font-weight: 700; }
   .p-hero { min-height: 0; padding-top: 150px; }
   .p-intro__grid { grid-template-columns: 1fr; justify-items: center; gap: 40px; }
   .p-intro__grid > div:last-child { justify-self: stretch; }
+  .p-intro__grid .tilt { order: 2; }
   .stats { gap: 24px; margin-top: 64px; }
-  .stat strong { font-size: 24px; line-height: 36px; }
+  .stat strong { font-size: clamp(22px, 3vw, 28px); line-height: 1.36; }
   .uses__grid { grid-template-columns: 1fr 1fr; }
-  .note::before { transform: rotate(-.7deg) translate(-8px, 8px); }
+  .note::before { transform: translate(10px, 10px); }
+  .note { margin: 0 10px 10px 0; }
+  .p-secure__grid { grid-template-columns: 1fr; grid-template-areas: "title" "list" "photo" "card"; grid-template-rows: none; }
+  .p-secure .tilt { justify-self: center; margin-top: 40px; }
+  .p-secure .p-card { margin-top: 40px; }
+  .indep__top, .indep__card { grid-template-columns: 1fr; gap: 24px; }
+  .indep__card { gap: 12px; }
+  .indep__card strong { max-width: none; }
+  .p-ltv__lead { margin-top: 48px; font-size: 26px; line-height: 38px; }
+  .process__grid { grid-template-columns: 1fr 1fr; }
+  .step { min-height: 0; }
+  .contact .wrap { grid-template-columns: 1fr; row-gap: 40px; }
+  .contact__phone { margin-top: 32px; }
+  /* długość wiersza ≤ ~80 znaków przy jednej kolumnie */
+  .p-intro p, .indep__top p, .p-card p, .indep__card p { max-width: 640px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__about { grid-column: 1 / -1; }
 }
@@ -178,20 +311,37 @@ strong { font-weight: 700; }
   .nav__logo img { width: 110px; }
   .p-hero { padding: 120px 0 56px; }
   .p-hero h1 { font-size: 34px; line-height: 44px; }
-  .p-intro, .uses { padding-top: 56px; padding-bottom: 56px; }
+  .p-intro, .uses, .p-secure, .p-ltv, .process, .a-cta, .faq, .contact { padding-top: 56px; padding-bottom: 56px; }
   .h2 { font-size: 26px; line-height: 36px; }
   .stats { grid-template-columns: 1fr; gap: 28px; margin-top: 48px; }
   .stats::before { display: none; }
   .stat { display: grid; grid-template-columns: 50px 1fr; column-gap: 20px; align-items: start; }
   .stat::before { grid-row: 1 / 3; margin: 0; }
+  .stat strong { font-size: 28px; line-height: 36px; }
   .stat span { margin-top: 2px; }
   .uses__grid { grid-template-columns: 1fr; }
   .use { padding: 24px 20px 26px; }
   .use::before { margin-bottom: 14px; }
   .use h3 { font-size: 21px; line-height: 30px; }
-  .note { grid-column: auto; padding: 28px 20px; }
-  .note::before { transform: rotate(-1.6deg) translate(-5px, 6px); }
-  .note strong { font-size: 20px; line-height: 30px; }
+  .note { grid-column: auto; padding: 28px 20px; margin: 0 8px 8px 0; }
+  .note::before { transform: translate(8px, 8px); }
+  .note strong, .p-card strong { font-size: 20px; line-height: 30px; }
+  .p-secure__list { margin-top: 32px; }
+  .p-secure .tilt { margin-top: 24px; }
+  .p-secure .p-card { margin-top: 24px; }
+  .p-card, .indep__card { padding: 24px 20px; }
+  .p-ltv__lead { margin-top: 40px; font-size: 21px; line-height: 32px; }
+  .indep__card { margin-top: 40px; }
+  .indep__card strong { font-size: 20px; line-height: 30px; }
+  .p-bik { padding: 64px 0; }
+  .process__grid { grid-template-columns: 1fr; }
+  .step { padding: 24px 20px 26px; }
+  .a-band { height: 200px; }
+  .cta__box { padding: 48px 20px; }
+  .cta__box h2 { font-size: 22px; line-height: 32px; }
+  .cta__box .btns { gap: 15px; }
+  .contact__phone a { font-size: 28px; }
+  .form { grid-template-columns: 1fr; padding: 20px; }
   .btns .btn { flex: 1 1 auto; }
   .footer__grid { grid-template-columns: 1fr; gap: 28px; }
   .footer__bottom { flex-direction: column; align-items: flex-start; padding-top: 24px; margin-top: 28px; }
@@ -224,7 +374,7 @@ strong { font-weight: 700; }
       <h1>Pożyczki hipoteczne</h1>
       <div class="btns">
         <a href="tel:+48601200302" class="btn btn--light">Zadzwoń</a>
-        <a href="kontakt3.html#formularz" class="btn btn--outline">Umów rozmowę</a>
+        <a href="#kontakt" class="btn btn--outline">Umów rozmowę</a>
       </div>
     </div>
   </section>
@@ -233,17 +383,17 @@ strong { font-weight: 700; }
   <section class="p-intro">
     <div class="wrap">
       <div class="p-intro__grid">
-        <figure class="tilt reveal"><img src="assets/home3/fast-bg.jpg" alt="" width="1875" height="2500"></figure>
+        <figure class="tilt reveal"><img src="assets/pozyczki/kamienica.jpg" alt="Kamienica w ciepłym świetle zachodzącego słońca" width="960" height="1277"></figure>
         <div class="reveal">
           <h2 class="h2">Finansowanie zabezpieczone nieruchomością</h2>
           <p>Planujesz inwestycję, potrzebujesz kapitału na bieżącą działalność albo szukasz finansowania pomostowego? Jeśli dysponujesz nieruchomością, możesz wykorzystać jej wartość, aby pozyskać dodatkowe środki dla firmy. Pożyczka hipoteczna może być alternatywą dla kredytu bankowego, szczególnie gdy liczy się czas lub standardowe finansowanie nie jest dostępne.</p>
-          <p>Pomagamy przedsiębiorcom i spółkom znaleźć finansowanie pod zastaw nieruchomości. Sprawdzamy oferty banków, funduszy i firm pożyczkowych, zamiast ograniczać się do jednej instytucji. Przy wyborze źródła kapitału uwzględniamy wartość i stan prawny nieruchomości, potrzebną kwotę oraz plan spłaty zobowiązania.</p>
-          <a href="kontakt3.html#formularz" class="btn btn--light">Sprawdź możliwości finansowania</a>
+          <p>Pomagamy przedsiębiorcom i&nbsp;spółkom znaleźć finansowanie pod zastaw nieruchomości. Sprawdzamy oferty banków, funduszy i&nbsp;firm pożyczkowych, zamiast ograniczać się do jednej instytucji. Przy wyborze źródła kapitału uwzględniamy wartość i&nbsp;stan prawny nieruchomości, potrzebną kwotę oraz plan spłaty zobowiązania.</p>
+          <a href="#kontakt" class="btn btn--light">Sprawdź możliwości finansowania</a>
         </div>
       </div>
       <ul class="stats">
         <li class="stat reveal"><strong>2–5 dni roboczych</strong><span>tyle najczęściej trwa proces finansowania pozabankowego</span></li>
-        <li class="stat reveal"><strong><small>nawet</small> 48 godzin</strong><span>w wyjątkowo pilnych sprawach</span></li>
+        <li class="stat reveal"><strong><small>nawet</small> 48&nbsp;godzin</strong><span>w&nbsp;wyjątkowo pilnych sprawach</span></li>
         <li class="stat reveal"><strong>6–24 miesiące</strong><span>najczęstszy okres finansowania pozabankowego</span></li>
       </ul>
     </div>
@@ -254,15 +404,126 @@ strong { font-weight: 700; }
     <div class="wrap">
       <h2 class="h2 reveal">Na co możesz przeznaczyć środki?</h2>
       <div class="uses__grid">
-        <article class="use reveal"><h3>Bieżąca działalność</h3><p>Płynność, zakup towaru i bieżące zobowiązania firmy.</p></article>
+        <article class="use reveal"><h3>Bieżąca działalność</h3><p>Płynność, zakup towaru i&nbsp;bieżące zobowiązania firmy.</p></article>
         <article class="use reveal"><h3>Inwestycje</h3><p>Zakup nieruchomości, gruntu lub rozwój przedsiębiorstwa.</p></article>
         <article class="use reveal"><h3>Projekty deweloperskie</h3><p>Zakup działki, rozpoczęcie inwestycji lub kolejny etap realizacji.</p></article>
         <article class="use reveal"><h3>Spłata zobowiązań</h3><p>Uporządkowanie obecnego zadłużenia lub finansowanie pomostowe.</p></article>
         <aside class="note reveal">
-          <p><strong>W tym przypadku istotny jest realny plan spłaty.</strong></p>
-          <p>Już na początku ustalamy, z jakiego źródła zobowiązanie będzie mogło zostać później spłacone.</p>
+          <p><strong>W&nbsp;tym przypadku istotny jest realny plan spłaty.</strong></p>
+          <p>Już na początku ustalamy, z&nbsp;jakiego źródła zobowiązanie będzie mogło zostać później spłacone.</p>
+          <a href="#kontakt" class="btn btn--dark">Umów rozmowę</a>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <!-- 04 ZABEZPIECZENIE -->
+  <section class="p-secure">
+    <div class="wrap p-secure__grid">
+      <h2 class="h2 reveal">Jakie nieruchomości mogą stanowić zabezpieczenie?</h2>
+      <ul class="p-secure__list">
+        <li class="prep__item reveal"><h3>Mieszkalne</h3><p>Mieszkania, domy, kamienice i&nbsp;budynki mieszkalne.</p></li>
+        <li class="prep__item reveal"><h3>Komercyjne</h3><p>Lokale użytkowe, biura, hale, magazyny i&nbsp;obiekty hotelarskie.</p></li>
+        <li class="prep__item reveal"><h3>Grunty</h3><p>Działki budowlane i&nbsp;tereny przeznaczone pod inwestycje.</p></li>
+      </ul>
+      <figure class="tilt tilt--alt reveal"><img src="assets/pozyczki/komercyjne-wiezowce-noc.jpg" alt="Biurowce w Warszawie w złotym świetle zachodu" width="1100" height="1375" loading="lazy"></figure>
+      <aside class="p-card mark-text reveal">
+        <p><strong>Najważniejszy jest uregulowany stan prawny nieruchomości.</strong></p>
+        <p>Księga wieczysta pozwala zweryfikować jej sytuację prawną przed ustanowieniem hipoteki.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 05 ILE MOŻNA POŻYCZYĆ -->
+  <section class="p-ltv">
+    <div class="wrap">
+      <div class="indep__top">
+        <h2 class="h2 reveal">Ile można pożyczyć pod zastaw nieruchomości?</h2>
+        <p class="mark-text reveal">Wysokość finansowania zależy przede wszystkim od wartości i&nbsp;rodzaju nieruchomości. Znaczenie mają również warunki konkretnej instytucji, dlatego nie każda nieruchomość pozwoli uzyskać taką samą kwotę pożyczki.</p>
+      </div>
+      <p class="p-ltv__lead reveal">W&nbsp;sektorze pozabankowym wskaźnik LTV najczęściej wynosi około <span class="gold-text">40–60%</span> wartości zabezpieczenia.</p>
+      <div class="p-ltv__bar reveal" aria-hidden="true"><i></i><b></b><i></i></div>
+      <aside class="indep__card reveal">
+        <p class="mark-text"><strong>Ocena nie opiera się wyłącznie na zdolności kredytowej.</strong></p>
+        <p>Przy finansowaniu pozabankowym pod uwagę bierzemy również wartość i&nbsp;płynność nieruchomości. Jeśli zabezpieczenie jest atrakcyjne dla pożyczkodawcy, formalna zdolność kredytowa może mieć mniejszą wagę. Nadal jednak istotne jest to, czy przedsiębiorca będzie w&nbsp;stanie spłacić zobowiązanie.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 06 BIK / KRD -->
+  <section class="p-bik">
+    <div class="p-bik__bg" aria-hidden="true"></div>
+    <div class="wrap reveal">
+      <h2 class="h2">BIK lub KRD nie zawsze oznaczają odmowę</h2>
+      <p>Masz słabszą historię kredytową, opóźnienia w&nbsp;spłatach lub wpisy w&nbsp;KRD? Nie musi to przekreślać Twoich szans na finansowanie pozabankowe.</p>
+      <p>W&nbsp;takich sytuacjach instytucje finansujące analizują również wartość zabezpieczenia i&nbsp;możliwość późniejszej spłaty zobowiązania. Sprawdzimy, które podmioty mogą rozważyć finansowanie Twojej firmy mimo trudniejszej sytuacji kredytowej.</p>
+      <div class="btns">
+        <a href="tel:+48601200302" class="btn btn--light">Zadzwoń</a>
+        <a href="#kontakt" class="btn btn--outline">Umów rozmowę</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 PROCES -->
+  <section class="process">
+    <div class="wrap">
+      <h2 class="h2 reveal">Jak wygląda proces?</h2>
+      <ol class="process__grid">
+        <li class="step reveal"><span class="step__no">1</span><h3>Analizujemy sprawę</h3><p>Ustalamy kwotę, cel finansowania, zabezpieczenie i&nbsp;plan spłaty.</p></li>
+        <li class="step reveal"><span class="step__no">2</span><h3>Sprawdzamy rynek</h3><p>Weryfikujemy możliwości dostępne w&nbsp;bankach, funduszach i&nbsp;firmach pożyczkowych.</p></li>
+        <li class="step reveal"><span class="step__no">3</span><h3>Kompletujemy dokumenty</h3><p>Wskazujemy, co trzeba przygotować do dalszej analizy.</p></li>
+        <li class="step reveal"><span class="step__no">4</span><h3>Finalizujemy finansowanie</h3><p>Po akceptacji warunków dochodzi do zawarcia umowy i&nbsp;wypłaty środków.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="a-band" aria-hidden="true"></div>
+  <section class="a-cta">
+    <div class="wrap">
+      <div class="cta__box reveal">
+        <h2>Chcesz sprawdzić możliwości finansowania pod swoją nieruchomość?</h2>
+        <p>Podaj potrzebną kwotę, rodzaj nieruchomości, lokalizację i&nbsp;jej przybliżoną wartość w&nbsp;formularzu na naszej stronie, a&nbsp;skontaktujemy się z&nbsp;Tobą.</p>
+        <div class="btns">
+          <a href="tel:+48601200302" class="btn btn--outline-dark">Zadzwoń</a>
+          <a href="#kontakt" class="btn btn--dark">Umów rozmowę</a>
+        </div>
+        <a href="tel:+48601200302" class="phone-row"><img src="assets/home3/icon-phone-dark.svg" alt="" width="20" height="20" loading="lazy">+48 601 200 302</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 FAQ -->
+  <section class="faq">
+    <div class="wrap">
+      <h2 class="h2 reveal">FAQ – najczęściej zadawane pytania</h2>
+      <div class="faq__list">
+        <div class="faq__item reveal"><h3>Czy muszę mieć operat szacunkowy?</h3><p>Najczęściej nie. Wycenę zwykle organizuje podmiot udzielający finansowania.</p></div>
+        <div class="faq__item reveal"><h3>Jak długo trwa proces?</h3><p>Najczęściej od 2&nbsp;do 5&nbsp;dni roboczych. W&nbsp;pilnych przypadkach może zamknąć się nawet w&nbsp;48&nbsp;godzin.</p></div>
+        <div class="faq__item reveal"><h3>Czy ustanowienie hipoteki oznacza utratę nieruchomości?</h3><p>Nie. Hipoteka stanowi zabezpieczenie spłaty zobowiązania i&nbsp;nie oznacza przeniesienia własności.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 KONTAKT (makieta — bez wysyłki) -->
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <div class="contact__info reveal">
+        <h2 class="h2">Porozmawiajmy o&nbsp;finansowaniu Twojej firmy</h2>
+        <p>Masz nieruchomość i&nbsp;potrzebujesz dodatkowego kapitału? Przedstaw nam jej podstawowe dane i&nbsp;kwotę, którą chcesz pozyskać. Sprawdzimy dostępne źródła finansowania i&nbsp;pomożemy Ci wybrać kierunek odpowiedni do sytuacji Twojej firmy.</p>
+        <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48601200302">+48 601 200 302</a></div>
+      </div>
+      <form class="form reveal" action="#" onsubmit="return false" novalidate aria-label="Formularz kontaktowy (makieta)">
+        <div class="field"><label for="f-name">Imię*</label><input id="f-name" type="text" autocomplete="off"></div>
+        <div class="field"><label for="f-phone">Telefon*</label><input id="f-phone" type="tel" autocomplete="off"></div>
+        <div class="field"><label for="f-mail">E-mail*</label><input id="f-mail" type="email" autocomplete="off"></div>
+        <div class="field"><label for="f-amount">Potrzebna kwota</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
+        <div class="field"><label for="f-type">Rodzaj nieruchomości</label><select id="f-type"><option value="">Wybierz</option><option>Mieszkalne</option><option>Komercyjne</option><option>Grunty</option></select></div>
+        <div class="field"><label for="f-place">Lokalizacja</label><input id="f-place" type="text" autocomplete="off"></div>
+        <div class="field field--full"><label for="f-value">Przybliżona wartość nieruchomości</label><input id="f-value" type="text" autocomplete="off"></div>
+        <p class="consent__title">Zgoda na przetwarzanie danych osobowych</p>
+        <label class="consent"><input type="checkbox"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a href="polityka-prywatnosci.html">polityką prywatności</a>.*</span></label>
+        <button type="button" class="btn btn--light">Skontaktuj się z&nbsp;nami</button>
+      </form>
     </div>
   </section>
 
