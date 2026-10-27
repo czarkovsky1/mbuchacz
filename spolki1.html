@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Spółki1 – Dla spółek i JDG | Monolith Finance</title>
+<meta name="description" content="Sprawdzimy, jakie możliwości finansowania są dostępne dla Twojej spółki lub JDG. Porównujemy oferty banków, funduszy i firm pożyczkowych, zamiast proponować pierwszy dostępny produkt.">
+<link rel="icon" href="assets/monolith/favicon-32.webp" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/monolith/favicon-180.webp">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@300;400;700&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens (1:1 z monolith-finance.pl, motyw Kadence) ===== */
+:root {
+  --green-1: #143836;
+  --green-2: #102423;
+  --green-grad: linear-gradient(180deg, var(--green-1) 0%, var(--green-2) 100%);
+  --green-grad-up: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%);
+  --card: #e9e9e9;
+  --text: #333;
+  --teal: #256d69;
+  --gold-stops: #8f774b 0%, #b19563 18%, #dec38e 36%, #fadfaa 46%, #c6ac79 62%, #9e8252 76%, #886839 85%, #78592b 100%; /* stopnie z icon-mark.svg */
+  --gold-light: #dec38e;
+  --line: rgba(255,255,255,.3);
+  --nav-top: 20px;
+  --nav-h: 72px;
+  --max: 1210px;
+  --gutter: 40px;
+  --f-display: 'Space Grotesk', sans-serif;
+  --f-ui: 'Montserrat', sans-serif;
+  --f-body: 'Open Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-top) + var(--nav-h) + 20px); }
+body { font: 300 16px/26.72px var(--f-body); color: #fff; background: var(--green-2); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 700; }
+.wrap { width: min(var(--max), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
+.h2 { font: 700 34px/51px var(--f-display); }
+.lead { font-size: 18px; line-height: 30px; }
+main p { text-wrap: pretty; }
+.h2, .s-need h3, .s-opt h3, .s-type h3, .p-step h3, .faq__item h3, .cta__title { text-wrap: balance; }
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 16px 24px; border: 0; border-radius: 50px;
+  font: 700 16px/20px var(--f-display); white-space: nowrap; cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--dark { background: var(--green-grad); color: #fff; box-shadow: 2px 2px 8px rgba(20,56,54,.15); }
+.btn--dark:hover { box-shadow: 0 6px 18px rgba(16,36,35,.35); }
+.btn--light { background: #fff; color: var(--green-1); border: 1.6px solid #fff; padding: 14.4px 22.4px; }
+.btn--light:hover { box-shadow: 0 6px 18px rgba(0,0,0,.25); }
+.btn--outline { border: 1.6px solid #fff; color: #fff; padding: 14.4px 22.4px; }
+.btn--outline:hover { background: rgba(255,255,255,.08); }
+.btn--outline-dark { border: 1.6px solid var(--green-1); color: var(--green-1); padding: 14.4px 22.4px; }
+.btn--outline-dark:hover { background: rgba(20,56,54,.06); }
+.btns { display: flex; flex-wrap: wrap; gap: 15px; }
+.phone-row { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font: 700 18px/30.06px var(--f-display); white-space: nowrap; }
+.phone-row img { width: 20px; height: 20px; }
+
+/* ===== NAV — pływająca belka ===== */
+.nav { position: fixed; top: var(--nav-top); left: 0; right: 0; z-index: 100; pointer-events: none; }
+.nav__bar { position: relative; pointer-events: auto; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; background: #fff; border-radius: 50px; padding: 10px 10px 10px 20px; }
+.nav__logo img { width: 125px; }
+.nav__menu { display: flex; gap: 30px; list-style: none; }
+.nav__menu a { display: block; padding: 10px 0; font: 300 16px/20px var(--f-display); letter-spacing: .16px; color: var(--text); transition: color .2s; }
+.nav__menu a:hover, .nav__menu a[aria-current="page"] { color: var(--teal); }
+.nav__burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
+.nav__burger span, .nav__burger::before, .nav__burger::after { content: ""; position: absolute; left: 10px; right: 10px; height: 2px; background: var(--green-1); transition: transform .25s, opacity .25s; }
+.nav__burger::before { top: 15px; } .nav__burger span { top: 21px; } .nav__burger::after { top: 27px; }
+.nav.is-open .nav__burger::before { transform: translateY(6px) rotate(45deg); }
+.nav.is-open .nav__burger span { opacity: 0; }
+.nav.is-open .nav__burger::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* ===== 01 HERO (identycznie jak pozyczki4) ===== */
+.p-hero { position: relative; min-height: 436px; padding: 182px 0 80px; overflow: hidden; }
+.p-hero__bg { position: absolute; inset: 0; background: url(assets/monolith/hero-warszawa.webp) center / cover no-repeat; }
+.p-hero__bg::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.25); }
+.p-hero .wrap { position: relative; }
+.p-hero h1 { font: 700 48px/67.2px var(--f-display); text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+.p-hero .btns { margin-top: 24px; }
+
+/* ===== 02 INTRO — tekst + przedsiębiorca w przechylonej karcie na złotej płycie ===== */
+.s-intro { position: relative; z-index: 1; background: var(--green-grad); padding: 80px 0 80px; }
+.s-intro__grid { display: grid; grid-template-columns: 1fr 480px; gap: 90px; align-items: start; }
+.s-intro__copy { max-width: 620px; }
+.s-intro__copy .lead { max-width: 600px; }
+.s-intro__copy h2 + p { margin-top: 24px; }
+.s-intro .btn { margin-top: 36px; }
+
+/* karta wychodzi na hero — jak w pozyczki4 */
+.p-visual { position: relative; width: 480px; aspect-ratio: 4 / 5; margin-top: -210px; }
+.p-visual::before { content: ""; position: absolute; left: 0; bottom: 0; width: 84%; height: 86%; border-radius: 16px; background: linear-gradient(222deg, var(--gold-stops)); transform: rotate(-5deg); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.p-visual__img { position: absolute; right: 0; top: 0; width: 86%; height: 90%; overflow: hidden; border-radius: 20px; background: var(--green-1); transform: rotate(3deg); box-shadow: 0 24px 60px rgba(0,0,0,.45); transition: transform .6s ease; }
+.p-visual__img img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; filter: brightness(.94) contrast(1.04); }
+/* przyciemnienie prześwietlonego sufitu magazynu — górna krawędź karty nie rozpływa się na jasnym niebie hero */
+.p-visual__img::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, rgba(16,36,35,.34) 0%, rgba(16,36,35,0) 40%); pointer-events: none; }
+.p-visual:hover .p-visual__img { transform: rotate(1deg); }
+
+/* ===== 03 Z CZYM MOŻESZ SIĘ ZGŁOSIĆ — 4 jasne karty + callout na pasku zdjęcia ===== */
+.s-needs { background: var(--green-grad-up); padding: 80px 0 0; }
+.s-needs > .wrap { padding-bottom: 100px; }
+.s-needs h2 { text-align: center; }
+/* subgrid: ikona / tytuł / opis w każdej karcie leżą na wspólnych liniach rzędu */
+.s-needs__grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto auto auto; gap: 20px; margin-top: 40px; }
+.s-need { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; background: var(--card); border-radius: 20px; padding: 30px 24px 32px; color: var(--green-1); transition: transform .3s ease, box-shadow .3s ease; }
+.s-need:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.s-need::before { content: ""; width: 25px; height: 25px; margin-bottom: 56px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.s-need h3 { font: 700 23px/32px var(--f-display); color: #112625; }
+.s-need p { line-height: 24px; color: rgba(17,38,37,.9); margin-top: 10px; }
+
+/* pasek zdjęcia + biały box CTA nachodzący na pasek */
+.s-band { position: relative; height: 380px; background: url(assets/spolki/transport-ciezarowki.jpg) center 72% / cover no-repeat; }
+.s-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,56,54,.55) 0%, rgba(16,36,35,.14) 42%, rgba(16,36,35,.22) 100%); }
+.s-cta { background: var(--green-grad); padding: 0 0 80px; }
+.cta__box { position: relative; background: #fff; border-radius: 20px; padding: 80px 30px 70px; text-align: center; color: var(--green-1); display: flex; flex-direction: column; align-items: center; }
+.s-cta .cta__box { margin-top: -170px; box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+.cta__title { font: 700 32px/46px var(--f-display); max-width: 820px; }
+.cta__box .lead { max-width: 620px; margin-top: 20px; color: #2a3d3c; text-wrap: pretty; }
+.cta__box .btns { justify-content: center; gap: 29px; margin-top: 40px; }
+.cta__box .phone-row { margin-top: 22px; }
+
+/* ===== 04 MOŻLIWOŚCI — poziomy pas z cienkimi liniami (jak rząd metryk w pozyczki4) ===== */
+.s-opts { background: var(--green-grad-up); padding: 80px 0; }
+.s-opts h2 { text-align: center; }
+.s-opts__list { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 40px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.s-opt { border-left: 1px solid var(--line); padding: 28px 22px 32px; }
+.s-opt:first-child { border-left: 0; padding-left: 0; }
+.s-opt:last-child { padding-right: 0; }
+.s-opt h3 { font: 700 22px/30px var(--f-display); }
+.s-opt h3::before { content: ""; display: block; width: 25px; height: 25px; margin-bottom: 40px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.s-opt a { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; transition: color .25s ease; }
+.s-opt__go { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.45); border-radius: 50%; transition: background .25s ease, border-color .25s ease, transform .25s ease; }
+.s-opt__go svg { width: 18px; height: 18px; }
+.s-opt a:hover { color: var(--gold-light); }
+.s-opt a:hover .s-opt__go { background: #fff; border-color: #fff; color: var(--green-1); transform: translateX(4px); }
+
+/* ===== 05 MASZ JUŻ FINANSOWANIE — zdjęcie + tekst + karta na złotej płycie ===== */
+.s-refi { background: var(--green-grad); padding: 80px 0 100px; }
+.s-refi__grid { display: grid; grid-template-columns: 480px 1fr; gap: 90px; align-items: center; }
+.s-refi__copy { grid-column: 2; grid-row: 1; }
+.s-refi__photo { grid-column: 1; grid-row: 1; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 20px; background: var(--green-1); box-shadow: 0 24px 60px rgba(0,0,0,.35); }
+.s-refi__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; }
+.s-refi__copy .lead { max-width: 600px; margin-top: 24px; }
+.s-check { position: relative; width: calc(100% - 14px); max-width: 586px; margin-top: 40px; }
+.s-check::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border-radius: 20px; background: linear-gradient(135deg, var(--gold-stops)); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.s-check__card { position: relative; background: #fafafa; border-radius: 20px; padding: 30px 40px 32px 34px; color: var(--text); }
+.s-check__card > p strong { font: 700 20px/30px var(--f-display); color: #112625; }
+.s-check ul { list-style: none; display: grid; gap: 10px; margin-top: 14px; }
+.s-check li { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; line-height: 26px; }
+.s-check li::before { content: ""; width: 18px; height: 18px; margin-top: 4px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+
+/* ===== 06 SPÓŁKA CZY JDG — 2 karty ze zdjęciem ===== */
+.s-types { background: var(--green-grad-up); padding: 80px 0 100px; }
+.s-types h2 { text-align: center; }
+.s-types__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; list-style: none; }
+.s-type { display: flex; flex-direction: column; overflow: hidden; background: var(--card); border-radius: 20px; color: var(--green-1); transition: transform .3s ease, box-shadow .3s ease; }
+.s-type:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+.s-type__img { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--green-1); }
+/* wspólna obróbka obu zdjęć — HDR Warszawy i dzienny warsztat w jednej, spokojnej tonacji */
+.s-type__img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(16,36,35,0) 50%, rgba(16,36,35,.22)); pointer-events: none; }
+.s-type__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.s-type:hover .s-type__img img { transform: scale(1.05); }
+.s-type--co img { object-position: 50% 62%; filter: saturate(.8) contrast(.96); }
+.s-type--jdg img { object-position: 58% 40%; transform: scale(1.22); transform-origin: 60% 42%; filter: saturate(.9) brightness(.96); }
+.s-type:hover.s-type--jdg .s-type__img img { transform: scale(1.28); }
+.s-type__body { padding: 30px 32px 34px; }
+.s-type h3 { font: 700 23px/32px var(--f-display); color: #112625; }
+.s-type p { line-height: 24px; color: rgba(17,38,37,.9); margin-top: 10px; max-width: 470px; }
+
+/* ===== 07 WSPÓŁPRACA — oś czasu na fotograficznym tle (jak .p-bik w pozyczki4) ===== */
+.p-process { position: relative; overflow: hidden; padding: 110px 0; }
+.p-process__bg { position: absolute; inset: 0; background: url(assets/spolki/inwestycja-dzwigi.jpg) center 62% / cover no-repeat; }
+.p-process__bg::after { content: ""; position: absolute; inset: 0; background: var(--green-grad); opacity: .9; }
+.p-process .wrap { position: relative; }
+.p-process h2 { text-align: center; }
+.p-steps { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto auto; gap: 0 60px; margin-top: 48px; list-style: none; }
+.p-steps::before { content: ""; position: absolute; left: 0; right: 14px; top: 27px; height: 1px; background: #fff; }
+.p-steps::after { content: ""; position: absolute; right: 0; top: 27px; transform: translateY(-50%); border-left: 16px solid #fff; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+.p-step { position: relative; display: grid; grid-row: span 3; grid-template-rows: subgrid; align-content: start; }
+.p-step__no { position: relative; display: grid; place-items: center; width: 56px; height: 55px; padding: 0 4px 4px 0; background: url(assets/monolith/timeline-plate.png) center / contain no-repeat; font: 700 20px/1 var(--f-display); color: var(--green-1); }
+.p-step h3 { font: 700 20px/30px var(--f-display); margin-top: 28px; align-self: start; }
+.p-step p { line-height: 24px; margin-top: 10px; max-width: 330px; }
+
+/* ===== 08 FAQ — otwarta lista (jak w pozyczki4) ===== */
+.p-faq { background: var(--green-grad-up); padding: 80px 0; }
+.p-faq .wrap { display: grid; grid-template-columns: 420px 1fr; gap: 40px 80px; align-items: start; }
+.faq__item { padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,.3); margin-bottom: 24px; }
+.faq__item:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.faq__item h3 { font: 700 20px/30px var(--f-display); }
+.faq__item p { max-width: 600px; line-height: 24px; margin-top: 14px; }
+
+/* ===== 09 KONTAKT (makieta — bez wysyłki) ===== */
+.contact { background: var(--green-grad); padding: 80px 0 100px; }
+/* przy 1210 px daje 589 + 32 + 589 jak w WP, a węższy kontener dzieli się po równo (bez wystawania formularza) */
+.contact .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
+.contact__info .lead { max-width: 560px; margin-top: 20px; }
+.contact__phone { margin-top: 40px; }
+.contact__phone small { display: block; font: 700 16px/28px var(--f-body); }
+.contact__phone a { display: inline-flex; align-items: center; min-height: 44px; font: 700 28px/38px var(--f-display); white-space: nowrap; }
+
+.form { background: rgba(0,0,0,.1); border-radius: 20px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field--full { grid-column: 1 / -1; }
+.field label { font: 500 14px/19.6px var(--f-ui); }
+.field input, .field select, .field textarea {
+  height: 46px; width: 100%; padding: 11px 16px; border-radius: 15px; border: 1px solid rgba(255,255,255,.35);
+  background-color: rgba(255,255,255,.1); color: #fff; font: 300 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background-color .2s;
+}
+.field textarea { height: 96px; resize: none; }
+.field select { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer; color: rgba(255,255,255,.8);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23fff' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center; background-size: 12px 8px; }
+.field select option { color: var(--green-1); background: #fff; }
+.field input::placeholder { color: rgba(255,255,255,.8); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(255,255,255,.6); background-color: rgba(255,255,255,.14); }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.consent__title { grid-column: 1 / -1; font: 500 14px/19.6px var(--f-ui); }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; }
+.consent input { width: 13px; height: 13px; margin-top: 4px; flex: none; accent-color: var(--green-1); }
+.consent input:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.consent span { font: 300 13px/20px var(--f-body); color: rgba(255,255,255,.8); }
+.consent a { text-decoration: underline; }
+.form .btn { grid-column: 1 / -1; justify-self: start; line-height: 25.6px; padding: 16px 24px; border: 0; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--green-grad-up); border-top: .8px solid rgba(255,255,255,.3); padding: 65px 0 40px; }
+.footer__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.footer__logo img { width: 125px; }
+.footer__about p { margin-top: 20px; max-width: 324px; line-height: 24px; }
+.footer__phone { display: inline-flex; align-items: center; gap: 5px; margin-top: 20px; font: 700 20px/26px var(--f-display); }
+.footer__phone img { width: 20px; height: 20px; }
+.footer__title { font: 700 15px/19.5px var(--f-display); text-transform: uppercase; margin-bottom: 19px; }
+.footer ul { list-style: none; display: grid; gap: 5px; }
+.footer li a { font: 300 15px/19.95px var(--f-body); color: rgba(255,255,255,.7); transition: color .2s; }
+.footer li a:hover, .footer li a[aria-current="page"] { color: #fff; }
+.footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; margin-top: 35px; padding: 47px 0 18px; border-top: .8px solid rgba(255,255,255,.3); line-height: 24px; }
+.footer__bottom a { display: inline-flex; align-items: center; gap: 10px; }
+.footer__bottom img { width: 50px; }
+
+/* ===== Reveal on scroll (tylko z JS — bez skryptu treść zostaje widoczna) ===== */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; transition-delay: var(--d, 0s); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+/* karty: wejście z kaskadą (--d dla opacity i transform), po zakończeniu (.is-done) szybki hover */
+.s-need.reveal.is-in, .s-type.reveal.is-in { transition: opacity .8s ease var(--d, 0s), transform .8s ease var(--d, 0s), box-shadow .3s ease; }
+.s-need.reveal.is-in.is-done, .s-type.reveal.is-in.is-done { transition: transform .3s ease, box-shadow .3s ease; }
+/* .reveal.is-in { transform: none } stoi niżej niż :hover kart — bez tej reguły podniesienie kart nie działa */
+.s-need.reveal.is-in:hover, .s-type.reveal.is-in:hover { transform: translateY(-6px); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .s-need:hover, .s-type:hover, .s-need.reveal.is-in:hover, .s-type.reveal.is-in:hover, .s-type:hover .s-type__img img, .btn:hover, .s-opt a:hover .s-opt__go { transform: none; }
+  .s-type:hover.s-type--jdg .s-type__img img { transform: scale(1.22); }
+  .p-visual:hover .p-visual__img { transform: rotate(3deg); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .nav__menu { gap: 20px; }
+  .nav__menu a { font-size: 15px; }
+  .s-intro__grid { grid-template-columns: 1fr 420px; gap: 48px; }
+  .p-visual { width: 420px; margin-top: -180px; }
+  .s-needs__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .s-need { padding-inline: 28px; }
+  .s-opt { padding: 26px 18px 30px; }
+  .s-opt h3 { font-size: 20px; line-height: 28px; }
+  .p-faq .wrap { grid-template-columns: 360px 1fr; gap: 40px 56px; }
+  .s-refi__grid { grid-template-columns: 420px 1fr; gap: 56px; }
+}
+@media (max-width: 1024px) {
+  :root { --gutter: 24px; }
+  .nav__burger { display: block; }
+  .nav__menu {
+    position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; gap: 0;
+    background: #fff; border-radius: 20px; padding: 10px 24px; box-shadow: 0 12px 30px rgba(0,0,0,.2);
+    transform: translateY(-8px); opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .25s, transform .25s, visibility 0s .25s;
+  }
+  .nav__menu a { padding: 12px 0; font-size: 16px; }
+  .nav.is-open .nav__menu { opacity: 1; transform: none; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+  .nav .btn { margin-left: auto; }
+
+  .p-hero { min-height: 0; padding-top: 150px; }
+  .s-intro { padding-bottom: 80px; }
+  .s-intro__grid { grid-template-columns: 1fr; gap: 56px; }
+  .s-intro__copy { max-width: 640px; }
+  .p-visual { width: min(420px, 80%); margin: 0 auto; }
+  .s-needs > .wrap { padding-bottom: 80px; }
+  .s-need { padding-inline: 24px; }
+  .s-band { height: 320px; }
+  .s-cta .cta__box { margin-top: -130px; }
+  .cta__box { padding: 64px 30px 58px; }
+
+  .s-opts__list { display: block; border-bottom: 0; }
+  .s-opt, .s-opt:first-child, .s-opt:last-child { border-left: 0; border-bottom: 1px solid var(--line); padding: 0; }
+  .s-opt h3 { display: grid; grid-template-columns: 25px 1fr; align-items: center; column-gap: 28px; min-height: 76px; padding: 18px 0; font-size: 22px; line-height: 30px; }
+  .s-opt h3::before { margin-bottom: 0; }
+  .s-opt a { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; }
+
+  .p-faq .wrap { grid-template-columns: 1fr; }
+  .s-refi { padding-bottom: 80px; }
+  .s-refi__grid { grid-template-columns: 1fr; gap: 0; }
+  .s-refi__copy { display: contents; }
+  .s-refi__copy h2 { order: 1; }
+  .s-refi__copy .lead { order: 2; max-width: 640px; }
+  .s-refi__photo { grid-column: auto; grid-row: auto; order: 3; aspect-ratio: 16 / 9; margin-top: 40px; }
+  .s-refi__photo img { object-position: 40% 70%; }
+  .s-check { order: 4; width: fit-content; margin-top: -56px; margin-left: 24px; max-width: calc(100% - 38px); }
+  .s-types { padding-bottom: 80px; }
+  .s-type__body { padding: 24px 24px 28px; }
+  .s-type h3 { font-size: 21px; line-height: 30px; }
+  .p-process { padding: 80px 0; }
+  .p-steps { grid-template-columns: 1fr; grid-template-rows: none; gap: 32px; max-width: 640px; margin-inline: auto; }
+  .p-steps::before { left: 27px; right: auto; top: 0; bottom: 14px; width: 1px; height: auto; }
+  .p-steps::after { left: 27px; right: auto; top: auto; bottom: 0; transform: translateX(-50%); border-top: 16px solid #fff; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 0; }
+  .p-step { grid-row: auto; grid-template-rows: none; grid-template-columns: 56px 1fr; column-gap: 20px; }
+  .p-step__no { grid-row: 1 / 3; }
+  .p-step h3 { font-size: 20px; line-height: 30px; margin-top: 12px; align-self: auto; }
+  .p-step p { max-width: none; }
+  .p-step:last-child { padding-bottom: 28px; }
+  .contact .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .footer__about { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .s-types__grid { grid-template-columns: 1fr; gap: 16px; max-width: 560px; margin-inline: auto; }
+}
+@media (max-width: 680px) {
+  :root { --gutter: 16px; --nav-top: 12px; --nav-h: 64px; }
+  .nav .btn { display: none; }
+  .nav__bar { padding: 8px 8px 8px 16px; }
+  .nav__logo img { width: 110px; }
+  .p-hero { padding: 120px 0 56px; }
+  .p-hero h1 { font-size: 34px; line-height: 44px; }
+  .s-intro, .s-opts, .s-refi, .s-types, .p-faq, .contact { padding-top: 56px; padding-bottom: 56px; }
+  .s-needs { padding-top: 56px; }
+  .s-needs > .wrap { padding-bottom: 56px; }
+  .p-process { padding: 64px 0; }
+  .s-cta { padding-bottom: 56px; }
+  .h2 { font-size: 26px; line-height: 36px; }
+  .s-needs h2, .s-opts h2, .s-types h2, .p-process h2 { text-align: left; }
+  .lead { font-size: 17px; line-height: 28px; }
+  .s-intro__grid { gap: 48px; }
+  .p-visual { width: min(340px, 86%); margin: 0 auto; }
+  .s-needs__grid { grid-template-columns: 1fr; grid-template-rows: none; gap: 12px; margin-top: 28px; }
+  .s-need { grid-row: auto; grid-template-rows: none; grid-template-columns: 25px 1fr; column-gap: 16px; padding: 24px 20px; }
+  .s-need::before { grid-row: 1 / 3; margin: 4px 0 0; }
+  .s-need h3 { font-size: 20px; line-height: 30px; margin-top: 0; }
+  .s-need p { margin-top: 6px; }
+  .s-band { height: 220px; }
+  .s-cta .cta__box { margin-top: -80px; }
+  .cta__box { padding: 40px 20px 32px; text-align: left; align-items: flex-start; }
+  .cta__title { font-size: 22px; line-height: 32px; }
+  .cta__box .lead { font-size: 16px; line-height: 26px; margin-top: 16px; }
+  .cta__box .btns { gap: 12px; align-self: stretch; margin-top: 28px; }
+  .cta__box .phone-row { margin-top: 14px; }
+  .btns .btn { flex: 1 1 auto; }
+  .s-intro .btn { display: flex; width: 100%; padding-inline: 16px; font-size: 15px; white-space: normal; text-align: center; text-wrap: balance; }
+  .s-opts__list { margin-top: 28px; }
+  .s-opt h3 { grid-template-columns: 22px 1fr; column-gap: 18px; min-height: 68px; padding: 14px 0; font-size: 19px; line-height: 27px; }
+  .s-opt h3::before { width: 22px; height: 22px; }
+  .s-opt__go { width: 40px; height: 40px; }
+  .s-refi__photo { margin-top: 32px; aspect-ratio: 4 / 3; }
+  .s-check { margin-top: -40px; margin-left: 12px; max-width: calc(100% - 22px); }
+  .s-check::before { inset: 10px -10px -10px 10px; }
+  .s-check__card { padding: 24px 20px 26px; }
+  .s-check li { column-gap: 12px; }
+  .s-types__grid { margin-top: 28px; }
+  .s-type__img { aspect-ratio: 3 / 2; }
+  .s-type__body { padding: 20px 20px 24px; }
+  .s-type h3 { font-size: 20px; line-height: 30px; }
+  .p-steps { margin-top: 36px; }
+  .contact__phone { margin-top: 32px; }
+  .contact__phone a { font-size: 26px; line-height: 34px; }
+  .form { grid-template-columns: 1fr; padding: 20px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; padding-top: 24px; margin-top: 28px; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__bar">
+    <a href="home3.html" class="nav__logo" aria-label="Monolith Finance — strona główna"><img src="assets/monolith/logo-nav.svg" alt="Monolith Finance — Monika Buchacz" width="285" height="112"></a>
+    <nav aria-label="Główna">
+      <ul class="nav__menu" id="menu">
+        <li><a href="o-mnie.html">O mnie</a></li>
+        <li><a href="pozyczki-hipoteczne.html">Pożyczki hipoteczne</a></li>
+        <li><a href="dla-spolek-i-jdg.html" aria-current="page">Dla spółek i JDG</a></li>
+        <li><a href="private-debt.html">Private Debt</a></li>
+        <li><a href="dla-posrednikow-kredytowych.html">Współpraca</a></li>
+      </ul>
+    </nav>
+    <a href="kontakt3.html" class="btn btn--dark">Umów rozmowę</a>
+    <button class="nav__burger" type="button" aria-label="Menu" aria-controls="menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 01 HERO -->
+  <section class="p-hero">
+    <div class="p-hero__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Finansowanie dla&nbsp;spółek i&nbsp;JDG</h1>
+      <div class="btns">
+        <a href="tel:+48601200302" class="btn btn--light">Zadzwoń</a>
+        <a href="#kontakt" class="btn btn--outline">Umów rozmowę</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 INTRO -->
+  <section class="s-intro">
+    <div class="wrap s-intro__grid">
+      <div class="s-intro__copy reveal">
+        <h2 class="h2">Finansowanie dopasowane do&nbsp;sytuacji przedsiębiorstwa</h2>
+        <p class="lead">Planujesz inwestycję, realizujesz duży kontrakt albo chcesz poprawić płynność firmy? Sprawdzimy, jakie możliwości finansowania są dostępne dla Twojej spółki lub JDG. Porównujemy oferty banków, funduszy i&nbsp;firm pożyczkowych, zamiast proponować pierwszy dostępny produkt. Zaczynamy od Twoich celów biznesowych&nbsp;– dopiero później szukamy odpowiedniego źródła kapitału.</p>
+        <a href="#kontakt" class="btn btn--light">Porozmawiajmy o&nbsp;potrzebach Twojej firmy</a>
+      </div>
+      <figure class="p-visual reveal" style="--d:.15s"><div class="p-visual__img"><img src="assets/spolki/przedsiebiorca-magazyn-as1866022187.jpg" alt="Przedsiębiorca z telefonem w magazynie swojej firmy" width="1000" height="667"></div></figure>
+    </div>
+  </section>
+
+  <!-- 03 Z CZYM MOŻESZ SIĘ ZGŁOSIĆ (+ callout na pasku zdjęcia) -->
+  <section class="s-needs">
+    <div class="wrap">
+      <h2 class="h2 reveal">Z&nbsp;czym możesz się do nas zgłosić?</h2>
+      <div class="s-needs__grid">
+        <article class="s-need reveal"><h3>Inwestycja</h3><p>Kapitał na rozwój firmy, zakup nieruchomości, gruntu lub realizację większego projektu.</p></article>
+        <article class="s-need reveal" style="--d:.1s"><h3>Płynność</h3><p>Środki na bieżące zobowiązania, zakup towaru lub realizację kontraktu.</p></article>
+        <article class="s-need reveal" style="--d:.2s"><h3>Obecne finansowanie</h3><p>Analiza kredytów, linii i&nbsp;factoringu oraz sprawdzenie innych możliwości dostępnych na rynku.</p></article>
+        <article class="s-need reveal" style="--d:.3s"><h3>Odmowa banku</h3><p>Weryfikacja alternatywnych kierunków, jeśli standardowa ścieżka bankowa nie jest obecnie dostępna.</p></article>
+      </div>
+    </div>
+    <div class="s-band" aria-hidden="true"></div>
+    <div class="s-cta">
+      <div class="wrap">
+        <div class="cta__box reveal">
+          <p class="cta__title"><strong>Nie musisz wiedzieć, jaki rodzaj finansowania będzie najlepszy dla Twojej firmy.</strong></p>
+          <p class="lead">Opowiedz nam o&nbsp;swoich planach, potrzebnej kwocie i&nbsp;sytuacji przedsiębiorstwa. Przeanalizujemy dostępne możliwości, uwzględniając zarówno Twoje cele biznesowe, jak i&nbsp;warunki oferowane przez poszczególne instytucje.</p>
+          <div class="btns">
+            <a href="#kontakt" class="btn btn--dark">Umów rozmowę</a>
+          </div>
+          <a href="tel:+48601200302" class="phone-row"><img src="assets/home3/icon-phone-dark.svg" alt="" width="20" height="20" loading="lazy">+48 601 200 302</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 MOŻLIWOŚCI -->
+  <section class="s-opts">
+    <div class="wrap">
+      <h2 class="h2 reveal">Jakie możliwości możemy sprawdzić?</h2>
+      <ul class="s-opts__list">
+        <li class="s-opt reveal"><h3>Kredyty firmowe</h3></li>
+        <li class="s-opt reveal" style="--d:.05s"><h3>Linie w&nbsp;rachunku</h3></li>
+        <li class="s-opt reveal" style="--d:.1s"><h3>Factoring</h3></li>
+        <li class="s-opt reveal" style="--d:.15s"><h3><a href="pozyczki-hipoteczne.html">Finansowanie pod zastaw nieruchomości<span class="s-opt__go" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 9h13M10 4l5 5-5 5"/></svg></span></a></h3></li>
+        <li class="s-opt reveal" style="--d:.2s"><h3>Finansowanie z&nbsp;funduszy</h3></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 MASZ JUŻ FINANSOWANIE -->
+  <section class="s-refi">
+    <div class="wrap s-refi__grid">
+      <div class="s-refi__copy">
+        <h2 class="h2 reveal">Masz już finansowanie?</h2>
+        <p class="lead reveal">Kredyt, który odpowiadał potrzebom Twojej firmy kilka lat temu, niekoniecznie musi być najlepszym wyborem dzisiaj. Jeśli Twoja działalność się rozwija lub zmieniła się jej sytuacja finansowa, możemy przyjrzeć się dotychczasowym zobowiązaniom i&nbsp;sprawdzić, jakie możliwości oferuje obecnie rynek.</p>
+        <div class="s-check reveal" style="--d:.1s">
+          <div class="s-check__card">
+            <p><strong>Przeanalizujemy:</strong></p>
+            <ul>
+              <li>warunki obecnych kredytów,</li>
+              <li>możliwość refinansowania,</li>
+              <li>możliwość konsolidacji części zobowiązań,</li>
+              <li>dostęp do dodatkowego kapitału,</li>
+              <li>inne źródła finansowania dostępne na rynku.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <figure class="s-refi__photo reveal"><img src="assets/spolki/analiza-dokumentow-as1835267863.jpg" alt="Dwoje przedsiębiorców analizuje dokumenty przy stoliku" width="1000" height="667" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <!-- 06 SPÓŁKA CZY JDG -->
+  <section class="s-types">
+    <div class="wrap">
+      <h2 class="h2 reveal">Spółka czy JDG?</h2>
+      <ul class="s-types__grid">
+        <li class="s-type s-type--co reveal">
+          <div class="s-type__img"><img src="assets/spolki/spolki-warszawa-as2061885659.jpg" alt="Centrum biznesowe Warszawy z lotu ptaka o zmierzchu" width="1000" height="601" loading="lazy"></div>
+          <div class="s-type__body"><h3>Spółki</h3><p>Finansowanie bieżącej działalności, inwestycji oraz większych transakcji.</p></div>
+        </li>
+        <li class="s-type s-type--jdg reveal" style="--d:.1s">
+          <div class="s-type__img"><img src="assets/spolki/jdg-stolarz-as1978094482.jpg" alt="Stolarz prowadzący własną działalność rozmawia przez telefon w warsztacie" width="1000" height="562" loading="lazy"></div>
+          <div class="s-type__body"><h3>Jednoosobowe działalności gospodarcze</h3><p>Możliwości bankowe i&nbsp;pozabankowe dobierane m.in. do sytuacji firmy, celu i&nbsp;potrzebnej kwoty.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 07 WSPÓŁPRACA -->
+  <section class="p-process">
+    <div class="p-process__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <h2 class="h2 reveal">Jak wygląda współpraca?</h2>
+      <ol class="p-steps" role="list">
+        <li class="p-step reveal"><span class="p-step__no" aria-hidden="true">1</span><h3>Analizujemy potrzeby</h3><p>Ustalamy kwotę, cel finansowania i&nbsp;sytuację przedsiębiorstwa.</p></li>
+        <li class="p-step reveal" style="--d:.1s"><span class="p-step__no" aria-hidden="true">2</span><h3>Sprawdzamy rynek</h3><p>Porównujemy możliwości dostępne w&nbsp;różnych instytucjach.</p></li>
+        <li class="p-step reveal" style="--d:.2s"><span class="p-step__no" aria-hidden="true">3</span><h3>Prowadzimy sprawę</h3><p>Kompletujemy potrzebne dokumenty i&nbsp;wspieramy klienta aż do&nbsp;uruchomienia finansowania.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 08 FAQ -->
+  <section class="p-faq">
+    <div class="wrap">
+      <h2 class="h2 reveal">FAQ&nbsp;– najczęściej zadawane pytania</h2>
+      <div class="faq__list">
+        <div class="faq__item reveal"><h3>Czy pomagacie tylko firmom po odmowie banku?</h3><p>Nie. Współpracujemy również z&nbsp;przedsiębiorstwami w&nbsp;dobrej sytuacji, które planują inwestycję lub chcą przeanalizować obecne finansowanie.</p></div>
+        <div class="faq__item reveal"><h3>Czy firma musi posiadać nieruchomość?</h3><p>Nie. Nieruchomość jest potrzebna przy finansowaniu zabezpieczonym hipoteką, ale nie przy każdym produkcie.</p></div>
+        <div class="faq__item reveal"><h3>Czy można przeanalizować już posiadane kredyty?</h3><p>Tak. Możemy sprawdzić obecne finansowanie oraz dostępne możliwości refinansowania, konsolidacji lub pozyskania dodatkowych środków.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 KONTAKT (makieta — bez wysyłki) -->
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <div class="contact__info reveal">
+        <h2 class="h2" id="kontakt-title">Porozmawiajmy o&nbsp;finansowaniu dla Twojej firmy</h2>
+        <p class="lead">Masz konkretny plan biznesowy i&nbsp;szukasz kapitału na jego realizację? A&nbsp;może chcesz sprawdzić, czy obecne finansowanie nadal odpowiada potrzebom Twojego przedsiębiorstwa? Przedstaw nam swoją sytuację. Pomożemy Ci przeanalizować dostępne źródła finansowania i&nbsp;ustalić, które z&nbsp;nich warto wziąć pod uwagę.</p>
+        <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48601200302">+48 601 200 302</a></div>
+      </div>
+      <form class="form reveal" action="#" onsubmit="return false" novalidate aria-labelledby="kontakt-title">
+        <div class="field"><label for="f-name">Imię*</label><input id="f-name" type="text" autocomplete="given-name" aria-required="true"></div>
+        <div class="field"><label for="f-phone">Telefon*</label><input id="f-phone" type="tel" autocomplete="tel" aria-required="true"></div>
+        <div class="field"><label for="f-mail">E-mail*</label><input id="f-mail" type="email" autocomplete="email" aria-required="true"></div>
+        <div class="field"><label for="f-form">Forma działalności</label>
+          <select id="f-form">
+            <option value="" selected>Wybierz</option>
+            <option>Spółka</option>
+            <option>JDG</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-goal">Cel finansowania</label>
+          <select id="f-goal">
+            <option value="" selected>Wybierz</option>
+            <option>Inwestycja</option>
+            <option>Płynność</option>
+            <option>Obecne finansowanie</option>
+            <option>Odmowa banku</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-amount">Potrzebna kwota</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
+        <div class="field field--full"><label for="f-note">Notatka</label><textarea id="f-note"></textarea></div>
+        <p class="consent__title">Zgoda na przetwarzanie danych osobowych</p>
+        <label class="consent"><input type="checkbox" aria-required="true"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a href="polityka-prywatnosci.html">polityką prywatności</a>.*</span></label>
+        <button type="button" class="btn btn--light">Skontaktuj się z&nbsp;nami</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a href="home3.html" class="footer__logo" aria-label="Monolith Finance — strona główna"><img src="assets/monolith/logo-footer.svg" alt="Monolith Finance — Monika Buchacz" width="125" height="51"></a>
+        <p>Niezależny pośrednik finansowy. Finansowanie dla firm – pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
+        <a href="tel:+48722649938" class="footer__phone"><img src="assets/home3/icon-phone.svg" alt="" width="20" height="20">+48 722 649 938</a>
+      </div>
+      <nav aria-label="Oferta">
+        <h2 class="footer__title">Oferta</h2>
+        <ul>
+          <li><a href="pozyczki-hipoteczne.html">Pożyczki hipoteczne</a></li>
+          <li><a href="pozyczki1.html">Pożyczki1</a></li>
+          <li><a href="pozyczki2.html">Pożyczki2</a></li>
+          <li><a href="pozyczki3.html">Pożyczki3</a></li>
+          <li><a href="pozyczki4.html">Pożyczki4</a></li>
+          <li><a href="dla-spolek-i-jdg.html" aria-current="page">Dla spółek i JDG</a></li>
+          <li><a href="spolki1.html">Spółki1</a></li><li><a href="spolki2.html">Spółki2</a></li>
+          <li><a href="private-debt.html">Private debt</a></li>
+          <li><a href="dla-posrednikow-kredytowych.html">Współpraca</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Firma">
+        <h2 class="footer__title">Firma</h2>
+        <ul>
+          <li><a href="o-mnie.html">O mnie</a></li>
+          <li><a href="kontakt3.html">Kontakt</a></li>
+          <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Wszystkie prawa zastrzeżone</span>
+      <a href="https://verseo.pl" target="_blank" rel="noopener">Realizacja: <img src="assets/monolith/verseo-logo.svg" alt="Verseo" width="1020" height="212"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const burger = nav.querySelector('.nav__burger');
+  const setMenu = open => { nav.classList.toggle('is-open', open); burger.setAttribute('aria-expanded', open); };
+  burger.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+  nav.querySelectorAll('.nav__menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); burger.focus(); }
+  });
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    el.classList.add('is-in'); io.unobserve(el);
+    if (el.matches('.s-need, .s-type')) {
+      el.addEventListener('transitionend', ev => {
+        if (ev.target === el && ev.propertyName === 'opacity') el.classList.add('is-done');
+      });
+    }
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+<!-- Przełącznik wariantów (tylko do oceny, usunąć po wyborze) -->
+<nav aria-label="Warianty projektu" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:4px;padding:6px 6px 6px 16px;background:#fff;border-radius:50px;box-shadow:0 8px 24px rgba(0,0,0,.35);font:700 14px/1 'Space Grotesk',sans-serif;color:#143836;white-space:nowrap"><span style="margin-right:8px">Spółki1</span><a href="spolki1.html" aria-current="page" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#143836;color:#fff">1</a><a href="spolki2.html" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#e9e9e9;color:#143836">2</a></nav>
+</body>
+</html>
