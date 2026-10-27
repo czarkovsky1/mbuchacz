@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Private debt2 – Private Debt | Monolith Finance</title>
+<meta name="description" content="Private Debt – finansowanie dłużne pozyskiwane m.in. z funduszy i od inwestorów prywatnych. Pomagamy przedsiębiorcom znaleźć kapitał na większe i bardziej złożone przedsięwzięcia.">
+<link rel="icon" href="assets/monolith/favicon-32.webp" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/monolith/favicon-180.webp">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Open+Sans:wght@300;400;700&family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
+<style>
+/* ===== Tokens (1:1 z monolith-finance.pl, motyw Kadence) ===== */
+:root {
+  --green-1: #143836;
+  --green-2: #102423;
+  --green-grad: linear-gradient(180deg, var(--green-1) 0%, var(--green-2) 100%);
+  --green-grad-up: linear-gradient(0deg, var(--green-1) 0%, var(--green-2) 100%);
+  --paper: #f3f2ee;   /* jasna sekcja „Co analizujemy?” — rytm jasne / ciemne */
+  --ink: #112625;     /* tekst na jasnych powierzchniach */
+  --text: #333;
+  --teal: #256d69;
+  --gold-light: #dec38e; /* złoto tylko jako obrys fokusu (+ icon-mark w jednym komponencie, plakietki procesu) */
+  --line: rgba(255,255,255,.3);
+  --line-dark: rgba(20,56,54,.2);
+  --nav-top: 20px;
+  --nav-h: 72px;
+  --max: 1210px;
+  --gutter: 40px;
+  --col-gap: 112px; /* jedna oś siatki: prawe kolumny startują w środku kontenera + col-gap/2 */
+  --f-display: 'Space Grotesk', sans-serif;
+  --f-ui: 'Montserrat', sans-serif;
+  --f-body: 'Open Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-top) + var(--nav-h) + 20px); }
+body { font: 300 16px/26.72px var(--f-body); color: #fff; background: var(--green-2); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 700; }
+main h1, main h2, main h3 { text-wrap: balance; }
+main p { text-wrap: pretty; }
+main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+.nav a:focus-visible, .nav button:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+.wrap { width: min(var(--max), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
+/* H2 w skali systemu (34/51); wariant sprzedażowy podnosi skalę leadów, statementów i porównania */
+.h2 { font: 700 34px/51px var(--f-display); }
+.h2--center { text-align: center; }
+/* krótka BIAŁA kreska nad H2 (w tym wariancie zamiast złotej) */
+.h2--rule::before { content: ""; display: block; width: 56px; height: 3px; margin-bottom: 22px; border-radius: 2px; background: #fff; }
+.lead { font-size: 20px; line-height: 34px; }
+
+/* ===== Buttons — tylko 2 style na tej stronie: zielony (wyłącznie „Umów rozmowę”) i biały obrys ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 52px;
+  padding: 16px 24px; border: 0; border-radius: 50px;
+  font: 700 16px/20px var(--f-display); white-space: nowrap; cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--dark { background: var(--green-grad); color: #fff; box-shadow: 2px 2px 8px rgba(20,56,54,.15); }
+.btn--dark:hover { box-shadow: 0 6px 18px rgba(16,36,35,.35); }
+.btn--outline { border: 1.6px solid #fff; color: #fff; padding: 14.4px 22.4px; }
+.btn--outline:hover { background: rgba(255,255,255,.08); }
+.btns { display: flex; flex-wrap: wrap; gap: 15px; }
+
+/* ===== NAV — pływająca belka ===== */
+.nav { position: fixed; top: var(--nav-top); left: 0; right: 0; z-index: 100; pointer-events: none; }
+.nav__bar { position: relative; pointer-events: auto; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; background: #fff; border-radius: 50px; padding: 10px 10px 10px 20px; }
+.nav__logo img { width: 125px; }
+.nav__menu { display: flex; gap: 30px; list-style: none; }
+.nav__menu a { display: block; padding: 10px 0; font: 300 16px/20px var(--f-display); letter-spacing: .16px; color: var(--text); transition: color .2s; }
+.nav__menu a:hover, .nav__menu a[aria-current="page"] { color: var(--teal); }
+.nav__burger { display: none; width: 44px; height: 44px; border: 0; background: none; cursor: pointer; position: relative; }
+.nav__burger span, .nav__burger::before, .nav__burger::after { content: ""; position: absolute; left: 10px; right: 10px; height: 2px; background: var(--green-1); transition: transform .25s, opacity .25s; }
+.nav__burger::before { top: 15px; } .nav__burger span { top: 21px; } .nav__burger::after { top: 27px; }
+.nav.is-open .nav__burger::before { transform: translateY(6px) rotate(45deg); }
+.nav.is-open .nav__burger span { opacity: 0; }
+.nav.is-open .nav__burger::after { transform: translateY(-6px) rotate(-45deg); }
+
+/* ===== 01 HERO (identycznie jak spolki1 / pozyczki4 — spójność podstron) ===== */
+.p-hero { position: relative; min-height: 436px; padding: 182px 0 80px; overflow: hidden; }
+.p-hero__bg { position: absolute; inset: 0; background: url(assets/monolith/hero-warszawa.webp) center / cover no-repeat; }
+.p-hero__bg::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,.25); }
+.p-hero .wrap { position: relative; }
+.p-hero h1 { font: 700 48px/67.2px var(--f-display); text-shadow: 0 2px 18px rgba(0,0,0,.35); }
+.p-hero .btns { margin-top: 24px; }
+
+/* ===== 02 INTRO — tekst po lewej, kadr od osi siatki do prawej krawędzi okna; zamiast złotej płyty cienka biała ramka ===== */
+.p-intro { background: var(--green-grad); padding: 80px 0 100px; overflow: hidden; }
+.p-intro__grid {
+  display: grid; align-items: center;
+  grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, calc(var(--max) / 2 - var(--col-gap) / 2)) var(--col-gap) minmax(0, calc(var(--max) / 2 - var(--col-gap) / 2)) minmax(var(--gutter), 1fr);
+}
+.p-intro__copy { grid-column: 2; grid-row: 1; }
+.p-intro__copy .lead { margin-top: 28px; }
+.p-intro__text { margin-top: 20px; font-size: 18px; line-height: 31px; color: rgba(255,255,255,.88); }
+.p-intro__cta { margin-top: 40px; }
+.p-intro__media { grid-column: 4 / 6; grid-row: 1; position: relative; }
+/* ramka 1 px przesunięta w lewo-górę — architektoniczny akcent, nie płyta */
+.p-intro__media::before { content: ""; position: absolute; inset: -20px 0 20px -20px; border: 1px solid rgba(255,255,255,.2); border-right: 0; border-radius: 22px 0 0 22px; pointer-events: none; }
+.p-intro__frame { position: relative; height: 620px; border-radius: 20px 0 0 20px; overflow: hidden; background: var(--green-1); box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.p-intro__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 34% 50%; }
+.js .p-intro__frame img { transform: scale(1.06); transition: transform 2s cubic-bezier(.2,.7,.2,1); }
+.js .p-intro__media.is-in .p-intro__frame img { transform: none; }
+
+/* ===== 03 W JAKICH SYTUACJACH — 4 karty-plakaty: kadr u góry przechodzi gradientem w ciemną kartę ===== */
+.p-needs { background: var(--green-grad-up); padding: 80px 0 100px; }
+/* subgrid: kadr / tytuł / opis w każdej karcie leżą na wspólnych liniach rzędu (opisy startują równo) */
+.p-needs__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto auto; gap: 20px; margin-top: 48px; list-style: none; }
+.p-need {
+  position: relative; isolation: isolate; overflow: hidden;
+  display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start;
+  padding: 0 24px 32px; border-radius: 20px; background: var(--green-2); box-shadow: 0 18px 40px rgba(0,0,0,.25);
+}
+/* rząd 1 = przekładka o proporcjach kadru (procentowy padding w subgridzie nie działa) — tekst wchodzi na dolny gradient zdjęcia */
+.p-need::before { content: ""; width: 100%; aspect-ratio: 1 / 1.1; }
+/* krótka BIAŁA kreska zamiast złotej */
+.p-need h3::before { content: ""; display: block; width: 36px; height: 3px; margin-bottom: 18px; border-radius: 2px; background: #fff; transition: width .4s ease; }
+.p-need:hover h3::before { width: 60px; }
+/* obrys karty nad zdjęciem (media leży na z-index:-1) */
+.p-need::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); pointer-events: none; }
+.p-need__media { position: absolute; top: 0; left: 0; right: 0; z-index: -1; aspect-ratio: 1 / 1.1; overflow: hidden; }
+.p-need__media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.75) contrast(1.06) brightness(.94); transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+/* wspólny grading serii — lekkie zabarwienie zielenią marki */
+.p-need__media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: var(--green-1); mix-blend-mode: color; opacity: .25; pointer-events: none; }
+.p-need__media::after { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(16,36,35,0) 0%, rgba(16,36,35,0) 42%, rgba(16,36,35,.72) 74%, #102423 100%); }
+.p-need:hover .p-need__media img { transform: scale(1.05); }
+.p-need--inv img { object-position: 62% 30%; }
+.p-need--bridge img { object-position: 50% 42%; }
+.p-need--dev img { object-position: 44% 50%; }
+.p-need--deal img { object-position: 36% 50%; }
+.p-need h3 { font: 700 22px/30px var(--f-display); letter-spacing: -.2px; }
+.p-need p { margin-top: 10px; line-height: 24px; color: rgba(255,255,255,.9); }
+
+/* ===== 03b CALLOUT — zdanie z ramki dokumentu na panoramie Warszawy (skala szarości + zielony overlay, bez przycisku i złota) ===== */
+.p-say { position: relative; padding: 120px 0; overflow: hidden; text-align: center; background: var(--green-2); }
+.p-say__bg { position: absolute; inset: 0; }
+.p-say__bg::before { content: ""; position: absolute; inset: 0; background: url(assets/private-debt/pd-panorama.webp) 50% 45% / cover no-repeat; filter: grayscale(1) contrast(1.12) brightness(.95); }
+.p-say__bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(16,36,35,.35) 0%, rgba(16,36,35,0) 100%), linear-gradient(180deg, rgba(20,56,54,.86) 0%, rgba(16,36,35,.62) 46%, rgba(16,36,35,.94) 100%); }
+.js .p-say__bg { transform: scale(1.08); transition: transform 2.2s cubic-bezier(.2,.7,.2,1); }
+.js .p-say.is-in .p-say__bg { transform: none; }
+/* miękkie wejście od poprzedniej sekcji (03 kończy się --green-1) */
+.p-say::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, var(--green-1) 0%, rgba(20,56,54,0) 20%); }
+.p-say .wrap { position: relative; z-index: 2; }
+.p-say__title { max-width: 900px; margin: 0 auto; font: 700 36px/50px var(--f-display); text-wrap: balance; }
+.p-say__text { max-width: 640px; margin: 24px auto 0; font-size: 20px; line-height: 34px; color: rgba(255,255,255,.92); }
+
+/* ===== 04 CO ANALIZUJEMY — jasna sekcja dla rytmu: 6 dużych pól typograficznych 3×2 w cienkich liniach ===== */
+.p-scope { background: var(--paper); color: var(--ink); padding: 80px 0 100px; }
+.p-scope__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 48px; list-style: none; border: 1px solid var(--line-dark); border-radius: 20px; }
+.p-scope__grid li { padding: 36px 40px 44px; font: 700 32px/40px var(--f-display); letter-spacing: -.4px; text-wrap: balance; }
+/* jedyny komponent z icon-mark na tej stronie */
+.p-scope__grid li::before { content: ""; display: block; width: 25px; height: 25px; margin-bottom: 36px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.p-scope__grid li:not(:nth-child(3n+1)) { border-left: 1px solid var(--line-dark); }
+.p-scope__grid li:nth-child(n+4) { border-top: 1px solid var(--line-dark); }
+
+/* ===== 05 BANK CZY PRIVATE DEBT — porównanie 50/50: półprzezroczysta ciemna połowa + biała połowa ===== */
+.p-versus { background: var(--green-grad-up); padding: 80px 0 100px; }
+/* subgrid: kreska / tytuł / opis w obu połowach na wspólnych liniach */
+.p-versus__split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto auto auto; margin-top: 48px; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,.3); }
+.p-versus__side { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; align-content: start; padding: 56px 56px 64px; }
+.p-versus__side::before { content: ""; width: 36px; height: 3px; margin-bottom: 28px; border-radius: 2px; }
+.p-versus__side--bank { background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); border-radius: 20px 0 0 20px; }
+.p-versus__side--bank::before { background: #fff; }
+.p-versus__side--pd { background: #fafafa; color: var(--ink); }
+.p-versus__side--pd::before { background: var(--green-1); }
+.p-versus__side h3 { font: 700 34px/44px var(--f-display); letter-spacing: -.3px; }
+.p-versus__side p { max-width: 440px; margin-top: 14px; font-size: 18px; line-height: 31px; }
+.p-versus__side--bank p { color: rgba(255,255,255,.9); }
+.p-versus__side--pd p { color: #2a3d3c; }
+/* callout pod porównaniem — większym stopniem, wyśrodkowany */
+.p-versus__note { max-width: 860px; margin: 56px auto 0; text-align: center; font-size: 20px; line-height: 34px; color: rgba(255,255,255,.92); }
+.p-versus__note strong { display: block; margin-bottom: 12px; font: 700 28px/40px var(--f-display); color: #fff; text-wrap: balance; }
+
+/* ===== 06 PROCES — 3 ciemne karty, plakietki timeline-plate wystają nad krawędź, biała linia ze strzałką na ich wysokości ===== */
+.p-process { background: var(--green-grad); padding: 80px 0 100px; }
+.p-steps { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 0 32px; margin-top: 92px; list-style: none; }
+.p-steps::before { content: ""; position: absolute; left: 68px; right: 16px; top: -1px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,.75) 100%); transform-origin: left center; transition: transform 1.4s cubic-bezier(.2,.7,.2,1) .2s; }
+.p-steps::after { content: ""; position: absolute; right: 0; top: 0; transform: translateY(-50%); border-left: 18px solid rgba(255,255,255,.75); border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+.js .p-steps:not(.is-in)::before { transform: scaleX(0); }
+/* subgrid: tytuły i opisy kroków na wspólnych liniach */
+.p-step { position: relative; display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 12px; padding: 60px 32px 36px; border-radius: 20px; background: rgba(0,0,0,.14); box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.p-step__no { position: absolute; top: -36px; left: 32px; display: grid; place-items: center; width: 72px; height: 71px; padding: 0 6px 6px 0; background: url(assets/monolith/timeline-plate.png) center / contain no-repeat; font: 700 26px/1 var(--f-display); color: var(--green-1); }
+.p-step h3 { font: 700 22px/30px var(--f-display); }
+.p-step p { max-width: 320px; font-size: 17px; line-height: 28px; color: rgba(255,255,255,.9); }
+/* callout „wymaga realnego planu spłaty” — biały box na pełną szerokość: teza po lewej, tekst po prawej (oś siatki jak FAQ) */
+.p-rule { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px var(--col-gap); align-items: center; margin-top: 56px; padding: 44px 56px; border-radius: 20px; background: #fafafa; color: var(--ink); box-shadow: 0 30px 60px rgba(0,0,0,.3); }
+.p-rule__title { font: 700 28px/38px var(--f-display); text-wrap: balance; }
+.p-rule__text { font-size: 18px; line-height: 31px; color: #3a4a49; }
+
+/* ===== 07 FAQ — dwie kolumny: pytanie | odpowiedź (odpowiedzi zawsze widoczne), cienka biała linia u góry ===== */
+.p-faq { background: var(--green-grad-up); padding: 80px 0; }
+.p-faq__list { margin-top: 44px; border-top: 1px solid rgba(255,255,255,.6); }
+.faq__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px var(--col-gap); padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,.22); }
+.faq__row h3 { font: 700 22px/32px var(--f-display); }
+.faq__row p { font-size: 18px; line-height: 31px; color: rgba(255,255,255,.92); }
+
+/* ===== 08 KONTAKT (makieta — bez wysyłki): jeden duży biały panel — tekst + telefon po lewej, formularz po prawej ===== */
+.contact { background: var(--green-grad); padding: 80px 0 100px; }
+.contact__panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px var(--col-gap); padding: 64px 56px; border-radius: 24px; background: #fafafa; color: var(--ink); box-shadow: 0 30px 70px rgba(0,0,0,.35); }
+.contact__info { display: flex; flex-direction: column; align-items: flex-start; }
+.contact__info p { max-width: 520px; margin: 24px 0 40px; font-size: 18px; line-height: 31px; color: #2a3d3c; }
+/* telefon jako zwykły link tekstowy (bez ikony), dosunięty do dołu kolumny pod cienką linią — kończy się na linii przycisku formularza */
+.contact__phone { align-self: stretch; margin-top: auto; padding-top: 28px; border-top: 1px solid var(--line-dark); }
+.contact__phone small { display: block; font: 700 16px/24px var(--f-body); color: var(--green-1); }
+.contact__phone a { display: inline-flex; align-items: center; min-height: 44px; font: 700 34px/42px var(--f-display); color: var(--green-1); white-space: nowrap; }
+.contact__panel a:focus-visible, .contact__panel button:focus-visible { outline-color: var(--teal); }
+
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-content: start; }
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.field--full { grid-column: 1 / -1; }
+.field label { font: 500 14px/19.6px var(--f-ui); color: var(--ink); }
+.field input, .field select, .field textarea {
+  height: 46px; width: 100%; padding: 11px 16px; border-radius: 15px; border: 1px solid rgba(20,56,54,.16);
+  background-color: #eef1f0; color: var(--ink); font: 300 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background-color .2s;
+}
+.field textarea { height: 112px; resize: vertical; }
+.field select { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23143836' stroke-width='1.6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center; background-size: 12px 8px; }
+.field select option { color: var(--ink); background: #fff; }
+.field input::placeholder, .field textarea::placeholder { color: rgba(17,38,37,.55); }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--teal); background-color: #fff; }
+.field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.consent__title { grid-column: 1 / -1; margin-top: 4px; font: 500 14px/19.6px var(--f-ui); color: var(--ink); }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; }
+.consent input { width: 16px; height: 16px; margin-top: 2px; flex: none; accent-color: var(--green-1); }
+.consent input:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.consent span { font: 300 13px/20px var(--f-body); color: #3a4a49; }
+.consent a { text-decoration: underline; }
+.form .btn { grid-column: 1 / -1; justify-self: start; margin-top: 6px; }
+
+/* ===== FOOTER ===== */
+.footer { background: var(--green-grad-up); border-top: .8px solid rgba(255,255,255,.3); padding: 65px 0 40px; }
+.footer__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.footer__logo img { width: 125px; }
+.footer__about p { margin-top: 20px; max-width: 324px; line-height: 24px; }
+.footer__phone { display: inline-flex; align-items: center; gap: 5px; margin-top: 20px; font: 700 20px/26px var(--f-display); }
+.footer__phone img { width: 20px; height: 20px; }
+.footer__title { font: 700 15px/19.5px var(--f-display); text-transform: uppercase; margin-bottom: 19px; }
+.footer ul { list-style: none; display: grid; gap: 5px; }
+.footer li a { font: 300 15px/19.95px var(--f-body); color: rgba(255,255,255,.7); transition: color .2s; }
+.footer li a:hover, .footer li a[aria-current="page"] { color: #fff; }
+.footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; margin-top: 35px; padding: 47px 0 18px; border-top: .8px solid rgba(255,255,255,.3); line-height: 24px; }
+.footer__bottom a { display: inline-flex; align-items: center; gap: 10px; }
+.footer__bottom img { width: 50px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  :root { --col-gap: 72px; }
+  .nav__menu { gap: 20px; }
+  .nav__menu a { font-size: 15px; }
+  .p-needs__grid { gap: 16px; }
+  .p-need { padding: 0 20px 28px; }
+  .p-need h3 { font-size: 20px; line-height: 28px; }
+  .p-scope__grid li { padding: 32px 32px 40px; font-size: 28px; line-height: 36px; }
+  .p-versus__side { padding: 52px 48px 56px; }
+  .p-rule { padding: 40px 48px; }
+  .contact__panel { padding: 56px 48px; }
+}
+@media (max-width: 1024px) {
+  :root { --gutter: 24px; --col-gap: 48px; }
+  .nav__burger { display: block; }
+  .nav__menu {
+    position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; gap: 0;
+    background: #fff; border-radius: 20px; padding: 10px 24px; box-shadow: 0 12px 30px rgba(0,0,0,.2);
+    transform: translateY(-8px); opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity .25s, transform .25s, visibility 0s .25s;
+  }
+  .nav__menu a { padding: 12px 0; font-size: 16px; }
+  .nav.is-open .nav__menu { opacity: 1; transform: none; visibility: visible; pointer-events: auto; transition-delay: 0s; }
+  .nav .btn { margin-left: auto; }
+
+  .p-hero { min-height: 0; padding-top: 150px; }
+  .p-intro { padding: 72px 0 90px; }
+  /* tekst przy lewej krawędzi kontenera (jak H1 i karty), kadr od tej krawędzi do prawej krawędzi okna */
+  .p-intro__grid { grid-template-columns: var(--gutter) minmax(0, 1fr) var(--gutter); align-items: start; }
+  .p-intro__copy { max-width: 680px; }
+  .p-intro__media { grid-column: 2 / 4; grid-row: 2; margin-top: 64px; }
+  .p-intro__media::before { inset: -14px 0 14px -14px; }
+  .p-intro__frame { height: 420px; }
+  .p-needs { padding: 72px 0 90px; }
+  .p-needs__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .p-need::before { aspect-ratio: 1 / .72; }
+  .p-need__media { aspect-ratio: 1 / .8; }
+  .p-say { padding: 96px 0; }
+  .p-say__title { max-width: 720px; font-size: 30px; line-height: 42px; }
+  .p-scope { padding: 72px 0 90px; }
+  .p-scope__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p-scope__grid li:not(:nth-child(3n+1)), .p-scope__grid li:nth-child(n+4) { border-left: 0; border-top: 0; }
+  .p-scope__grid li:nth-child(2n) { border-left: 1px solid var(--line-dark); }
+  .p-scope__grid li:nth-child(n+3) { border-top: 1px solid var(--line-dark); }
+  .p-versus { padding: 72px 0 90px; }
+  .p-versus__side { padding: 44px 36px 48px; }
+  .p-versus__side h3 { font-size: 28px; line-height: 38px; }
+  .p-versus__side p { font-size: 17px; line-height: 28px; }
+  .p-process { padding: 72px 0 90px; }
+  .p-steps { gap: 0 20px; margin-top: 84px; }
+  .p-steps::before { left: 60px; }
+  .p-step { padding: 56px 24px 30px; }
+  .p-step__no { left: 24px; }
+  .p-step h3 { font-size: 20px; line-height: 28px; }
+  .p-step p { font-size: 16px; line-height: 26px; }
+  .p-rule { padding: 36px 40px; }
+  .p-rule__title { font-size: 24px; line-height: 34px; }
+  .p-rule__text { font-size: 17px; line-height: 28px; }
+  .p-faq { padding: 72px 0; }
+  .faq__row { padding: 30px 0; }
+  .faq__row h3 { font-size: 20px; line-height: 30px; }
+  .faq__row p { font-size: 17px; line-height: 28px; }
+  .contact { padding: 72px 0 90px; }
+  .contact__panel { grid-template-columns: 1fr; gap: 40px; padding: 48px 40px; }
+  .contact__info p { max-width: 640px; }
+  .contact__info p { margin-bottom: 32px; }
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .footer__about { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .p-needs__grid { grid-template-columns: 1fr; gap: 16px; max-width: 560px; margin-inline: auto; }
+  .p-need::before { aspect-ratio: 1 / .58; }
+  .p-need__media { aspect-ratio: 16 / 10.4; }
+
+  /* porównanie jedno pod drugim (szerokość jak karty-plakaty) */
+  .p-versus__split { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+  .p-versus__side--bank { border-radius: 20px 20px 0 0; }
+
+  /* kroki jeden pod drugim — plakietki nadal wystają nad karty, linia pozioma znika */
+  .p-steps { grid-template-columns: 1fr; grid-template-rows: none; gap: 56px; max-width: 560px; margin: 80px auto 0; }
+  .p-steps::before, .p-steps::after { display: none; }
+  .p-step { grid-row: auto; grid-template-rows: none; }
+  .p-step p { max-width: none; }
+  .p-rule { grid-template-columns: 1fr; gap: 12px; max-width: 560px; margin-inline: auto; }
+  .faq__row { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  :root { --gutter: 16px; --nav-top: 12px; --nav-h: 64px; }
+  .nav .btn { display: none; }
+  .nav__bar { padding: 8px 8px 8px 16px; }
+  .nav__logo img { width: 110px; }
+  .p-hero { padding: 120px 0 56px; }
+  .p-hero h1 { font-size: 34px; line-height: 44px; }
+  .h2 { font-size: 26px; line-height: 36px; }
+  .h2--rule::before { width: 48px; margin-bottom: 18px; }
+  .lead { font-size: 18px; line-height: 30px; }
+  .btns .btn { flex: 1 1 auto; }
+  .p-intro { padding: 56px 0 72px; }
+  .p-intro__copy .lead { margin-top: 20px; }
+  .p-intro__text { margin-top: 16px; font-size: 16px; line-height: 27px; }
+  .p-intro__cta { margin-top: 28px; }
+  .p-intro__cta .btn { display: flex; width: 100%; }
+  .p-intro__media { margin-top: 48px; }
+  .p-intro__media::before { display: none; }
+  .p-intro__frame { height: 280px; }
+  /* na telefonie wszystkie bloki na pełną szerokość kontenera (krawędzie 16 px) */
+  .p-needs__grid, .p-versus__split, .p-steps, .p-rule { max-width: none; }
+  .p-needs { padding: 56px 0 64px; }
+  .p-needs__grid { margin-top: 32px; gap: 12px; }
+  .p-need { padding: 0 20px 24px; }
+  .p-need::before { aspect-ratio: 2 / 1; }
+  .p-need__media { aspect-ratio: 16 / 9; }
+  .p-need h3 { font-size: 20px; line-height: 28px; }
+  .p-say { padding: 72px 0; }
+  .p-say__title { font-size: 24px; line-height: 34px; }
+  .p-say__text { margin-top: 18px; font-size: 17px; line-height: 28px; }
+  .p-scope { padding: 56px 0 64px; }
+  .p-scope__grid { grid-template-columns: 1fr; margin-top: 32px; }
+  .p-scope__grid li:nth-child(2n) { border-left: 0; }
+  .p-scope__grid li + li { border-top: 1px solid var(--line-dark); }
+  .p-scope__grid li { display: grid; grid-template-columns: 22px 1fr; column-gap: 16px; align-items: center; padding: 18px 20px; font-size: 20px; line-height: 28px; letter-spacing: 0; }
+  .p-scope__grid li::before { width: 22px; height: 22px; margin: 0; }
+  .p-versus { padding: 56px 0 64px; }
+  .p-versus__split { margin-top: 32px; }
+  .p-versus__side { padding: 32px 20px 36px; }
+  .p-versus__side::before { margin-bottom: 20px; }
+  .p-versus__side h3 { font-size: 24px; line-height: 32px; }
+  .p-versus__side p { margin-top: 10px; font-size: 16px; line-height: 26.72px; }
+  .p-versus__note { margin-top: 36px; font-size: 17px; line-height: 28px; }
+  .p-versus__note strong { margin-bottom: 8px; font-size: 21px; line-height: 30px; }
+  .p-process { padding: 56px 0 64px; }
+  .p-steps { gap: 48px; margin-top: 64px; }
+  .p-step { padding: 44px 20px 24px; }
+  .p-step__no { top: -28px; left: 20px; width: 56px; height: 55px; padding: 0 4px 4px 0; font-size: 21px; }
+  .p-rule { margin-top: 40px; padding: 28px 20px 30px; }
+  .p-rule__title { font-size: 21px; line-height: 30px; }
+  .p-rule__text { font-size: 16px; line-height: 26.72px; }
+  .p-faq { padding: 56px 0; }
+  .p-faq__list { margin-top: 32px; }
+  .faq__row { padding: 24px 0; gap: 10px; }
+  .faq__row h3 { font-size: 19px; line-height: 28px; }
+  .faq__row p { font-size: 16px; line-height: 26px; }
+  .contact { padding: 56px 0 64px; }
+  .contact__panel { gap: 32px; padding: 28px 20px; border-radius: 20px; }
+  .contact__info p { margin-top: 18px; font-size: 16px; line-height: 26.72px; }
+  .contact__info p { margin-bottom: 24px; }
+  .contact__phone a { font-size: clamp(24px, 7.4vw, 30px); line-height: 38px; }
+  .form { grid-template-columns: 1fr; }
+  .form .btn { justify-self: stretch; }
+  .footer__grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; padding-top: 24px; margin-top: 28px; }
+}
+
+/* ===== Reveal on scroll (tylko z JS — bez skryptu treść zostaje widoczna; na końcu arkusza, wygrywa z regułami szerokości) ===== */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; transition-delay: var(--d, 0s); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn:hover, .p-need:hover .p-need__media img { transform: none; }
+  .js .p-intro__frame img, .js .p-say__bg, .p-steps::before, .js .p-steps:not(.is-in)::before { transform: none; transition: none; }
+  .p-need__media img, .p-need::before { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__bar">
+    <a href="home3.html" class="nav__logo" aria-label="Monolith Finance — strona główna"><img src="assets/monolith/logo-nav.svg" alt="Monolith Finance — Monika Buchacz" width="285" height="112"></a>
+    <nav aria-label="Główna">
+      <ul class="nav__menu" id="menu">
+        <li><a href="o-mnie.html">O mnie</a></li>
+        <li><a href="pozyczki-hipoteczne.html">Pożyczki hipoteczne</a></li>
+        <li><a href="dla-spolek-i-jdg.html">Dla spółek i JDG</a></li>
+        <li><a href="private-debt.html" aria-current="page">Private Debt</a></li>
+        <li><a href="dla-posrednikow-kredytowych.html">Współpraca</a></li>
+      </ul>
+    </nav>
+    <a href="kontakt3.html" class="btn btn--dark">Umów rozmowę</a>
+    <button class="nav__burger" type="button" aria-label="Menu" aria-controls="menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 01 HERO -->
+  <section class="p-hero">
+    <div class="p-hero__bg" aria-hidden="true"></div>
+    <div class="wrap">
+      <h1>Private Debt</h1>
+      <div class="btns">
+        <a href="#kontakt" class="btn btn--dark">Umów rozmowę</a>
+        <a href="tel:+48601200302" class="btn btn--outline">Zadzwoń</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 INTRO -->
+  <section class="p-intro">
+    <div class="p-intro__grid">
+      <div class="p-intro__copy">
+        <h2 class="h2 h2--rule reveal">Kapitał poza standardową ścieżką bankową</h2>
+        <p class="lead reveal" style="--d:.1s">Planujesz dużą inwestycję, realizujesz projekt deweloperski albo szukasz finansowania pomostowego? Nie każda transakcja wpisuje się w&nbsp;standardowe kryteria banków. W&nbsp;takich sytuacjach warto rozważyć <strong>Private Debt&nbsp;– finansowanie dłużne pozyskiwane m.in. z&nbsp;funduszy i&nbsp;od inwestorów prywatnych</strong>.</p>
+        <p class="p-intro__text reveal" style="--d:.15s">Pomagamy przedsiębiorcom znaleźć kapitał na większe i&nbsp;bardziej złożone przedsięwzięcia. Analizujemy charakter projektu, potrzebną kwotę, dostępne zabezpieczenia i&nbsp;plan spłaty zobowiązania. Następnie sprawdzamy, które podmioty mogą być zainteresowane finansowaniem Twojej inwestycji.</p>
+        <div class="p-intro__cta reveal" style="--d:.2s"><a href="#kontakt" class="btn btn--outline">Zapraszamy do kontaktu</a></div>
+      </div>
+      <!-- Zdjęcia w assets/private-debt/ to placeholdery do podmiany -->
+      <figure class="p-intro__media reveal" style="--d:.15s">
+        <div class="p-intro__frame"><img src="assets/private-debt/pd-intro.jpg" alt="Biurowce w centrum Warszawy o zmierzchu" width="1100" height="619" decoding="async"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 03 W JAKICH SYTUACJACH -->
+  <section class="p-needs">
+    <div class="wrap">
+      <h2 class="h2 h2--center reveal">W&nbsp;jakich sytuacjach warto rozważyć Private Debt?</h2>
+      <ul class="p-needs__grid" role="list">
+        <li class="p-need p-need--inv reveal">
+          <div class="p-need__media"><img src="assets/private-debt/pd-inwestycja.jpg" alt="" width="1100" height="1375" loading="lazy" decoding="async"></div>
+          <h3>Duża inwestycja</h3>
+          <p>Kapitał na rozwój przedsiębiorstwa lub realizację większego projektu.</p>
+        </li>
+        <li class="p-need p-need--bridge reveal" style="--d:.1s">
+          <div class="p-need__media"><img src="assets/private-debt/pd-pomost.jpg" alt="" width="1100" height="1649" loading="lazy" decoding="async"></div>
+          <h3>Finansowanie pomostowe</h3>
+          <p>Środki potrzebne do czasu uzyskania finansowania docelowego lub zakończenia inwestycji.</p>
+        </li>
+        <li class="p-need p-need--dev reveal" style="--d:.2s">
+          <div class="p-need__media"><img src="assets/private-debt/pd-deweloper.jpg" alt="" width="1100" height="969" loading="lazy" decoding="async"></div>
+          <h3>Projekt deweloperski</h3>
+          <p>Finansowanie gruntu, rozpoczęcia inwestycji lub kolejnego etapu realizacji.</p>
+        </li>
+        <li class="p-need p-need--deal reveal" style="--d:.3s">
+          <div class="p-need__media"><img src="assets/private-debt/pd-transakcja.jpg" alt="" width="1000" height="667" loading="lazy" decoding="async"></div>
+          <h3>Niestandardowa transakcja</h3>
+          <p>Projekt wykraczający poza kryteria typowego kredytu firmowego.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 03b CALLOUT (ramka z dokumentu) -->
+  <div class="p-say">
+    <div class="p-say__bg" aria-hidden="true"></div>
+    <div class="wrap reveal">
+      <p class="p-say__title"><strong>Private Debt nie jest finansowaniem wyłącznie dla firm po odmowie banku.</strong></p>
+      <p class="p-say__text">Może być wykorzystywany także przez przedsiębiorstwa realizujące większą inwestycję lub poszukujące kapitału pomostowego.</p>
+    </div>
+  </div>
+
+  <!-- 04 CO ANALIZUJEMY -->
+  <section class="p-scope">
+    <div class="wrap">
+      <h2 class="h2 h2--center reveal">Co analizujemy?</h2>
+      <ul class="p-scope__grid" role="list">
+        <li class="reveal">Potrzebna kwota</li>
+        <li class="reveal" style="--d:.05s">Cel finansowania</li>
+        <li class="reveal" style="--d:.1s">Sytuacja przedsiębiorstwa</li>
+        <li class="reveal" style="--d:.15s">Charakter projektu</li>
+        <li class="reveal" style="--d:.2s">Dostępne zabezpieczenie</li>
+        <li class="reveal" style="--d:.25s">Plan spłaty</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 05 BANK CZY PRIVATE DEBT -->
+  <section class="p-versus">
+    <div class="wrap">
+      <h2 class="h2 h2--center reveal">Bank czy Private Debt?</h2>
+      <div class="p-versus__split reveal">
+        <article class="p-versus__side p-versus__side--bank"><h3>Finansowanie bankowe</h3><p>Standardowe produkty i&nbsp;określone kryteria oceny przedsiębiorstwa.</p></article>
+        <article class="p-versus__side p-versus__side--pd"><h3>Private Debt</h3><p>Indywidualna analiza transakcji i&nbsp;dostęp do kapitału poza standardową ofertą bankową.</p></article>
+      </div>
+      <p class="p-versus__note reveal"><strong>Nie zakładamy z&nbsp;góry, który kierunek będzie odpowiedni.</strong> Najpierw poznajemy sytuację Twojej firmy i&nbsp;specyfikę projektu, a&nbsp;następnie sprawdzamy dostępne możliwości finansowania.</p>
+    </div>
+  </section>
+
+  <!-- 06 PROCES -->
+  <section class="p-process">
+    <div class="wrap">
+      <h2 class="h2 h2--center reveal">Jak wygląda proces?</h2>
+      <ol class="p-steps" role="list">
+        <li class="p-step reveal"><span class="p-step__no" aria-hidden="true">1</span><h3>Analizujemy projekt</h3><p>Ustalamy kwotę, cel finansowania, zabezpieczenie i&nbsp;plan spłaty.</p></li>
+        <li class="p-step reveal" style="--d:.15s"><span class="p-step__no" aria-hidden="true">2</span><h3>Szukamy źródła kapitału</h3><p>Sprawdzamy podmioty zainteresowane transakcjami o&nbsp;danym profilu.</p></li>
+        <li class="p-step reveal" style="--d:.3s"><span class="p-step__no" aria-hidden="true">3</span><h3>Prowadzimy sprawę</h3><p>Ustalamy potrzebne dokumenty i&nbsp;wspieramy przedsiębiorcę na kolejnych etapach.</p></li>
+      </ol>
+      <div class="p-rule reveal">
+        <p class="p-rule__title"><strong>Private Debt wymaga realnego planu spłaty.</strong></p>
+        <p class="p-rule__text">Już na początku trzeba określić, z&nbsp;jakiego źródła zobowiązanie zostanie spłacone po zakończeniu okresu finansowania.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 FAQ -->
+  <section class="p-faq">
+    <div class="wrap">
+      <h2 class="h2 reveal">FAQ&nbsp;– najczęściej zadawane pytania</h2>
+      <div class="p-faq__list">
+        <div class="faq__row reveal"><h3>Czy Private Debt jest tylko dla firm, które nie otrzymały kredytu?</h3><p>Nie. Z&nbsp;tego kierunku mogą korzystać również przedsiębiorstwa w&nbsp;dobrej sytuacji, które realizują większe lub niestandardowe projekty.</p></div>
+        <div class="faq__row reveal"><h3>Czy potrzebne jest zabezpieczenie na nieruchomości?</h3><p>W&nbsp;wielu transakcjach nieruchomość może stanowić zabezpieczenie. Wymagania zależą jednak od konkretnego podmiotu finansującego.</p></div>
+        <div class="faq__row reveal"><h3>Od jakiej kwoty można rozważać Private Debt?</h3><p>Nie stosujemy jednego sztywnego progu. Możliwości zależą od skali projektu, potrzebnej kwoty, zabezpieczenia i&nbsp;charakteru transakcji.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 KONTAKT (makieta — bez wysyłki) -->
+  <section class="contact" id="kontakt">
+    <div class="wrap">
+      <div class="contact__panel reveal">
+        <div class="contact__info">
+          <h2 class="h2" id="kontakt-title">Porozmawiajmy o&nbsp;Twoim projekcie</h2>
+          <p>Masz konkretny plan inwestycyjny i&nbsp;szukasz kapitału poza standardową ofertą bankową? Opowiedz nam o&nbsp;swoim przedsięwzięciu, potrzebnej kwocie i&nbsp;planowanym sposobie spłaty zobowiązania. Sprawdzimy, jakie źródła finansowania mogą odpowiadać potrzebom Twojego biznesu.</p>
+          <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48601200302">+48 601 200 302</a></div>
+        </div>
+        <form class="form" action="#" onsubmit="return false" novalidate aria-labelledby="kontakt-title">
+          <div class="field"><label for="f-name">Imię*</label><input id="f-name" type="text" autocomplete="given-name" aria-required="true"></div>
+          <div class="field"><label for="f-phone">Telefon*</label><input id="f-phone" type="tel" autocomplete="tel" aria-required="true"></div>
+          <div class="field"><label for="f-mail">E-mail*</label><input id="f-mail" type="email" autocomplete="email" aria-required="true"></div>
+          <div class="field"><label for="f-goal">Cel finansowania</label>
+            <select id="f-goal">
+              <option value="" selected>Wybierz</option>
+              <option>Duża inwestycja</option>
+              <option>Finansowanie pomostowe</option>
+              <option>Projekt deweloperski</option>
+              <option>Niestandardowa transakcja</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-amount">Potrzebna kwota</label><input id="f-amount" type="text" placeholder="np. 3 000 000 PLN" autocomplete="off"></div>
+          <div class="field"><label for="f-repay">Planowany sposób spłaty</label><input id="f-repay" type="text" autocomplete="off"></div>
+          <div class="field field--full"><label for="f-desc">Opis projektu</label><textarea id="f-desc" rows="4"></textarea></div>
+          <p class="consent__title">Zgoda na przetwarzanie danych osobowych</p>
+          <label class="consent"><input type="checkbox" aria-required="true"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a href="polityka-prywatnosci.html">polityką prywatności</a>.*</span></label>
+          <button type="button" class="btn btn--dark">Umów rozmowę</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a href="home3.html" class="footer__logo" aria-label="Monolith Finance — strona główna"><img src="assets/monolith/logo-footer.svg" alt="Monolith Finance — Monika Buchacz" width="125" height="51"></a>
+        <p>Niezależny pośrednik finansowy. Finansowanie dla firm – pożyczki pod zastaw nieruchomości, kredyty firmowe, finansowanie z funduszy i instytucji zagranicznych.</p>
+        <a href="tel:+48722649938" class="footer__phone"><img src="assets/home3/icon-phone.svg" alt="" width="20" height="20">+48 722 649 938</a>
+      </div>
+      <nav aria-label="Oferta">
+        <h2 class="footer__title">Oferta</h2>
+        <ul>
+          <li><a href="pozyczki-hipoteczne.html">Pożyczki hipoteczne</a></li>
+          <li><a href="pozyczki1.html">Pożyczki1</a></li>
+          <li><a href="pozyczki2.html">Pożyczki2</a></li>
+          <li><a href="pozyczki3.html">Pożyczki3</a></li>
+          <li><a href="pozyczki4.html">Pożyczki4</a></li>
+          <li><a href="dla-spolek-i-jdg.html">Dla spółek i JDG</a></li>
+          <li><a href="spolki1.html">Spółki1</a></li>
+          <li><a href="spolki2.html">Spółki2</a></li>
+          <li><a href="private-debt.html" aria-current="page">Private debt</a></li>
+          <li><a href="private-debt1.html">Private debt1</a></li>
+          <li><a href="private-debt2.html">Private debt2</a></li>
+          <li><a href="dla-posrednikow-kredytowych.html">Współpraca</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Firma">
+        <h2 class="footer__title">Firma</h2>
+        <ul>
+          <li><a href="o-mnie.html">O mnie</a></li>
+          <li><a href="kontakt3.html">Kontakt</a></li>
+          <li><a href="polityka-prywatnosci.html">Polityka prywatności</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Wszystkie prawa zastrzeżone</span>
+      <a href="https://verseo.pl" target="_blank" rel="noopener">Realizacja: <img src="assets/monolith/verseo-logo.svg" alt="Verseo" width="1020" height="212"></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const burger = nav.querySelector('.nav__burger');
+  const setMenu = open => { nav.classList.toggle('is-open', open); burger.setAttribute('aria-expanded', open); };
+  burger.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+  nav.querySelectorAll('.nav__menu a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); burger.focus(); }
+  });
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('is-in'); io.unobserve(e.target);
+  }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .p-say, .p-steps').forEach(el => io.observe(el));
+</script>
+<!-- Przełącznik wariantów (tylko do oceny, usunąć po wyborze) -->
+<nav aria-label="Warianty projektu" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:4px;padding:6px 6px 6px 16px;background:#fff;border-radius:50px;box-shadow:0 8px 24px rgba(0,0,0,.35);font:700 14px/1 'Space Grotesk',sans-serif;color:#143836;white-space:nowrap"><span style="margin-right:8px">Private debt2</span><a href="private-debt1.html" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#e9e9e9;color:#143836">1</a><a href="private-debt2.html" aria-current="page" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#143836;color:#fff">2</a></nav>
+</body>
+</html>
