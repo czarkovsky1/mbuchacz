@@ -30,7 +30,7 @@
   --max: 1210px;
   --gutter: 40px;
   --col-gap: 112px; /* oś siatki intro (jak spolki2): kadr startuje w środku kontenera + col-gap/2 */
-  --sec: 120px;     /* padding sekcji; między treściami sąsiednich sekcji zawsze 2 × --sec — także od krawędzi zdjęć (hero, pas „Nie musisz wiedzieć…”), jak w private-debt3 */
+  --sec: 160px;     /* padding sekcji (29.10: „jeszcze większe marginesy”); między treściami sąsiednich sekcji zawsze 2 × --sec — także od krawędzi zdjęć (hero, pas „Nie musisz wiedzieć…”), jak w private-debt3 */
   --f-display: 'Space Grotesk', sans-serif;
   --f-ui: 'Montserrat', sans-serif;
   --f-body: 'Open Sans', sans-serif;
@@ -274,7 +274,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   .s-need h3 { font-size: clamp(18px, 1.7vw, 21px); letter-spacing: -.3px; }
 }
 @media (max-width: 1024px) {
-  :root { --gutter: 24px; --col-gap: 48px; --sec: 96px; }
+  :root { --gutter: 24px; --col-gap: 48px; --sec: 120px; }
   .nav__burger { display: block; }
   .nav__menu {
     position: absolute; top: calc(100% + 8px); left: 0; right: 0; flex-direction: column; gap: 0;
@@ -330,7 +330,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   .s-types__grid { grid-template-columns: 1fr; gap: 16px; max-width: 560px; margin-inline: auto; }
 }
 @media (max-width: 680px) {
-  :root { --gutter: 16px; --nav-top: 12px; --nav-h: 64px; --sec: 72px; }
+  :root { --gutter: 16px; --nav-top: 12px; --nav-h: 64px; --sec: 80px; }
   .nav .btn { display: none; }
   .nav__bar { padding: 8px 8px 8px 16px; }
   .nav__logo img { width: 110px; }
