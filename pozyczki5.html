@@ -53,7 +53,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .wrap { width: min(var(--max), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
 .h2 { font: 700 34px/51px var(--f-display); }
 
-/* ===== Buttons — zielony CTA (tylko „Umów rozmowę”), obrys biały, obrys zielony ===== */
+/* ===== Buttons — zielony CTA (tylko „Umów rozmowę”), obrys biały, obrys zielony; biały wyłącznie w formularzu (1:1 ze strony głównej) ===== */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   padding: 16px 24px; border: 0; border-radius: 50px;
@@ -63,6 +63,8 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .btn:hover { transform: translateY(-2px); }
 .btn--dark { background: var(--green-grad); color: #fff; box-shadow: 2px 2px 8px rgba(20,56,54,.15); }
 .btn--dark:hover { box-shadow: 0 6px 18px rgba(16,36,35,.35); }
+.btn--light { background: #fff; color: var(--green-1); border: 1.6px solid #fff; padding: 14.4px 22.4px; }
+.btn--light:hover { box-shadow: 0 6px 18px rgba(0,0,0,.25); }
 .btn--outline { border: 1.6px solid #fff; color: #fff; padding: 14.4px 22.4px; }
 .btn--outline:hover { background: rgba(255,255,255,.08); }
 .btn--outline-dark { border: 1.6px solid var(--green-1); color: var(--green-1); padding: 14.4px 22.4px; }
@@ -213,36 +215,32 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .faq__item h3 { font: 700 20px/30px var(--f-display); }
 .faq__item p { line-height: 24px; margin-top: 14px; }
 
-/* ===== 10 KONTAKT — tekst + telefon, formularz na jasnej karcie (jak w private-debt1; makieta — bez wysyłki) ===== */
+/* ===== 10 KONTAKT — tekst + telefon, formularz 1:1 ze strony głównej (makieta — bez wysyłki) ===== */
 .contact { background: var(--green-grad); padding: 80px 0 100px; }
 .contact .wrap { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
-.contact__info { padding-top: 8px; }
 .contact__info p { line-height: 28px; max-width: 560px; margin-top: 20px; }
 .contact__phone { margin-top: 40px; }
 .contact__phone small { display: block; font: 700 16px/28px var(--f-body); }
 .contact__phone a { display: inline-flex; align-items: center; min-height: 44px; font: 700 28px/38px var(--f-display); white-space: nowrap; }
 
-.form { background: var(--paper); color: var(--ink); border-radius: 20px; padding: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; box-shadow: 0 24px 60px rgba(0,0,0,.3); }
-.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.form { background: rgba(0,0,0,.1); border-radius: 20px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
 .field--full { grid-column: 1 / -1; }
-.field label { font: 500 14px/19.6px var(--f-ui); color: var(--ink); }
-.field input, .field select {
-  height: 46px; width: 100%; padding: 11px 16px; border-radius: 15px; border: 1px solid rgba(20,56,54,.16);
-  background-color: #eef1f0; color: var(--ink); font: 400 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background-color .2s;
+.field label { font: 500 14px/19.6px var(--f-ui); }
+.field input, .field textarea {
+  height: 46px; width: 100%; padding: 11px 16px; border-radius: 15px; border: .8px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.1); color: #fff; font: 300 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background .2s;
 }
-.field select { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23143836' stroke-width='1.6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 18px center; background-size: 12px 8px; }
-.field select option { color: var(--ink); background: #fff; }
-.field input::placeholder { color: rgba(17,38,37,.55); }
-.field input:focus, .field select:focus { border-color: var(--teal); background-color: #fff; }
-.form input:focus-visible, .form select:focus-visible, .form button:focus-visible, .form a:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
-.consent__title { grid-column: 1 / -1; margin-top: 4px; font: 500 14px/19.6px var(--f-ui); }
-.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; cursor: pointer; }
-.consent input { width: 16px; height: 16px; margin-top: 2px; flex: none; accent-color: var(--green-1); }
-.consent span { font: 400 13px/20px var(--f-body); color: #3a4a49; }
+.field textarea { height: 78px; resize: none; }
+.field input::placeholder { color: rgba(255,255,255,.8); }
+.field input:focus, .field textarea:focus { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.14); }
+.field input:focus-visible, .field textarea:focus-visible, .consent input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.consent__title { grid-column: 1 / -1; font: 500 14px/19.6px var(--f-ui); }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; }
+.consent input { width: 13px; height: 13px; margin-top: 4px; flex: none; accent-color: var(--green-1); }
+.consent span { font: 300 13px/20px var(--f-body); color: rgba(255,255,255,.8); }
 .consent a { text-decoration: underline; }
-.form .btn { grid-column: 1 / -1; justify-self: start; margin-top: 6px; }
+.form .btn { grid-column: 1 / -1; justify-self: start; line-height: 25.6px; padding: 16px 24px; border: 0; }
 
 /* ===== FOOTER ===== */
 .footer { background: var(--green-grad-up); border-top: .8px solid rgba(255,255,255,.3); padding: 65px 0 40px; }
@@ -327,7 +325,6 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
   .p-step h3 { margin-top: 8px; }
 
   .contact .wrap { grid-template-columns: 1fr; gap: 40px; }
-  .contact__info { padding-top: 0; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__about { grid-column: 1 / -1; }
 }
@@ -392,8 +389,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
   .faq__list { margin-top: 28px; }
   .contact__phone { margin-top: 32px; }
   .contact__phone a { font-size: 26px; line-height: 34px; }
-  .form { grid-template-columns: 1fr; padding: 24px 20px; }
-  .form .btn { justify-self: stretch; }
+  .form { grid-template-columns: 1fr; padding: 20px; }
   .footer__grid { grid-template-columns: 1fr; gap: 28px; }
   .footer__bottom { flex-direction: column; align-items: flex-start; padding-top: 24px; margin-top: 28px; }
 }
@@ -602,24 +598,15 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
         <p>Masz nieruchomość i&nbsp;potrzebujesz dodatkowego kapitału? Przedstaw nam jej podstawowe dane i&nbsp;kwotę, którą chcesz pozyskać. Sprawdzimy dostępne źródła finansowania i&nbsp;pomożemy Ci wybrać kierunek odpowiedni do sytuacji Twojej firmy.</p>
         <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48601200302">+48 601 200 302</a></div>
       </div>
-      <form class="form reveal" action="#" onsubmit="return false" novalidate aria-labelledby="kontakt-title">
+      <form class="form reveal" action="#" onsubmit="return false" novalidate aria-label="Formularz kontaktowy (makieta)">
         <div class="field"><label for="f-name">Imię*</label><input id="f-name" type="text" autocomplete="given-name" aria-required="true"></div>
         <div class="field"><label for="f-phone">Telefon*</label><input id="f-phone" type="tel" autocomplete="tel" aria-required="true"></div>
         <div class="field"><label for="f-mail">E-mail*</label><input id="f-mail" type="email" autocomplete="email" aria-required="true"></div>
-        <div class="field"><label for="f-amount">Potrzebna kwota</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
-        <div class="field"><label for="f-type">Rodzaj nieruchomości</label>
-          <select id="f-type">
-            <option value="" selected>Wybierz</option>
-            <option>Mieszkalne</option>
-            <option>Komercyjne</option>
-            <option>Grunty</option>
-          </select>
-        </div>
-        <div class="field"><label for="f-place">Lokalizacja</label><input id="f-place" type="text" autocomplete="off"></div>
-        <div class="field field--full"><label for="f-value">Przybliżona wartość nieruchomości</label><input id="f-value" type="text" autocomplete="off"></div>
+        <div class="field"><label for="f-amount">Orientacyjna kwota finansowania</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
+        <div class="field field--full"><label for="f-note">Notatka</label><textarea id="f-note"></textarea></div>
         <p class="consent__title">Zgoda na przetwarzanie danych osobowych</p>
         <label class="consent"><input type="checkbox" aria-required="true"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a href="polityka-prywatnosci.html">polityką prywatności</a>.*</span></label>
-        <button type="button" class="btn btn--dark">Umów rozmowę</button>
+        <button type="button" class="btn btn--light">Wyślij zgłoszenie</button>
       </form>
     </div>
   </section>
