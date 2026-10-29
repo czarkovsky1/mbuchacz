@@ -180,7 +180,7 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
 .p-step h3 { font: 700 20px/30px var(--f-display); margin-top: 28px; align-self: start; }
 .p-step p { line-height: 24px; margin-top: 10px; max-width: 330px; }
 /* „Private Debt wymaga realnego planu spłaty” — sam tekst na tle sekcji, bez białego kafelka */
-.p-rule { max-width: 720px; margin: 72px auto 0; text-align: center; }
+.p-rule { max-width: 720px; margin: var(--sec) auto 0; text-align: center; } /* większy odstęp od osi procesu (29.10) */
 .p-rule__title { font: 700 22px/32px var(--f-display); }
 .p-rule__title + p { margin-top: 10px; color: rgba(255,255,255,.85); }
 
@@ -283,7 +283,7 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .p-step h3 { margin-top: 12px; align-self: auto; }
   .p-step p { max-width: none; }
   .p-step:last-child { padding-bottom: 28px; }
-  .p-rule { max-width: 640px; margin-top: 56px; }
+  .p-rule { max-width: 640px; }
   .contact .wrap { grid-template-columns: 1fr; row-gap: 40px; }
   .contact__info p { max-width: 640px; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -334,7 +334,6 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .p-versus__note { margin-top: 36px; font-size: 17px; line-height: 28px; }
   .p-versus__note strong { margin-bottom: 8px; font-size: 21px; line-height: 30px; }
   .p-steps { margin-top: 36px; }
-  .p-rule { margin-top: 40px; }
   .p-rule__title { font-size: 20px; line-height: 30px; }
   .faq__list { margin-top: 28px; }
   .contact__phone { margin-top: 28px; }
@@ -582,7 +581,5 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
-<!-- Przełącznik wariantów (tylko do oceny, usunąć po wyborze) -->
-<nav aria-label="Warianty projektu" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:4px;padding:6px 6px 6px 16px;background:#fff;border-radius:50px;box-shadow:0 8px 24px rgba(0,0,0,.35);font:700 14px/1 'Space Grotesk',sans-serif;color:#143836;white-space:nowrap"><span style="margin-right:8px">Private debt3</span><a href="private-debt1.html" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#e9e9e9;color:#143836">1</a><a href="private-debt2.html" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#e9e9e9;color:#143836">2</a><a href="private-debt3.html" aria-current="page" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#143836;color:#fff">3</a></nav>
 </body>
 </html>

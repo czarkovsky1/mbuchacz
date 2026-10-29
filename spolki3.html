@@ -145,16 +145,16 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 .s-opt::before { content: ""; width: 18px; height: 18px; margin-top: 7px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 .s-opt h3 { font: 700 22px/32px var(--f-display); }
 
-/* ===== 05 MASZ JUŻ FINANSOWANIE (jak spolki1, bez karty) — lista ze znakiem marki wprost na ciemnym tle ===== */
+/* ===== 05 MASZ JUŻ FINANSOWANIE (jak spolki1, bez karty) — lista ze znakiem marki wprost na ciemnym tle; tekst od górnej krawędzi zdjęcia, więcej miejsca na listę (29.10) ===== */
 .s-refi { background: var(--green-grad); padding: var(--sec) 0; }
-.s-refi__grid { display: grid; grid-template-columns: 480px 1fr; gap: 90px; align-items: center; }
+.s-refi__grid { display: grid; grid-template-columns: 480px 1fr; gap: 90px; align-items: start; }
 .s-refi__copy { grid-column: 2; grid-row: 1; }
 .s-refi__photo { grid-column: 1; grid-row: 1; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 20px; background: var(--green-1); box-shadow: 0 24px 60px rgba(0,0,0,.35); }
 .s-refi__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 45% 50%; }
 .s-refi__copy .lead { max-width: 600px; margin-top: 24px; }
-.s-check { margin-top: 36px; }
+.s-check { margin-top: 44px; }
 .s-check > p { font: 700 20px/30px var(--f-display); }
-.s-check ul { list-style: none; display: grid; gap: 10px; margin-top: 14px; }
+.s-check ul { list-style: none; display: grid; gap: 22px; margin-top: 20px; }
 .s-check li { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; line-height: 26px; }
 .s-check li::before { content: ""; width: 18px; height: 18px; margin-top: 4px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 
@@ -367,6 +367,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 
   .s-refi__photo { margin-top: 32px; aspect-ratio: 4 / 3; }
   .s-check { margin-top: 32px; }
+  .s-check ul { gap: 16px; margin-top: 16px; }
   .s-check li { column-gap: 12px; }
   .s-types__grid { margin-top: 28px; }
   .s-type__img { aspect-ratio: 3 / 2; }
@@ -505,7 +506,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   <!-- 06 SPÓŁKA CZY JDG -->
   <section class="s-types">
     <div class="wrap">
-      <h2 class="h2 reveal">Spółka czy JDG?</h2>
+      <h2 class="h2 reveal">Potrzebujesz finansowania dla spółki czy JDG?</h2>
       <ul class="s-types__grid">
         <li class="s-type s-type--co reveal">
           <div class="s-type__img"><img src="assets/spolki/spolki-warszawa-as2061885659.jpg" alt="Centrum biznesowe Warszawy z lotu ptaka o zmierzchu" width="1000" height="601" loading="lazy"></div>
@@ -621,7 +622,5 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   }), { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal, .p-say').forEach(el => io.observe(el));
 </script>
-<!-- Przełącznik wariantów (tylko do oceny, usunąć po wyborze) -->
-<nav aria-label="Warianty projektu" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:200;display:flex;align-items:center;gap:4px;padding:6px 6px 6px 16px;background:#fff;border-radius:50px;box-shadow:0 8px 24px rgba(0,0,0,.35);font:700 14px/1 'Space Grotesk',sans-serif;color:#143836;white-space:nowrap"><span style="margin-right:8px">Spółki3</span><a href="spolki1.html" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#e9e9e9;color:#143836">1</a><a href="spolki2.html" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#e9e9e9;color:#143836">2</a><a href="spolki3.html" aria-current="page" style="display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#143836;color:#fff">3</a></nav>
 </body>
 </html>
