@@ -30,7 +30,7 @@
   --max: 1210px;
   --gutter: 40px;
   --col-gap: 112px; /* oś siatki intro (jak spolki2): kadr startuje w środku kontenera + col-gap/2 */
-  --sec: 160px;     /* padding sekcji (29.10: „jeszcze większe marginesy”); między treściami sąsiednich sekcji zawsze 2 × --sec — także od krawędzi zdjęć (hero, pas „Nie musisz wiedzieć…”), jak w private-debt3 */
+  --sec: 160px;     /* padding sekcji (29.10: „jeszcze większe marginesy”); między treściami sąsiednich sekcji zawsze 2 × --sec — także od krawędzi pasa zdjęcia „Nie musisz wiedzieć…”; pod zdjęciem hero 1 × --sec (29.10: margines o połowę mniejszy) */
   --f-display: 'Space Grotesk', sans-serif;
   --f-ui: 'Montserrat', sans-serif;
   --f-body: 'Open Sans', sans-serif;
@@ -91,7 +91,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 .p-hero .btn--dark { box-shadow: 0 8px 22px rgba(0,0,0,.28); }
 
 /* ===== 02 INTRO (jak spolki2, bez złotego paska nad nagłówkiem) — tekst po lewej, kadr od osi siatki do prawej krawędzi okna ===== */
-.p-intro { background: var(--green-grad); padding: calc(2 * var(--sec)) 0 var(--sec); overflow: hidden; }
+.p-intro { background: var(--green-grad); padding: var(--sec) 0; overflow: hidden; }
 .p-intro__grid {
   display: grid; align-items: center;
   grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, calc(var(--max) / 2 - var(--col-gap) / 2)) var(--col-gap) minmax(0, calc(var(--max) / 2 - var(--col-gap) / 2)) minmax(var(--gutter), 1fr);

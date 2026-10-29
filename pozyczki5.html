@@ -34,7 +34,7 @@
   --nav-h: 72px;
   --max: 1210px;
   --gutter: 40px;
-  --sec: 120px;     /* padding sekcji; między treściami sąsiednich sekcji zawsze 2 × --sec — także od krawędzi zdjęcia hero (jak w spolki3 i private-debt3) */
+  --sec: 120px;     /* padding sekcji; między treściami sąsiednich sekcji zawsze 2 × --sec, pod zdjęciem hero 1 × --sec (29.10: margines o połowę mniejszy, jak w spolki3) */
   --f-display: 'Space Grotesk', sans-serif;
   --f-ui: 'Montserrat', sans-serif;
   --f-body: 'Open Sans', sans-serif;
@@ -101,7 +101,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .p-hero .btn--dark { box-shadow: 0 8px 22px rgba(0,0,0,.28); }
 
 /* ===== 02 INTRO — finansowanie zabezpieczone nieruchomością (z pozyczki2: tekst + biała karta metryk na złotej płycie) ===== */
-.p-intro { background: var(--green-grad); padding: calc(2 * var(--sec)) 0 var(--sec); }
+.p-intro { background: var(--green-grad); padding: var(--sec) 0; }
 .p-intro__grid { display: grid; grid-template-columns: 1fr 470px; gap: 90px; align-items: center; }
 .p-intro__copy p { margin-top: 10px; max-width: 580px; }
 .p-intro__copy h2 + p { margin-top: 20px; }
@@ -118,7 +118,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .metric small { font: 300 22px/1 var(--f-display); }
 .metric span { color: var(--text); line-height: 24px; margin-top: 4px; text-wrap: balance; }
 
-/* ===== 03 USES — na co możesz przeznaczyć środki (z pozyczki3: mniejsze znaki, bez złotej linii łączącej) ===== */
+/* ===== 03 USES — na co możesz przeznaczyć środki (z pozyczki3: znaki 18 px jak w pozostałych listach podstron, bez złotej linii łączącej) ===== */
 .uses { background: var(--green-grad-up); padding: var(--sec) 0; }
 .uses__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 20px; margin-top: 40px; list-style: none; }
 .use { position: relative; padding: 30px 8px 0 0; }
@@ -126,7 +126,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .use::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: rgba(255,255,255,.25); }
 .use > i { position: absolute; top: 0; left: 0; right: 0; height: 2px; margin-top: -.5px; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .use:hover > i { transform: scaleX(1); }
-.use__mark { display: block; width: 22px; height: 22px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.use__mark { display: block; width: 18px; height: 18px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 .use h3 { font: 700 20px/30px var(--f-display); margin-top: 20px; }
 .use p { line-height: 24px; color: rgba(255,255,255,.85); margin-top: 10px; }
 
@@ -356,7 +356,6 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
   .use p, .p-step p { text-wrap: pretty; } /* pełna szerokość — balans zostawiał puste prawe pół */
   .uses__grid { grid-template-columns: 1fr; gap: 36px; margin-top: 32px; }
   .use { padding-top: 24px; }
-  .use__mark { width: 20px; height: 20px; }
   .use h3 { margin-top: 14px; }
   .uses__foot { grid-template-columns: 1fr; gap: 16px; margin-top: 40px; }
   .uses__photo { display: none; }
