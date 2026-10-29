@@ -126,9 +126,9 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 .p-say { position: relative; padding: var(--sec) 0; overflow: hidden; text-align: center; background: var(--green-2); }
 .p-say__bg { position: absolute; inset: 0; transition: transform 2.2s cubic-bezier(.2,.7,.2,1); }
 .js .p-say:not(.is-in) .p-say__bg { transform: scale(1.08); }
-/* zdjęcie w skali szarości pod zielonym overlayem — bez „błotnistego” mieszania pomarańczu z zielenią */
-.p-say__bg::before { content: ""; position: absolute; inset: 0; background: url(assets/spolki/warszawa-zachod-as2047688676.jpg) 50% 38% / cover no-repeat; filter: grayscale(1) contrast(1.12) brightness(.95); }
-.p-say__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,56,54,.86) 0%, rgba(16,36,35,.55) 46%, rgba(16,36,35,.86) 100%); }
+/* Warszawa we mgle (Adobe Stock 540931098, to samo zdjęcie co w „Alternatywa dla procedur bankowych” na stagingu, 29.10) w skali szarości pod zielonym overlayem; jasna mgła, więc środek overlayu .66 zamiast .55, żeby biały tekst miał kontrast ≥ 4,5:1 */
+.p-say__bg::before { content: ""; position: absolute; inset: 0; background: url(assets/spolki/warszawa-mgla-540931098.jpg) 50% 50% / cover no-repeat; filter: grayscale(1) contrast(1.12) brightness(.95); }
+.p-say__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,56,54,.86) 0%, rgba(16,36,35,.66) 46%, rgba(16,36,35,.86) 100%); }
 /* miękkie przejścia do sąsiednich sekcji (03 kończy się --green-1, 04 zaczyna --green-2) */
 .p-say::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, var(--green-1) 0%, rgba(20,56,54,0) 18%, rgba(16,36,35,0) 82%, var(--green-2) 100%); }
 .p-say .wrap { position: relative; z-index: 2; }
