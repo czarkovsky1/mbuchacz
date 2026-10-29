@@ -16,7 +16,7 @@
 /* Private debt3 = wybór sekcji z wariantów (29.10.2026): intro i „Bank czy Private Debt?” z private-debt2;
    karty sytuacji z private-debt2 w układzie kart spolki1 (ostre zdjęcie u góry, jasny dół z tekstem);
    callout na pasku zdjęcia, „Co analizujemy?” i proces (bez zdjęcia w tle) z private-debt1;
-   FAQ i formularz jak na stronie Kontakt; większe odstępy między sekcjami (--sec) */
+   FAQ jak na stronie Kontakt, formularz 1:1 ze strony głównej; większe odstępy między sekcjami (--sec) */
 
 /* ===== Tokens (1:1 z monolith-finance.pl, motyw Kadence) ===== */
 :root {
@@ -56,8 +56,6 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
 .wrap { width: min(var(--max), calc(100% - 2 * var(--gutter))); margin-inline: auto; }
 .h2 { font: 700 34px/51px var(--f-display); }
 .h2--center { text-align: center; }
-/* krótka biała kreska nad H2 intro (z private-debt2) */
-.h2--rule::before { content: ""; display: block; width: 56px; height: 3px; margin-bottom: 22px; border-radius: 2px; background: #fff; }
 
 /* ===== Buttons — zielony (tylko „Umów rozmowę”), biały wypełniony CTA na ciemnym tle, obrys biały ===== */
 .btn {
@@ -148,10 +146,10 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
 /* ===== 04 CO ANALIZUJEMY (z private-debt1) — nagłówek po lewej, lista 2×3 z cienkimi białymi liniami ===== */
 .s-scope { background: var(--green-grad); padding: var(--sec) 0; }
 .s-scope .wrap { display: grid; grid-template-columns: 420px 1fr; gap: 40px 80px; align-items: start; }
-.s-scope h2 { margin-top: 17px; } /* środek linii H2 = środek pierwszego wiersza listy */
-.s-scope__list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 40px; }
-.s-scope__list li { display: flex; align-items: center; min-height: 84px; padding: 20px 0; border-top: 1px solid var(--line); font: 700 22px/30px var(--f-display); }
-.s-scope__list li:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+/* pozycje ze znakiem 18 px jak „Przeanalizujemy:” w spolki3, bez linii oddzielających; margin-top: środek pierwszego wiersza = środek linii H2 */
+.s-scope__list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; margin-top: 10px; }
+.s-scope__list li { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; font: 700 22px/30px var(--f-display); }
+.s-scope__list li::before { content: ""; width: 18px; height: 18px; margin-top: 6px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 
 /* ===== 05 BANK CZY PRIVATE DEBT (z private-debt2) — porównanie 50/50: półprzezroczysta ciemna połowa + biała połowa ===== */
 .p-versus { background: var(--green-grad-up); padding: var(--sec) 0; }
@@ -194,7 +192,7 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
 .faq__item h3 { font: 700 20px/30px var(--f-display); }
 .faq__item p { line-height: 24px; margin-top: 14px; }
 
-/* ===== 08 KONTAKT — jak formularz na stronie Kontakt: tekst + telefon po lewej, formularz na półprzezroczystej karcie (makieta — bez wysyłki) ===== */
+/* ===== 08 KONTAKT — tekst + telefon po lewej, formularz 1:1 ze strony głównej (makieta — bez wysyłki) ===== */
 .contact { background: var(--green-grad); padding: var(--sec) 0; }
 .contact .wrap { display: grid; grid-template-columns: 555px 555px; justify-content: space-between; align-items: start; }
 .contact__info p { max-width: 534px; margin-top: 20px; line-height: 28.48px; }
@@ -202,28 +200,24 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
 .contact__phone small { display: block; font: 700 16px/28px var(--f-body); }
 .contact__phone a { display: inline-flex; align-items: center; min-height: 44px; font: 700 28px/38px var(--f-display); white-space: nowrap; }
 
-.form { background: rgba(0,0,0,.1); border-radius: 20px; padding: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.form { background: rgba(0,0,0,.1); border-radius: 20px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; }
 .field--full { grid-column: 1 / -1; }
 .field label { font: 500 14px/19.6px var(--f-ui); }
-.field input, .field select, .field textarea {
+.field input, .field textarea {
   height: 46px; width: 100%; padding: 11px 16px; border-radius: 15px; border: .8px solid rgba(255,255,255,.1);
-  background-color: rgba(255,255,255,.1); color: #fff; font: 300 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background-color .2s;
+  background: rgba(255,255,255,.1); color: #fff; font: 300 16px/22.4px var(--f-body); outline: none; transition: border-color .2s, background .2s;
 }
 .field textarea { height: 78px; resize: none; }
-.field select { appearance: none; -webkit-appearance: none; padding-right: 44px; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23ffffff' stroke-width='1.6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 18px center; background-size: 12px 8px; }
-.field select option { color: var(--ink); background: #fff; }
-.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,.8); }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: rgba(255,255,255,.5); background-color: rgba(255,255,255,.14); }
-.form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
+.field input::placeholder { color: rgba(255,255,255,.8); }
+.field input:focus, .field textarea:focus { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.14); }
+.field input:focus-visible, .field textarea:focus-visible, .consent input:focus-visible { outline: 2px solid var(--gold-light); outline-offset: 2px; }
 .consent__title { grid-column: 1 / -1; font: 500 14px/19.6px var(--f-ui); }
-.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; cursor: pointer; }
+.consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; margin-top: -8px; }
 .consent input { width: 13px; height: 13px; margin-top: 4px; flex: none; accent-color: var(--green-1); }
 .consent span { font: 300 13px/20px var(--f-body); color: rgba(255,255,255,.8); }
 .consent a { text-decoration: underline; }
-.form .btn { grid-column: 1 / -1; justify-self: start; }
+.form .btn { grid-column: 1 / -1; justify-self: start; line-height: 25.6px; padding: 16px 24px; border: 0; }
 
 /* ===== FOOTER ===== */
 .footer { background: var(--green-grad-up); border-top: .8px solid rgba(255,255,255,.3); padding: 65px 0 40px; }
@@ -277,7 +271,7 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .note__box { margin-top: -130px; padding: 60px 32px 58px; }
   .note__title { font-size: 26px; line-height: 38px; max-width: 680px; }
   .s-scope .wrap { grid-template-columns: 1fr; }
-  .s-scope h2 { margin-top: 0; }
+  .s-scope__list { margin-top: 0; }
   .p-versus__side { padding: 44px 36px 48px; }
   .p-versus__side h3 { font-size: 28px; line-height: 38px; }
   .p-versus__side p { font-size: 17px; line-height: 28px; }
@@ -312,7 +306,6 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .p-hero { padding: 120px 0 56px; }
   .p-hero h1 { font-size: 34px; line-height: 44px; }
   .h2 { font-size: 26px; line-height: 36px; }
-  .h2--rule::before { width: 48px; margin-bottom: 18px; }
   .btns .btn { flex: 1 1 auto; }
   .p-intro__lead { margin-top: 20px; font-size: 19px; line-height: 30px; }
   .p-intro__text { margin-top: 16px; font-size: 16px; line-height: 27px; }
@@ -330,10 +323,9 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .note__box { margin-top: -80px; padding: 36px 20px 34px; }
   .note__title { font-size: 21px; line-height: 30px; }
   .note__box p + p { margin-top: 14px; font-size: 16px; line-height: 26px; }
-  .s-scope__list { grid-template-columns: 1fr; }
-  .s-scope__list li { min-height: 64px; padding: 16px 0; font-size: 19px; line-height: 27px; }
-  .s-scope__list li:nth-last-child(-n+2) { border-bottom: 0; }
-  .s-scope__list li:last-child { border-bottom: 1px solid var(--line); }
+  .s-scope__list { grid-template-columns: 1fr; row-gap: 18px; }
+  .s-scope__list li { column-gap: 12px; font-size: 19px; line-height: 28px; }
+  .s-scope__list li::before { margin-top: 5px; }
   .p-versus__split { margin-top: 32px; }
   .p-versus__side { padding: 32px 20px 36px; }
   .p-versus__side::before { margin-bottom: 20px; }
@@ -348,7 +340,6 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .contact__phone { margin-top: 28px; }
   .contact__phone a { font-size: 26px; line-height: 34px; }
   .form { grid-template-columns: 1fr; padding: 20px; }
-  .form .btn { justify-self: stretch; }
   .footer__grid { grid-template-columns: 1fr; gap: 28px; }
   .footer__bottom { flex-direction: column; align-items: flex-start; padding-top: 24px; margin-top: 28px; }
 }
@@ -402,7 +393,7 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   <section class="p-intro">
     <div class="p-intro__grid">
       <div class="p-intro__copy">
-        <h2 class="h2 h2--rule reveal">Kapitał poza standardową ścieżką bankową</h2>
+        <h2 class="h2 reveal">Kapitał poza standardową ścieżką bankową</h2>
         <p class="p-intro__lead reveal" style="--d:.1s">Planujesz dużą inwestycję, realizujesz projekt deweloperski albo szukasz finansowania pomostowego? Nie każda transakcja wpisuje się w&nbsp;standardowe kryteria banków. W&nbsp;takich sytuacjach warto rozważyć <strong>Private Debt&nbsp;– finansowanie dłużne pozyskiwane m.in. z&nbsp;funduszy i&nbsp;od inwestorów prywatnych</strong>.</p>
         <p class="p-intro__text reveal" style="--d:.15s">Pomagamy przedsiębiorcom znaleźć kapitał na większe i&nbsp;bardziej złożone przedsięwzięcia. Analizujemy charakter projektu, potrzebną kwotę, dostępne zabezpieczenia i&nbsp;plan spłaty zobowiązania. Następnie sprawdzamy, które podmioty mogą być zainteresowane finansowaniem Twojej inwestycji.</p>
         <div class="p-intro__cta reveal" style="--d:.2s"><a href="#kontakt" class="btn btn--light">Porozmawiajmy o&nbsp;finansowaniu</a></div>
@@ -527,22 +518,12 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
         <p>Masz konkretny plan inwestycyjny i&nbsp;szukasz kapitału poza standardową ofertą bankową? Opowiedz nam o&nbsp;swoim przedsięwzięciu, potrzebnej kwocie i&nbsp;planowanym sposobie spłaty zobowiązania. Sprawdzimy, jakie źródła finansowania mogą odpowiadać potrzebom Twojego biznesu.</p>
         <div class="contact__phone"><small>Zadzwoń</small><a href="tel:+48601200302">+48 601 200 302</a></div>
       </div>
-      <form class="form reveal" action="#" onsubmit="return false" novalidate aria-labelledby="kontakt-title">
+      <form class="form reveal" action="#" onsubmit="return false" novalidate aria-label="Formularz kontaktowy (makieta)">
         <div class="field"><label for="f-name">Imię*</label><input id="f-name" type="text" autocomplete="given-name" aria-required="true"></div>
         <div class="field"><label for="f-phone">Telefon*</label><input id="f-phone" type="tel" autocomplete="tel" aria-required="true"></div>
         <div class="field"><label for="f-mail">E-mail*</label><input id="f-mail" type="email" autocomplete="email" aria-required="true"></div>
-        <div class="field"><label for="f-goal">Cel finansowania</label>
-          <select id="f-goal">
-            <option value="" selected>Wybierz</option>
-            <option>Duża inwestycja</option>
-            <option>Finansowanie pomostowe</option>
-            <option>Projekt deweloperski</option>
-            <option>Niestandardowa transakcja</option>
-          </select>
-        </div>
-        <div class="field"><label for="f-amount">Potrzebna kwota</label><input id="f-amount" type="text" placeholder="np. 3 000 000 PLN" autocomplete="off"></div>
-        <div class="field"><label for="f-repay">Planowany sposób spłaty</label><input id="f-repay" type="text" autocomplete="off"></div>
-        <div class="field field--full"><label for="f-desc">Opis projektu</label><textarea id="f-desc"></textarea></div>
+        <div class="field"><label for="f-amount">Orientacyjna kwota finansowania</label><input id="f-amount" type="text" placeholder="np. 1 500 000 PLN" autocomplete="off"></div>
+        <div class="field field--full"><label for="f-note">Notatka</label><textarea id="f-note"></textarea></div>
         <p class="consent__title">Zgoda na przetwarzanie danych osobowych</p>
         <label class="consent"><input type="checkbox" aria-required="true"><span>Wyrażam zgodę na przetwarzanie moich danych osobowych w&nbsp;celu obsługi zgłoszenia, zgodnie z&nbsp;<a href="polityka-prywatnosci.html">polityką prywatności</a>.*</span></label>
         <button type="button" class="btn btn--light">Wyślij zgłoszenie</button>
