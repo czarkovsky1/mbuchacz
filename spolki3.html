@@ -97,7 +97,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   grid-template-columns: minmax(var(--gutter), 1fr) minmax(0, calc(var(--max) / 2 - var(--col-gap) / 2)) var(--col-gap) minmax(0, calc(var(--max) / 2 - var(--col-gap) / 2)) minmax(var(--gutter), 1fr);
 }
 .p-intro__copy { grid-column: 2; grid-row: 1; }
-.p-intro__copy .lead { margin-top: 28px; font-size: 20px; line-height: 34px; }
+.p-intro__copy .lead { margin-top: 28px; } /* rozmiar jak pozostałe teksty pod nagłówkami (.lead) */
 .p-intro__cta { margin-top: 36px; }
 .p-intro__media { grid-column: 4 / 6; grid-row: 1; position: relative; }
 .p-intro__media::before { content: ""; position: absolute; inset: 18px 0 -18px -18px; border-radius: 22px 0 0 22px; background: linear-gradient(200deg, var(--gold-stops)); box-shadow: 0 24px 50px rgba(0,0,0,.3); }
@@ -341,7 +341,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   .lead { font-size: 17px; line-height: 28px; }
   .btns .btn { flex: 1 1 auto; }
 
-  .p-intro__copy .lead { margin-top: 20px; font-size: 18px; line-height: 30px; }
+  .p-intro__copy .lead { margin-top: 20px; }
   .p-intro__cta { margin-top: 28px; }
   .p-intro__cta .btn { display: flex; width: 100%; padding-inline: 14px; white-space: normal; text-align: center; text-wrap: balance; line-height: 22px; }
   .p-intro__media { margin-top: 40px; }
