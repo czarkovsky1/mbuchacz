@@ -137,12 +137,12 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 .p-say__text { max-width: 620px; margin: 24px auto 0; font-size: 20px; line-height: 34px; color: rgba(255,255,255,.92); }
 .p-say__cta { margin-top: 36px; }
 
-/* ===== 04 MOŻLIWOŚCI — znak marki + tytuł w dwóch kolumnach (jak „Co warto przygotować…” w kontakt3) ===== */
+/* ===== 04 MOŻLIWOŚCI — znak marki (18 px, jak przy „Przeanalizujemy:”) + tytuł w dwóch kolumnach (jak „Co warto przygotować…” w kontakt3) ===== */
 .s-opts { background: var(--green-grad-up); padding: calc(2 * var(--sec)) 0 var(--sec); }
 .s-opts__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 555px)); justify-content: space-between; align-items: start; margin-top: 40px; }
 .s-opts__col { display: grid; row-gap: 32px; list-style: none; }
-.s-opt { display: grid; grid-template-columns: 25px 1fr; column-gap: 20px; }
-.s-opt::before { content: ""; width: 25px; height: 25px; margin-top: 4px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.s-opt { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; }
+.s-opt::before { content: ""; width: 18px; height: 18px; margin-top: 7px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
 .s-opt h3 { font: 700 22px/32px var(--f-display); }
 
 /* ===== 05 MASZ JUŻ FINANSOWANIE (jak spolki1, bez karty) — lista ze znakiem marki wprost na ciemnym tle ===== */
@@ -361,8 +361,8 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 
   .s-opts__grid { margin-top: 28px; row-gap: 20px; }
   .s-opts__col { row-gap: 20px; }
-  .s-opt { grid-template-columns: 22px 1fr; column-gap: 16px; }
-  .s-opt::before { width: 22px; height: 22px; margin-top: 3px; }
+  .s-opt { column-gap: 12px; }
+  .s-opt::before { margin-top: 5px; }
   .s-opt h3 { font-size: 20px; line-height: 28px; }
 
   .s-refi__photo { margin-top: 32px; aspect-ratio: 4 / 3; }
