@@ -140,11 +140,12 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 .s-opts { background: var(--green-grad-up); padding: calc(2 * var(--sec)) 0 var(--sec); }
 .s-opts__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 555px)); justify-content: space-between; align-items: start; margin-top: 40px; }
 .s-opts__col { display: grid; row-gap: 32px; list-style: none; }
-.s-opt { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; }
-.s-opt::before { content: ""; width: 18px; height: 18px; margin-top: 7px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+/* złoty kwadrat 16 px w gradiencie znaku marki (30.10, zamiast znaku icon-mark 18 px) */
+.s-opt { display: grid; grid-template-columns: 16px 1fr; column-gap: 16px; }
+.s-opt::before { content: ""; width: 16px; height: 16px; margin-top: 8px; background: url(assets/monolith/icon-square.svg) center / contain no-repeat; }
 .s-opt h3 { font: 700 22px/32px var(--f-display); }
 
-/* ===== 05 MASZ JUŻ FINANSOWANIE (jak spolki1, bez karty) — lista ze znakiem marki wprost na ciemnym tle; tekst od górnej krawędzi zdjęcia, więcej miejsca na listę (29.10) ===== */
+/* ===== 05 MASZ JUŻ FINANSOWANIE (jak spolki1, bez karty) — lista ze złotym kwadratem (30.10, wcześniej znak marki) wprost na ciemnym tle; tekst od górnej krawędzi zdjęcia, więcej miejsca na listę (29.10) ===== */
 .s-refi { background: var(--green-grad); padding: var(--sec) 0; }
 .s-refi__grid { display: grid; grid-template-columns: 480px 1fr; gap: 90px; align-items: start; }
 .s-refi__copy { grid-column: 2; grid-row: 1; }
@@ -154,8 +155,8 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
 .s-check { margin-top: 44px; }
 .s-check > p { font: 700 20px/30px var(--f-display); }
 .s-check ul { list-style: none; display: grid; gap: 22px; margin-top: 20px; }
-.s-check li { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; line-height: 26px; }
-.s-check li::before { content: ""; width: 18px; height: 18px; margin-top: 4px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.s-check li { display: grid; grid-template-columns: 16px 1fr; column-gap: 16px; line-height: 26px; }
+.s-check li::before { content: ""; width: 16px; height: 16px; margin-top: 5px; background: url(assets/monolith/icon-square.svg) center / contain no-repeat; }
 
 /* ===== 06 SPÓŁKA CZY JDG (jak spolki1) — 2 karty ze zdjęciem ===== */
 .s-types { background: var(--green-grad-up); padding: var(--sec) 0; }
@@ -361,7 +362,7 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold-
   .s-opts__grid { margin-top: 28px; row-gap: 20px; }
   .s-opts__col { row-gap: 20px; }
   .s-opt { column-gap: 12px; }
-  .s-opt::before { margin-top: 5px; }
+  .s-opt::before { margin-top: 6px; }
   .s-opt h3 { font-size: 20px; line-height: 28px; }
 
   .s-refi__photo { margin-top: 32px; aspect-ratio: 4 / 3; }

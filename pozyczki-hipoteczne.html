@@ -124,8 +124,8 @@ main a:focus-visible, main button:focus-visible { outline: 2px solid var(--gold)
 .use::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: rgba(255,255,255,.25); }
 .use > i { position: absolute; top: 0; left: 0; right: 0; height: 2px; margin-top: -.5px; background: #fff; transform: scaleX(0); transform-origin: left; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
 .use:hover > i { transform: scaleX(1); }
-/* zwykły kwadrat zamiast znaku icon-mark (30.10): 16 px, gradient z icon-mark.svg (222deg = jego kierunek: z prawego górnego rogu do lewego dolnego) */
-.use__mark { display: block; width: 16px; height: 16px; background: linear-gradient(222deg, var(--gold-stops)); }
+/* złoty kwadrat 16 px w gradiencie znaku marki (30.10, zamiast znaku icon-mark 18 px; icon-square.svg — jak na pozostałych stronach) */
+.use__mark { display: block; width: 16px; height: 16px; background: url(assets/monolith/icon-square.svg) center / contain no-repeat; }
 .use h3 { font: 700 20px/30px var(--f-display); margin-top: 20px; }
 .use p { line-height: 24px; color: rgba(255,255,255,.85); margin-top: 10px; }
 

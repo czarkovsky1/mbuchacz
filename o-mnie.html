@@ -108,7 +108,8 @@ strong { font-weight: 700; }
 .indep { background: var(--green-grad); padding: 80px 0 60px; }
 .indep__top { display: grid; grid-template-columns: 582px 582px; justify-content: space-between; align-items: start; }
 .indep h2 { font: 700 32px/41.92px var(--f-display); }
-.mark-text::before { content: ""; display: block; width: 25px; height: 25px; margin-bottom: 10px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+/* złoty kwadrat 23 px w gradiencie znaku marki (30.10, zamiast znaku icon-mark 25 px; tekst zostaje na miejscu) */
+.mark-text::before { content: ""; display: block; width: 23px; height: 23px; margin-bottom: 12px; background: url(assets/monolith/icon-square.svg) center / contain no-repeat; }
 .indep__card { margin-top: 40px; background: #fafafa; color: var(--text); border-radius: 20px; padding: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
 
 /* ===== 06 VALUES ===== */

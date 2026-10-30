@@ -119,8 +119,9 @@ strong { font-weight: 700; }
 .prep__lead { line-height: 28.48px; max-width: 930px; margin-top: 20px; }
 .prep__grid { display: grid; grid-template-columns: 555px 555px; justify-content: space-between; align-items: start; margin-top: 40px; }
 .prep__col { display: grid; row-gap: 32px; list-style: none; }
-.prep__item { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; }
-.prep__item::before { content: ""; grid-row: 1 / 3; width: 18px; height: 18px; margin-top: 7px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+/* złoty kwadrat 16 px w gradiencie znaku marki (30.10, zamiast znaku icon-mark 18 px) */
+.prep__item { display: grid; grid-template-columns: 16px 1fr; column-gap: 16px; }
+.prep__item::before { content: ""; grid-row: 1 / 3; width: 16px; height: 16px; margin-top: 8px; background: url(assets/monolith/icon-square.svg) center / contain no-repeat; }
 .prep__item h3 { font: 700 20px/32px var(--f-display); }
 .prep__item p { line-height: 28.48px; margin-top: 6px; }
 

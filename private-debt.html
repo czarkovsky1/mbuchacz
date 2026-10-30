@@ -144,10 +144,10 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
 /* ===== 04 CO ANALIZUJEMY (z private-debt1) — nagłówek po lewej, lista 2×3 ze znakami; od krawędzi pasa panoramy 2 × --sec ===== */
 .s-scope { background: var(--green-grad); padding: calc(2 * var(--sec)) 0 var(--sec); }
 .s-scope .wrap { display: grid; grid-template-columns: 420px 1fr; gap: 40px 80px; align-items: start; }
-/* pozycje ze znakiem 18 px jak „Przeanalizujemy:” w spolki3, bez linii oddzielających; margin-top: środek pierwszego wiersza = środek linii H2 */
+/* pozycje ze złotym kwadratem 16 px (30.10, wcześniej znak icon-mark 18 px) jak „Przeanalizujemy:” u spółek, bez linii oddzielających; margin-top: środek pierwszego wiersza = środek linii H2 */
 .s-scope__list { list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; margin-top: 10px; }
-.s-scope__list li { display: grid; grid-template-columns: 18px 1fr; column-gap: 16px; font: 700 22px/30px var(--f-display); }
-.s-scope__list li::before { content: ""; width: 18px; height: 18px; margin-top: 6px; background: url(assets/monolith/icon-mark.svg) center / contain no-repeat; }
+.s-scope__list li { display: grid; grid-template-columns: 16px 1fr; column-gap: 16px; font: 700 22px/30px var(--f-display); }
+.s-scope__list li::before { content: ""; width: 16px; height: 16px; margin-top: 7px; background: url(assets/monolith/icon-square.svg) center / contain no-repeat; }
 
 /* ===== 05 BANK CZY PRIVATE DEBT (z private-debt2) — porównanie 50/50: półprzezroczysta ciemna połowa + biała połowa ===== */
 .p-versus { background: var(--green-grad-up); padding: var(--sec) 0; }
@@ -321,7 +321,7 @@ main a:focus-visible, main button:focus-visible, .footer a:focus-visible { outli
   .note__box p + p { margin-top: 14px; font-size: 16px; line-height: 26px; }
   .s-scope__list { grid-template-columns: 1fr; row-gap: 18px; }
   .s-scope__list li { column-gap: 12px; font-size: 19px; line-height: 28px; }
-  .s-scope__list li::before { margin-top: 5px; }
+  .s-scope__list li::before { margin-top: 6px; }
   .p-versus__split { margin-top: 32px; }
   .p-versus__side { padding: 32px 20px 36px; }
   .p-versus__side::before { margin-bottom: 20px; }
